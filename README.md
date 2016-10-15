@@ -8,7 +8,7 @@ Parsing code are referenced from [here](http://itmir.tistory.com/524)
 
 `$ npm install react-native-version-check --save`
 
-### Mostly automatic installation
+### Automatic installation
 
 `$ react-native link react-native-version-check`
 
@@ -65,7 +65,7 @@ console.log(VersionCheck.needUpdate(2));  // false
 ## Methods
 
 - **`getCurrentVersion()`** _(String)_ - Returns current app version.
-- **`getLatestVersion()`** _(String)_ - Returns the latest app version parsed from market.
+- **`getLatestVersion()`** _(String)_ - Returns the latest app version parsed from market. Returns `null` when parsing error occurs.
 - **`needUpdate(depth : Number, delimiter : String)`** _(Bool)_ - Returns `true` if app needs update, `false` otherwise. Current and the latest app versions are first splitted by delimiter(`'.'` by default), and check each splitted numbers into depth(`Infinity` by default).
   
 ## License
