@@ -53,20 +53,34 @@ protected List<ReactPackage> getPackages() {
 ```javascript
 import VersionCheck from 'react-native-version-check';
 
+console.log(VersionCheck.getPackageName());        // com.reactnative.app
+console.log(VersionCheck.getCurrentBuildNumber()); // 10
+console.log(VersionCheck.getCurrentVersion());     // 0.1.1
 
-console.log(VersionCheck.getCurrentVersion());  // 0.2.3
-console.log(VersionCheck.getLatestVersion());   // 0.2.4
+VersionCheck.getLatestVersion()
+    .then((latestVersion) => {
+        console.log(latestVersion);    // 0.1.2
+    });
 
-
-console.log(VersionCheck.needUpdate());   // true
-console.log(VersionCheck.needUpdate(2));  // false
+VersionCheck.needUpdate()
+    .then((res) => {
+        console.log(res.isNeeded);    // true
+    });
+    
+VersionCheck.needUpdate(2)
+    .then((res) => {
+        console.log(res.isNeeded);    // false; because first two fields of current and the lastest versions are the same as "0.1".
+    });
+    
 ```
 
 ## Methods
 
+- **`getPackageName()`** _(String)_ - Returns package name of app.
+- **`getCurrentBuildNumber()`** _(Number)_ - Returns current app build number.
 - **`getCurrentVersion()`** _(String)_ - Returns current app version.
-- **`getLatestVersion()`** _(String)_ - Returns the latest app version parsed from market. Returns `null` when parsing error occurs.
-- **`needUpdate(depth : Number, delimiter : String)`** _(Bool)_ - Returns `true` if app needs update, `false` otherwise. Current and the latest app versions are first splitted by delimiter(`'.'` by default), and check each splitted numbers into depth(`Infinity` by default).
+- **`getLatestVersion()`** _(Promise)_ - Returns the latest app version parsed from market. Returns `null` when parsing error occurs.
+- **`needUpdate(depth : Number, delimiter : String)`** _(Promise)_ - Returns `{ isNeeded: true, version: latestVersion }` if app needs update, `{ isNeeded: false, version: latestVersion }` otherwise. Current and the latest app versions are first splitted by delimiter(`'.'` by default), and check each splitted numbers into depth(`Infinity` by default).
   
 ## License
 MIT
