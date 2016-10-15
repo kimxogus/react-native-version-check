@@ -61,6 +61,12 @@ console.log(VersionCheck.getLatestVersion());   // 0.2.4
 console.log(VersionCheck.needUpdate());   // true
 console.log(VersionCheck.needUpdate(2));  // false
 ```
+
+## Methods
+
+- **`getCurrentVersion()`** _(String)_ - Returns current app version.
+- **`getLatestVersion()`** _(String)_ - Returns the latest app version parsed from market.
+- **`needUpdate(depth : Number, delimiter : String)`** _(Bool)_ - Returns `true` if app needs update, `false` otherwise. Current and the latest app versions are first splitted by delimiter(`'.'` by default), and check each splitted numbers into depth(`Infinity` by default).
   
 ## License
 MIT
