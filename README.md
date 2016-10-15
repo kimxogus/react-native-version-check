@@ -51,10 +51,15 @@ protected List<ReactPackage> getPackages() {
 
 ## Usage
 ```javascript
-import RNVersionCheck from 'react-native-version-check';
+import VersionCheck from 'react-native-version-check';
 
-// TODO: What do with the module?
-RNVersionCheck;
+
+console.log(VersionCheck.getCurrentVersion());  // 0.2.3
+console.log(VersionCheck.getLatestVersion());   // 0.2.4
+
+
+console.log(VersionCheck.needUpdate());   // true
+console.log(VersionCheck.needUpdate(2));  // false
 ```
   
 ## License
