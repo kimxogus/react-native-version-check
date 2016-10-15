@@ -8,10 +8,21 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "android",
+    "version check",
+    "version-check",
+    "version",
+    "app version",
+    "market version"
   ],
   "author": "Taehyun Kim <kgyoo8232@gmail.com> (https://github.com/kimxogus)",
   "license": "MIT",
+  "homepage": "https://github.com/kimxogus/react-native-version-check",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimxogus/react-native-version-check.git"
+  }
   "peerDependencies": {
     "react-native": ">=0.34.1"
   }
