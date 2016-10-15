@@ -1,0 +1,10 @@
+xcuserdata
+*.xcuserstate
+project.xcworkspace
+
+*.iml
+**/.idea
+**/build/
+
+node_modules/
+npm-debug.log*

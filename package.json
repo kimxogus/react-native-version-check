@@ -1,0 +1,18 @@
+
+{
+  "name": "react-native-version-check",
+  "version": "0.1.0",
+  "description": "A version checker for react-native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "Taehyun Kim <kgyoo8232@gmail.com> (https://github.com/kimxogus)",
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native": ">=0.34.1"
+  }
+}
