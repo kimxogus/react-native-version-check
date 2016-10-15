@@ -7,6 +7,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": ">= 6.0.0"
+  },
   "keywords": [
     "react-native",
     "android",
@@ -17,12 +20,17 @@
     "market version"
   ],
   "author": "Taehyun Kim <kgyoo8232@gmail.com> (https://github.com/kimxogus)",
+  "contributors": [],
   "license": "MIT",
   "homepage": "https://github.com/kimxogus/react-native-version-check",
   "repository": {
     "type": "git",
     "url": "https://github.com/kimxogus/react-native-version-check.git"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/kimxogus/react-native-version-check/issues",
+    "email": "kgyoo8232@gmail.com"
+  },
   "peerDependencies": {
     "react-native": ">=0.34.1"
   }
