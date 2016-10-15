@@ -3,17 +3,16 @@ package io.xogus.reactnative.versioncheck;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
 
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
+import com.facebook.react.bridge.ReactMethod;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RNVersionCheckModule extends ReactContextBaseJavaModule {
 
@@ -24,29 +23,26 @@ public class RNVersionCheckModule extends ReactContextBaseJavaModule {
         this.reactContext = reactContext;
     }
 
-    @Override
-    public Map<String, Object> getConstants() {
-        Map<String, Object> constants = new HashMap<>();
+    @ReactMethod
+    public void getCurrentVersion(Promise promise) {
         final String packageName = this.reactContext.getPackageName();
-
+        PackageManager packageManager = this.reactContext.getPackageManager();
         try {
-            PackageManager packageManager = this.reactContext.getPackageManager();
             PackageInfo info = packageManager.getPackageInfo(packageName, 0);
-            constants.put("currentVersion", info.versionName);
-            constants.put("currentBuildNumber", info.versionCode);
+            promise.resolve(info.versionName);
         } catch (PackageManager.NameNotFoundException e) {
-            constants.put("currentVersion", null);
-            constants.put("currentBuildNumber", null);
+            promise.reject("NAME_NOT_FOUND", "Package name is not found.");
         }
+    }
 
-
+    @ReactMethod
+    public void getLatestVerion(Promise promise) {
+        final String packageName = this.reactContext.getPackageName();
         try {
-            constants.put("latestVersion", getMarketVersion(packageName));
+            promise.resolve(getMarketVersion(packageName));
         } catch (Exception e) {
-            constants.put("latestVersion", null);
+            promise.reject("PARSING_ERROR", "Parsing the latest app version failed.");
         }
-
-        return constants;
     }
 
     private String getMarketVersion(String packageName) throws Exception {

@@ -2,29 +2,44 @@ import { NativeModules } from 'react-native';
 
 const { RNVersionCheck } = NativeModules;
 
-const CURRENT_VERSION = RNVersionCheck.currentVersion;
-const LATEST_VERISON = RNVersionCheck.latestVersion;
+const getCurrentVersion = RNVersionCheck.currentVersion;
+const getLatestVersion = RNVersionCheck.latestVersion;
 
 
 export default {
-    getCurrentVersion: () => CURRENT_VERSION,
-    getLatestVersion: () => LATEST_VERISON,
+    getCurrentVersion,
+    getLatestVersion,
     needUpdate: (depth = Infinity, delimiter = '.') => {
         if(typeof depth === 'string') {
             delimiter = depth;
             depth = Infinity;
         }
 
-        const currentVersion = getVersion(CURRENT_VERSION, depth, delimiter);
-        const latestVersion = getVersion(LATEST_VERISON, depth, delimiter);
+        let currentVersion, latestVersion;
 
-        for(let i = 0; i < depth; i++) {
-            if(latestVersion[i] > currentVersion[i]) {
-                return true;
-            }
-        }
+        return Promise.resolve()
 
-        return false;
+            .then(getCurrentVersion)
+            .then((ver) => {
+                currentVersion = ver;
+            })
+
+            .then(getLatestVersion)
+            .then((ver) => {
+                latestVersion = ver;
+            })
+
+            .then(() => {
+                currentVersion = getVersion(currentVersion, depth, delimiter);
+                latestVersion = getVersion(latestVersion, depth, delimiter);
+
+                for(let i = 0; i < depth; i++) {
+                    if(latestVersion[i] > currentVersion[i]) {
+                        return Promise.resolve(true);
+                    }
+                }
+                return Promise.resolve(false);
+            });
     }
 };
 
