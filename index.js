@@ -16,25 +16,30 @@ const getLatestVersion = () => {
         return getLatestVersionNative()
             .then((version) => {
                 latestVersion = version;
+                return Promise.resolve(latestVersion);
             })
-            .catch(() => fetch("https://play.google.com/store/apps/details?id=" + PACKAGE_NAME, { timeout: 5000 }))
-            .then(res => res.text())
-            .then((text) => {
-                const startToken = "softwareVersion\">";
-                const endToken = "<";
+            .catch(() => {
+                return fetch("https://play.google.com/store/apps/details?id=" + PACKAGE_NAME, { timeout: 5000 })
+                    .then(res => {
+                        return res.text()
+                    })
+                    .then((text) => {
+                        const startToken = "softwareVersion\">";
+                        const endToken = "<";
 
-                const indexStart = text.indexOf(startToken);
+                        const indexStart = text.indexOf(startToken);
 
-                if (indexStart == -1) {
-                    return Promise.reject();
-                } else {
-                    text = text.substr(indexStart + startToken.length);
-                    text = text.substr(0, text.indexOf(endToken));
+                        if (indexStart == -1) {
+                            return Promise.reject();
+                        } else {
+                            text = text.substr(indexStart + startToken.length);
+                            text = text.substr(0, text.indexOf(endToken));
 
-                    latestVersion = text.trim();
-                    return Promise.resolve(latestVersion);
-                }
-            });
+                            latestVersion = text.trim();
+                            return Promise.resolve(latestVersion);
+                        }
+                    });
+            })
     }
 };
 
