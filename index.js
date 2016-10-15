@@ -78,19 +78,19 @@ export default {
             .then(() => getLatestVersion())
             .then((latestVersion) => {
                 currentVersion = getVersionNumberArray(currentVersion, depth, delimiter);
-                latestVersion = getVersionNumberArray(latestVersion, depth, delimiter);
+                let latestVersionArr = getVersionNumberArray(latestVersion, depth, delimiter);
 
                 const needed = { isNeeded: true, version: latestVersion };
                 const notNeeded = { isNeeded: false, version: latestVersion };
 
                 for(let i = 0; i < depth; i++) {
-                    if(!latestVersion[i] && !currentVersion[i]) {
+                    if(!latestVersionArr[i] && !currentVersion[i]) {
                         return Promise.resolve(notNeeded);
                     }
                     if(!currentVersion[i]) {
                         return Promise.resolve(needed);
                     }
-                    if(latestVersion[i] > currentVersion[i]) {
+                    if(latestVersionArr[i] > currentVersion[i]) {
                         return Promise.resolve(needed);
                     }
                 }
