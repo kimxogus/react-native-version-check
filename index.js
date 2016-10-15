@@ -9,7 +9,12 @@ const LATEST_VERISON = RNVersionCheck.latestVersion;
 export default {
     getCurrentVersion: () => CURRENT_VERSION,
     getLatestVersion: () => LATEST_VERISON,
-    needUpdate: (depth = 1, delimiter = '.') => {
+    needUpdate: (depth = Infinity, delimiter = '.') => {
+        if(typeof depth === 'string') {
+            delimiter = depth;
+            depth = Infinity;
+        }
+
         const currentVersion = getVersion(CURRENT_VERSION, depth, delimiter);
         const latestVersion = getVersion(LATEST_VERISON, depth, delimiter);
 
@@ -24,7 +29,7 @@ export default {
 };
 
 
-function getVersion(version = "0", depth = 1, delimiter = '.') {
+function getVersion(version, depth, delimiter) {
     version = String(version);
 
     if(version.indexOf(delimiter) == -1) {
