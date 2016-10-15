@@ -80,18 +80,21 @@ export default {
                 currentVersion = getVersionNumberArray(currentVersion, depth, delimiter);
                 latestVersion = getVersionNumberArray(latestVersion, depth, delimiter);
 
+                const needed = { isNeeded: true };
+                const notNeeded = { isNeeded: false, version: latestVersion };
+
                 for(let i = 0; i < depth; i++) {
                     if(!latestVersion[i] && !currentVersion[i]) {
-                        return Promise.resolve(false);
+                        return Promise.resolve(notNeeded);
                     }
                     if(!currentVersion[i]) {
-                        return Promise.resolve(true);
+                        return Promise.resolve(needed);
                     }
                     if(latestVersion[i] > currentVersion[i]) {
-                        return Promise.resolve(true);
+                        return Promise.resolve(needed);
                     }
                 }
-                return Promise.resolve(false);
+                return Promise.resolve(notNeeded);
             });
     }
 };
