@@ -1,5 +1,8 @@
 
 # react-native-version-check
+A version checker for react-native.
+This library gets the latest app version by parsing google play store's app information.
+Parsing code are referenced from [here](http://itmir.tistory.com/524)
 
 ## Getting started
 
@@ -17,18 +20,34 @@
 
 #### Android
 
-1. Open up `android/app/src/main/java/[...]/MainActivity.java`
-  - Add `import com.reactlibrary.RNVersionCheckPackage;` to the imports at the top of the file
-  - Add `new RNVersionCheckPackage()` to the list returned by the `getPackages()` method
-2. Append the following lines to `android/settings.gradle`:
-  	```
-  	include ':react-native-version-check'
-  	project(':react-native-version-check').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-version-check/android')
-  	```
-3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
-  	```
-      compile project(':react-native-version-check')
-  	```
+* Append the following lines to `android/settings.gradle`:
+```gradle
+...
+include ':react-native-version-check'
+project(':react-native-version-check').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-version-check/android')
+```
+* Insert the following lines inside the dependencies block in `android/app/build.gradle`:
+```gradle
+...
+dependencies {
+   ...
+   compile project(':react-native-version-check')
+}
+```
+* Open up `android/app/src/main/java/[...]/MainActivity.java`
+```java
+......
+import io.xogus.reactnative.versioncheck.RNVersionCheckPackage;  // <--- HERE
+
+......
+
+@Override
+protected List<ReactPackage> getPackages() {
+   ......
+   new RNVersionCheckPackage()            // <------ HERE
+   ......
+}
+```
 
 ## Usage
 ```javascript
@@ -38,3 +57,5 @@ import RNVersionCheck from 'react-native-version-check';
 RNVersionCheck;
 ```
   
+## License
+MIT
