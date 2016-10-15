@@ -69,7 +69,7 @@ VersionCheck.needUpdate()
     
 VersionCheck.needUpdate(2)
     .then((res) => {
-        console.log(res.isNeeded);    // false; because the second field of current and the lastest versions are the same as 1.
+        console.log(res.isNeeded);    // false; because first two fields of current and the lastest versions are the same as "0.1".
     });
     
 ```
