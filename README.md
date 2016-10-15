@@ -34,7 +34,7 @@ dependencies {
    compile project(':react-native-version-check')
 }
 ```
-* Open up `android/app/src/main/java/[...]/MainActivity.java`
+* Open up `android/app/src/main/java/[...]/MainApplication.java`
 ```java
 ......
 import io.xogus.reactnative.versioncheck.RNVersionCheckPackage;  // <--- HERE
