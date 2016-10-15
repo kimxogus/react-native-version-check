@@ -1,6 +1,8 @@
 
 package io.xogus.reactnative.versioncheck;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -25,11 +27,21 @@ public class RNVersionCheckModule extends ReactContextBaseJavaModule {
     @Override
     public Map<String, Object> getConstants() {
         Map<String, Object> constants = new HashMap<>();
-
-        constants.put("currentVersion", Build.VERSION.RELEASE);
+        final String packageName = this.reactContext.getPackageName();
 
         try {
-            constants.put("latestVersion", getMarketVersion(this.reactContext.getPackageName()));
+            PackageManager packageManager = this.reactContext.getPackageManager();
+            PackageInfo info = packageManager.getPackageInfo(packageName, 0);
+            constants.put("currentVersion", info.versionName);
+            constants.put("currentBuildNumber", info.versionCode);
+        } catch (PackageManager.NameNotFoundException e) {
+            constants.put("currentVersion", null);
+            constants.put("currentBuildNumber", null);
+        }
+
+
+        try {
+            constants.put("latestVersion", getMarketVersion(packageName));
         } catch (Exception e) {
             constants.put("latestVersion", null);
         }
