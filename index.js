@@ -13,7 +13,13 @@ export default {
         const currentVersion = getVersion(CURRENT_VERSION, depth, delimiter);
         const latestVersion = getVersion(LATEST_VERISON, depth, delimiter);
 
-        return latestVersion > currentVersion;
+        for(let i = 0; i < depth; i++) {
+            if(latestVersion[i] > currentVersion[i]) {
+                return true;
+            }
+        }
+
+        return false;
     }
 };
 
@@ -25,6 +31,12 @@ function getVersion(version = "0", depth = 1, delimiter = '.') {
         return version;
     } else {
         version = version.split(delimiter);
-        return version[Math.min(depth, version.length) - 1];
+
+        let result = [];
+        for(let i = 0, d = Math.min(depth, version.length); i < d; i++) {
+            result.push(version[i]);
+        }
+
+        return result;
     }
 }
