@@ -80,8 +80,8 @@ export default {
                 currentVersion = getVersionNumberArray(currentVersion, depth, delimiter);
                 let latestVersionArr = getVersionNumberArray(latestVersion, depth, delimiter);
 
-                const needed = { isNeeded: true, version: latestVersion };
-                const notNeeded = { isNeeded: false, version: latestVersion };
+                const needed = { isNeeded: true, currentVersion: currentVersion, latestVersion: latestVersion };
+                const notNeeded = { isNeeded: false, currentVersion: currentVersion, latestVersion: latestVersion };
 
                 for(let i = 0; i < depth; i++) {
                     if(!latestVersionArr[i] && !currentVersion[i]) {
