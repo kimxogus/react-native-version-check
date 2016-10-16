@@ -80,7 +80,7 @@ VersionCheck.needUpdate(2)
 - **`getCurrentBuildNumber()`** _(Number)_ - Returns current app build number.
 - **`getCurrentVersion()`** _(String)_ - Returns current app version.
 - **`getLatestVersion()`** _(Promise)_ - Returns the latest app version parsed from market. Returns `null` when parsing error occurs.
-- **`needUpdate(depth : Number, delimiter : String)`** _(Promise)_ - Returns `{ isNeeded: true, version: latestVersion }` if app needs update, `{ isNeeded: false, version: latestVersion }` otherwise. Current and the latest app versions are first splitted by delimiter(`'.'` by default), and check each splitted numbers into depth(`Infinity` by default).
+- **`needUpdate(depth : Number, delimiter : String)`** _(Promise)_ - Returns `{ isNeeded: true, currentVersion: currentVersion, latestVersion: latestVersion }` if app needs update, `{ isNeeded: false, currentVersion: currentVersion, latestVersion: latestVersion }` otherwise. Current and the latest app versions are first splitted by delimiter(`'.'` by default), and check each splitted numbers into depth(`Infinity` by default).
   
 ## License
 MIT
