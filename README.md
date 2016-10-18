@@ -8,12 +8,8 @@ Parsing code are referenced from [here](http://itmir.tistory.com/524)
 
 `$ npm install react-native-version-check --save`
 
-### Automatic installation
 
-`$ react-native link react-native-version-check`
-
-### Manual installation
-
+### installation
 
 #### iOS
  - Not supported yet
