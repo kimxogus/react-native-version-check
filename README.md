@@ -1,5 +1,8 @@
-
 # react-native-version-check
+
+[![npm version][npm-image]][npm-url]
+[![npm downloads][downloads-image]][downloads-url]
+
 A version checker for react-native.
 This library gets the latest app version by parsing google play store's app information.
 Parsing code are referenced from [here](http://itmir.tistory.com/524)
@@ -80,3 +83,9 @@ VersionCheck.needUpdate(2)
   
 ## License
 MIT
+
+
+[npm-image]: https://img.shields.io/npm/v/react-native-version-check.svg
+[npm-url]: https://npmjs.org/package/react-native-version-check
+[downloads-image]: https://img.shields.io/npm/dm/react-native-version-check.svg
+[downloads-url]: https://npmjs.org/package/react-native-version-check
