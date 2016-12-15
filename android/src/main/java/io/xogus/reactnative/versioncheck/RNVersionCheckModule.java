@@ -44,6 +44,7 @@ public class RNVersionCheckModule extends ReactContextBaseJavaModule
         Map<String, Object> constants = new HashMap<>();
 
         constants.put("packageName", packageName);
+        constants.put("country", getCountry());
 
         PackageManager packageManager = this.reactContext.getPackageManager();
         try
@@ -59,6 +60,12 @@ public class RNVersionCheckModule extends ReactContextBaseJavaModule
         }
 
         return constants;
+    }
+
+    private String getCountry()
+    {
+        Locale locale = getReactApplicationContext().getResources().getConfiguration().locale;
+        return locale.getCountry();
     }
 
     @Override
