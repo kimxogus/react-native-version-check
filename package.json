@@ -1,11 +1,9 @@
-
 {
   "name": "react-native-version-check",
   "version": "0.4.0",
   "description": "A version checker for react-native",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "engines": {
     "node": ">= 6.0.0"
   },
@@ -32,5 +30,9 @@
   },
   "peerDependencies": {
     "react-native": ">=0.34.1"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-plugin-react": "^6.8.0"
   }
 }
