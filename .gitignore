@@ -8,4 +8,8 @@ project.xcworkspace
 build
 yarn.lock
 node_modules
-npm-debug.log*ß
+npm-debug.log*
+android/gradle/
+android/gradlew
+android/gradlew.bat
+android/local.properties
