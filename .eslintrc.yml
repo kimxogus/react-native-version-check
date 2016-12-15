@@ -27,3 +27,5 @@ rules:
   keyword-spacing:
     - error
     - { before: true, after: true }
+  react/jsx-uses-vars:
+    - error
