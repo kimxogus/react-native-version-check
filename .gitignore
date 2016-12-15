@@ -1,3 +1,4 @@
+**/.DS_Store
 xcuserdata
 *.xcuserstate
 project.xcworkspace
@@ -7,4 +8,4 @@ project.xcworkspace
 **/build/
 
 node_modules/
-npm-debug.log*
+npm-debug.log*ß
