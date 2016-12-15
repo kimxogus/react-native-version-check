@@ -1,6 +1,6 @@
-import { NativeModules } from "react-native";
+import {NativeModules, Platform} from "react-native";
 
-const { RNVersionCheck } = NativeModules;
+const {RNVersionCheck} = NativeModules;
 
 const COUNTRY = RNVersionCheck.country;
 const PACKAGE_NAME = RNVersionCheck.packageName;
@@ -9,43 +9,54 @@ const CURRENT_VERSION = RNVersionCheck.currentVersion;
 const getLatestVersionNative = RNVersionCheck.getLatestVersion;
 
 let latestVersion;
+// Used by iOS Only
+let appName;
+let appID;
 
 const getLatestVersion = () => {
   if (latestVersion) {
     return Promise.resolve(latestVersion);
-  } else {
+  } else if (Platform.OS === "android") {
     return getLatestVersionNative()
       .then((version) => {
         latestVersion = version;
         return Promise.resolve(latestVersion);
       })
-      .catch(() => {
-        return fetch("https://play.google.com/store/apps/details?id=" + PACKAGE_NAME, { timeout: 5000 })
-          .then(res => {
-            return res.text();
-          })
-          .then((text) => {
-            const startToken = "softwareVersion\">";
-            const endToken = "<";
-
-            const indexStart = text.indexOf(startToken);
-
-            if (indexStart == -1) {
-              return Promise.reject();
-            } else {
-              text = text.substr(indexStart + startToken.length);
-              text = text.substr(0, text.indexOf(endToken));
-
-              latestVersion = text.trim();
-              return Promise.resolve(latestVersion);
-            }
-          });
-      });
+      .catch(getLatestVersionFromStore);
+  } else if (Platform.OS === "ios") {
+    return Promise.resolve()
+      .then(getLatestVersionFromStore);
   }
 };
 
+function getLatestVersionFromStore() {
+  return fetch(Platform.select({
+    android: "https://play.google.com/store/apps/details?id=" + PACKAGE_NAME,
+    ios: "https://itunes.apple.com/" + COUNTRY + "/app/" + appName + "/id" + appID
+  }), {timeout: 5000})
+    .then(res => {
+      return res.text();
+    })
+    .then((text) => {
+      const startToken = "softwareVersion\">";
+      const endToken = "<";
 
-function getVersionNumberArray (version, depth, delimiter) {
+      const indexStart = text.indexOf(startToken);
+
+      if (indexStart == -1) {
+        return Promise.reject();
+      } else {
+        text = text.substr(indexStart + startToken.length);
+        text = text.substr(0, text.indexOf(endToken));
+
+        latestVersion = text.trim();
+        return Promise.resolve(latestVersion);
+      }
+    });
+}
+
+
+function getVersionNumberArray(version, depth, delimiter) {
   version = String(version);
 
   if (version.indexOf(delimiter) == -1) {
@@ -62,7 +73,7 @@ function getVersionNumberArray (version, depth, delimiter) {
   }
 }
 
-function needUpdate (depth = Infinity, delimiter = ".") {
+function needUpdate(depth = Infinity, delimiter = ".") {
   if (typeof depth === "string") {
     delimiter = depth;
     depth = Infinity;
@@ -76,8 +87,8 @@ function needUpdate (depth = Infinity, delimiter = ".") {
       currentVersion = getVersionNumberArray(currentVersion, depth, delimiter);
       let latestVersionArr = getVersionNumberArray(latestVersion, depth, delimiter);
 
-      const needed = { isNeeded: true, currentVersion: currentVersion, latestVersion: latestVersion };
-      const notNeeded = { isNeeded: false, currentVersion: currentVersion, latestVersion: latestVersion };
+      const needed = {isNeeded: true, currentVersion: currentVersion, latestVersion: latestVersion};
+      const notNeeded = {isNeeded: false, currentVersion: currentVersion, latestVersion: latestVersion};
 
       for (let i = 0; i < depth; i++) {
         if (!latestVersionArr[i] && !currentVersion[i]) {
@@ -95,10 +106,14 @@ function needUpdate (depth = Infinity, delimiter = ".") {
 }
 
 export default {
+  setAppName: (_appName) => { appName = _appName; },
+  setAppID: (_appID) => { appID = _appID; },
+
   getCountry: () => COUNTRY,
   getPackageName: () => PACKAGE_NAME,
   getCurrentBuildNumber: () => CURRENT_BUILD_NUMBER,
   getCurrentVersion: () => CURRENT_VERSION,
+
   getLatestVersion: getLatestVersion,
   needUpdate: needUpdate
 };
