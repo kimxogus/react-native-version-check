@@ -5,7 +5,7 @@
 
 A version checker for react-native.
 This library gets the latest app version by parsing google play store's app information.
-Parsing code are referenced from [here](http://itmir.tistory.com/524)
+Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
 ## Getting started
 
