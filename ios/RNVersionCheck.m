@@ -34,15 +34,11 @@ RCT_EXPORT_MODULE()
 
 - (NSDictionary *)constantsToExport
 {
-    UIDevice *currentDevice = [UIDevice currentDevice];
-    
-    NSString *uniqueId = [DeviceUID uid];
-    
     return @{
-             @"country": country,
-             @"packageName": packageName,
-             @"currentVersion": currentVersion,
-             @"currentBuildNumber": currentBuildNumber,
+             @"country": self.country,
+             @"packageName": self.packageName,
+             @"currentVersion": self.currentVersion,
+             @"currentBuildNumber": self.currentBuildNumber,
              };
 }
 
