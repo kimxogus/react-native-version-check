@@ -34,8 +34,5 @@
   "devDependencies": {
     "eslint": "^3.12.2",
     "eslint-plugin-react": "^6.8.0"
-  },
-  "dependencies": {
-    "lodash": "^4.17.2"
   }
 }
