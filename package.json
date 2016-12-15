@@ -3,7 +3,9 @@
   "version": "0.4.0",
   "description": "A version checker for react-native",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "lint": "node node_modules/eslint/bin/eslint index.js"
+  },
   "engines": {
     "node": ">= 6.0.0"
   },
@@ -33,6 +35,7 @@
   },
   "devDependencies": {
     "eslint": "^3.12.2",
+    "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.8.0"
   }
 }

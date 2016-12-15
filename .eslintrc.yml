@@ -2,7 +2,8 @@ env:
   browser: true
   commonjs: true
   es6: true
-extends: 'eslint:recommended'
+extends:
+  - 'eslint:recommended'
 installedESLint: true
 parserOptions:
   ecmaFeatures:
