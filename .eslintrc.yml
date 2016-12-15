@@ -24,3 +24,6 @@ rules:
   semi:
     - error
     - always
+  keyword-spacing:
+    - error
+    - { before: true, after: true }
