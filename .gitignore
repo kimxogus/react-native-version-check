@@ -4,8 +4,8 @@ xcuserdata
 project.xcworkspace
 
 *.iml
-**/.idea
-**/build/
-
-node_modules/
+.idea
+build
+yarn.lock
+node_modules
 npm-debug.log*ß
