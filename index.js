@@ -1,4 +1,4 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules } from "react-native";
 
 const { RNVersionCheck } = NativeModules;
 
@@ -21,7 +21,7 @@ const getLatestVersion = () => {
             .catch(() => {
                 return fetch("https://play.google.com/store/apps/details?id=" + PACKAGE_NAME, { timeout: 5000 })
                     .then(res => {
-                        return res.text()
+                        return res.text();
                     })
                     .then((text) => {
                         const startToken = "softwareVersion\">";
@@ -39,7 +39,7 @@ const getLatestVersion = () => {
                             return Promise.resolve(latestVersion);
                         }
                     });
-            })
+            });
     }
 };
 
@@ -66,8 +66,8 @@ export default {
     getCurrentBuildNumber: () =>CURRENT_BUILD_NUMBER,
     getCurrentVersion: () => CURRENT_VERSION,
     getLatestVersion: getLatestVersion,
-    needUpdate: (depth = Infinity, delimiter = '.') => {
-        if(typeof depth === 'string') {
+    needUpdate: (depth = Infinity, delimiter = ".") => {
+        if(typeof depth === "string") {
             delimiter = depth;
             depth = Infinity;
         }
