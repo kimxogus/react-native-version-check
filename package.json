@@ -4,7 +4,7 @@
   "description": "A version checker for react-native",
   "main": "index.js",
   "scripts": {
-    "lint": "node node_modules/eslint/bin/eslint index.js"
+    "lint": "node node_modules/eslint/bin/eslint index.js src"
   },
   "engines": {
     "node": ">= 6.0.0"
