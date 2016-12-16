@@ -5,7 +5,7 @@
 
 A version checker for react-native.
 This library gets the latest app version by parsing google play store's app information.
-Parsing code are referenced from [here](http://itmir.tistory.com/524)
+Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
 ## Getting started
 
@@ -15,7 +15,13 @@ Parsing code are referenced from [here](http://itmir.tistory.com/524)
 ### installation
 
 #### iOS
- - Not supported yet
+* Add ```.xcodeproj``` file as library to XCode project.  
+  1. In project navigator, right click Libraries    
+  2. Select ```Add Files to [PROJECT_NAME]```
+  3. Add the ```node_modules/react-native-version-check/ios/RNVersionCheck.xcodeproj``` file
+
+* Add the ```libRNVersionCheck.a``` from the ```RNVersionCheck``` project to your project's Build Phases > Link Binary With Libraries 
+
 
 #### Android
 
@@ -52,6 +58,17 @@ protected List<ReactPackage> getPackages() {
 ```javascript
 import VersionCheck from 'react-native-version-check';
 
+// START: iOS Only
+
+VersionCheck.setAppID(APP_ID);                    // Your App ID for App Store URL
+VersionCheck.setAppName(APP_NAME);                // Your App Name for App Store URL
+
+// Your app's id, name and country info will be use for App Store URL like
+// https://itunes.apple.com/{COUNTRY}/app/{APP_NAME}/id{APP_ID}
+
+// END: iOS Only
+
+console.log(VersionCheck.getCountry());            // KR
 console.log(VersionCheck.getPackageName());        // com.reactnative.app
 console.log(VersionCheck.getCurrentBuildNumber()); // 10
 console.log(VersionCheck.getCurrentVersion());     // 0.1.1
@@ -75,6 +92,9 @@ VersionCheck.needUpdate(2)
 
 ## Methods
 
+- **`setAppID(appId : Number)`** _()_ - **[Required only for iOS Apps]** Sets app id of application for App Store Url.
+- **`setAppName(appName : String)`** _()_ - **[Required only for iOS Apps]** Sets app name of application for App Store Url.
+- **`geCountry()`** _(String)_ - Returns device's country code of 2 characters.
 - **`getPackageName()`** _(String)_ - Returns package name of app.
 - **`getCurrentBuildNumber()`** _(Number)_ - Returns current app build number.
 - **`getCurrentVersion()`** _(String)_ - Returns current app version.
