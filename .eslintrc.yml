@@ -28,5 +28,8 @@ rules:
   keyword-spacing:
     - error
     - { before: true, after: true }
+  object-curly-spacing:
+    - error
+    - always
   react/jsx-uses-vars:
     - error
