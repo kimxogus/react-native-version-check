@@ -120,7 +120,7 @@ VersionCheck.needUpdate({
 - <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(String)_ - Returns package name of app.
 - <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(Number)_ - Returns current app build number.
 - <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(String)_ - Returns current app version.
-- <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion(option : object)`** _(Promise <latestVersion>)_ - Returns the latest app version parsed from url. Returns `null` when parsing error occurs.
+- <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion([option : object])`** _(Promise <latestVersion>)_ - Returns the latest app version parsed from url. Returns `null` when parsing error occurs.
   - Option  
   
     Field | Type | Default  
@@ -129,7 +129,7 @@ VersionCheck.needUpdate({
     url | _string_ | store url using app info  
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)  
     
-- <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate(option : object)`** _(Promise)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
+- <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate([option : object])`** _(Promise)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
   - Option  
   
     Field | Type | Default   
