@@ -98,7 +98,7 @@ VersionCheck.needUpdate(2)
 - <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(String)_ - Returns package name of app.
 - <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(Number)_ - Returns current app build number.
 - <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(String)_ - Returns current app version.
-- <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion()`** _(Promise <latestVersion>)_ - Returns the latest app version parsed from market. Returns `null` when parsing error occurs.
+- <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion(option : object)`** _(Promise <latestVersion>)_ - Returns the latest app version parsed from market. Returns `null` when parsing error occurs.
   - Option  
   
     Field | Type | Default  
