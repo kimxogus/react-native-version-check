@@ -30,6 +30,9 @@ const getLatestVersion = () => {
 };
 
 function getLatestVersionFromStore() {
+  if (Platform.OS === "ios" && (!appName || !appID)) {
+    throw new Error("'appName' or 'appID' is undefined.\nSet those values correctly using 'setAppName()' and 'setAppID()'");
+  }
   return fetch(Platform.select({
     android: "https://play.google.com/store/apps/details?id=" + PACKAGE_NAME,
     ios: "https://itunes.apple.com/" + COUNTRY + "/app/" + appName + "/id" + appID
