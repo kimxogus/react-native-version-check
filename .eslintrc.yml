@@ -25,6 +25,8 @@ rules:
   semi:
     - error
     - always
+  no-console:
+    - off
   keyword-spacing:
     - error
     - { before: true, after: true }

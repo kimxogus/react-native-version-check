@@ -1,8 +1,10 @@
 /**
  * Created by kimxogus on 2016. 12. 16..
  */
+import { isNil, isPlainObject, defaultsDeep, pick, keys } from "lodash";
+
 import Native  from "./native";
-import { getLatestVersion } from "./getLatestVersion";
+import { getLatestVersion, defaultOption as defaultOptionForLatestVersion } from "./getLatestVersion";
 
 
 function getVersionNumberArray(version, depth, delimiter) {
@@ -22,7 +24,36 @@ function getVersionNumberArray(version, depth, delimiter) {
   }
 }
 
-export default function needUpdate(depth = Infinity, delimiter = ".") {
+export function needUpdate(option) {
+  if (arguments.length && !isPlainObject(option)) {
+    console.warn("[DEPRECATED] Use object type option instead. https://github.com/kimxogus/react-native-version-check#needUpdate");
+    needUpdateDeprecated.apply(null, arguments);
+  }
+
+  option = defaultsDeep(option, {
+    currentVersion: Native.getCurrentVersion(),
+    latestVersion: null,
+    depth: Infinity,
+    delimiter: ".",
+
+    ...defaultOptionForLatestVersion
+  });
+
+  if (isNil(option.latestVersion)) {
+    return Promise.resolve()
+      .then(() => getLatestVersion(pick(option, keys(defaultOptionForLatestVersion))))
+      .then((latestVersion) => checkIfUpdateNeeded(option.currentVersion, latestVersion, pick(option, ["depth", "delimiter"])));
+  }
+
+  return Promise.resolve()
+    .then(() => checkIfUpdateNeeded(option.currentVersion, option.latestVersion, pick(option, ["depth", "delimiter"])));
+}
+
+/**
+ * @see https://github.com/kimxogus/react-native-version-check#needUpdate
+ * @deprecated Since 1.0. Use object type option instead.
+ */
+function needUpdateDeprecated(depth = Infinity, delimiter = ".") {
   if (typeof depth === "string") {
     delimiter = depth;
     depth = Infinity;
@@ -32,32 +63,34 @@ export default function needUpdate(depth = Infinity, delimiter = ".") {
 
   return Promise.resolve()
     .then(() => getLatestVersion())
-    .then((latestVersion) => {
-      currentVersion = getVersionNumberArray(currentVersion, depth, delimiter);
-      let latestVersionArr = getVersionNumberArray(latestVersion, depth, delimiter);
+    .then((latestVersion) => checkIfUpdateNeeded(currentVersion, latestVersion, { depth, delimiter }));
+}
 
-      const needed = {
-        isNeeded: true,
-        currentVersion: currentVersion,
-        latestVersion: latestVersion
-      };
-      const notNeeded = {
-        isNeeded: false,
-        currentVersion: currentVersion,
-        latestVersion: latestVersion
-      };
+function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
+  currentVersion = getVersionNumberArray(currentVersion, option.depth, option.delimiter);
+  let latestVersionArr = getVersionNumberArray(latestVersion, option.depth, option.delimiter);
 
-      for (let i = 0; i < depth; i++) {
-        if (!latestVersionArr[i] && !currentVersion[i]) {
-          return Promise.resolve(notNeeded);
-        }
-        if (!currentVersion[i]) {
-          return Promise.resolve(needed);
-        }
-        if (latestVersionArr[i] > currentVersion[i]) {
-          return Promise.resolve(needed);
-        }
-      }
+  const needed = {
+    isNeeded: true,
+    currentVersion: currentVersion,
+    latestVersion: latestVersion
+  };
+  const notNeeded = {
+    isNeeded: false,
+    currentVersion: currentVersion,
+    latestVersion: latestVersion
+  };
+
+  for (let i = 0; i < option.depth; i++) {
+    if (!latestVersionArr[i] && !currentVersion[i]) {
       return Promise.resolve(notNeeded);
-    });
+    }
+    if (!currentVersion[i]) {
+      return Promise.resolve(needed);
+    }
+    if (latestVersionArr[i] > currentVersion[i]) {
+      return Promise.resolve(needed);
+    }
+  }
+  return Promise.resolve(notNeeded);
 }

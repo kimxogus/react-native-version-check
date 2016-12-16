@@ -18,14 +18,16 @@ export function setAppID(_appID) {
   appID = _appID;
 }
 
+export const defaultOption = {
+  forceUpdate: false,
+  url: null,
+  fetchOptions: {
+    timeout: 5000
+  }
+};
+
 export function getLatestVersion(option) {
-  option = defaultsDeep(option, {
-    forceUpdate: false,
-    url: null,
-    fetchOptions: {
-      timeout: 5000
-    }
-  });
+  option = defaultsDeep(option, defaultOption);
 
   if (isNil(option.url)) {
     option.url = getStoreUrl(); // To prevent getStore to be executed when it's not needed.
