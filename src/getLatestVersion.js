@@ -31,7 +31,7 @@ export function getLatestVersion(option) {
     option.url = getStoreUrl(); // To prevent getStore to be executed when it's not needed.
   }
 
-  if (latestVersion) {
+  if (!option.forceUpdate && !isNil(latestVersion)) {
     return Promise.resolve(latestVersion);
   } else if (Platform.OS === "android") {
     return Native.getLatestVersionNative()
