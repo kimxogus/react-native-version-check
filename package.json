@@ -1,6 +1,6 @@
 {
   "name": "react-native-version-check",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A version checker for react-native",
   "main": "index.js",
   "scripts": {
