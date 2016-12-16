@@ -35,14 +35,7 @@ export function getLatestVersion(option) {
 
   if (!option.forceUpdate && !isNil(latestVersion)) {
     return Promise.resolve(latestVersion);
-  } else if (Platform.OS === "android") {
-    return Native.getLatestVersionNative()
-      .then((version) => {
-        latestVersion = version;
-        return Promise.resolve(latestVersion);
-      })
-      .catch(() => getLatestVersionFromUrl(option.url, option.fetchOptions));
-  } else if (Platform.OS === "ios") {
+  } else {
     return Promise.resolve()
       .then(() => getLatestVersionFromUrl(option.url, option.fetchOptions));
   }
