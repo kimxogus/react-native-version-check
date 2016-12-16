@@ -4,7 +4,7 @@
 [![npm downloads][downloads-image]][downloads-url]
 
 A version checker for react-native.
-This library gets the latest app version by parsing google play store's app information.
+This library gets the latest app version by parsing google play store, apple app store's app information or custom url.
 Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
 ## Getting started
@@ -74,20 +74,42 @@ console.log(VersionCheck.getCurrentBuildNumber()); // 10
 console.log(VersionCheck.getCurrentVersion());     // 0.1.1
 
 VersionCheck.getLatestVersion()
-    .then((latestVersion) => {
+    .then(latestVersion => {
         console.log(latestVersion);    // 0.1.2
     });
 
+VersionCheck.getLatestVersion({
+  forceUpdate: true,
+  url: "https://path.to/your/version/api",   // You can get latest version from your own api.
+  fetchOptions: {
+    method: "GET",
+    headers: {
+      "x-custom-header": "param"
+    }
+  }
+}).then((latestVersion) =>{
+  console.log(latestVersion);
+});
+
 VersionCheck.needUpdate()
-    .then((res) => {
+    .then(res => {
         console.log(res.isNeeded);    // true
     });
     
-VersionCheck.needUpdate(2)
-    .then((res) => {
-        console.log(res.isNeeded);    // false; because first two fields of current and the lastest versions are the same as "0.1".
-    });
-    
+VersionCheck.needUpdate({
+  depth: 2
+}).then(res => {
+  console.log(res.isNeeded);
+  // false; because first two fields of current and the latest versions are the same as "0.1".
+});
+
+VersionCheck.needUpdate({
+  currentVersion: "1.0",
+  latestVersion: "2.0"
+}).then(res => {
+  console.log(res.isNeeded);  // true
+});
+
 ```
 
 ## Methods
@@ -98,7 +120,7 @@ VersionCheck.needUpdate(2)
 - <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(String)_ - Returns package name of app.
 - <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(Number)_ - Returns current app build number.
 - <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(String)_ - Returns current app version.
-- <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion(option : object)`** _(Promise <latestVersion>)_ - Returns the latest app version parsed from market. Returns `null` when parsing error occurs.
+- <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion(option : object)`** _(Promise <latestVersion>)_ - Returns the latest app version parsed from url. Returns `null` when parsing error occurs.
   - Option  
   
     Field | Type | Default  
