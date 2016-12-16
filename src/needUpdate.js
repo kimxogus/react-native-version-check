@@ -67,7 +67,7 @@ function needUpdateDeprecated(depth = Infinity, delimiter = ".") {
 }
 
 function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
-  currentVersion = getVersionNumberArray(currentVersion, option.depth, option.delimiter);
+  let currentVersionArr = getVersionNumberArray(currentVersion, option.depth, option.delimiter);
   let latestVersionArr = getVersionNumberArray(latestVersion, option.depth, option.delimiter);
 
   const needed = {
@@ -82,13 +82,13 @@ function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
   };
 
   for (let i = 0; i < option.depth; i++) {
-    if (!latestVersionArr[i] && !currentVersion[i]) {
+    if (!latestVersionArr[i] && !currentVersionArr[i]) {
       return Promise.resolve(notNeeded);
     }
-    if (!currentVersion[i]) {
+    if (!currentVersionArr[i]) {
       return Promise.resolve(needed);
     }
-    if (latestVersionArr[i] > currentVersion[i]) {
+    if (latestVersionArr[i] > currentVersionArr[i]) {
       return Promise.resolve(needed);
     }
   }
