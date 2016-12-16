@@ -66,15 +66,20 @@ function getLatestVersionFromUrl(url, fetchOptions) {
       const endToken = "<";
 
       const indexStart = text.indexOf(startToken);
-
-      if (indexStart == -1) {
-        return Promise.reject();
-      } else {
-        text = text.substr(indexStart + startToken.length);
-        text = text.substr(0, text.indexOf(endToken));
-
+      if (indexStart === -1) {
         latestVersion = text.trim();
         return Promise.resolve(latestVersion);
       }
+
+      const indexEnd = text.indexOf(endToken);
+      if (indexEnd === -1) {
+        return Promise.reject("Parse error.");
+      }
+
+      text = text.substr(indexStart + startToken.length);
+      text = text.substr(0, indexEnd);
+
+      latestVersion = text.trim();
+      return Promise.resolve(latestVersion);
     });
 }
