@@ -92,15 +92,44 @@ VersionCheck.needUpdate(2)
 
 ## Methods
 
-- **`setAppID(appId : Number)`** _()_ - **[Required only for iOS Apps]** Sets app id of application for App Store Url.
-- **`setAppName(appName : String)`** _()_ - **[Required only for iOS Apps]** Sets app name of application for App Store Url.
-- **`geCountry()`** _(String)_ - Returns device's country code of 2 characters.
-- **`getPackageName()`** _(String)_ - Returns package name of app.
-- **`getCurrentBuildNumber()`** _(Number)_ - Returns current app build number.
-- **`getCurrentVersion()`** _(String)_ - Returns current app version.
-- **`getLatestVersion()`** _(Promise)_ - Returns the latest app version parsed from market. Returns `null` when parsing error occurs.
-- **`needUpdate(depth : Number, delimiter : String)`** _(Promise)_ - Returns `{ isNeeded: true, currentVersion: currentVersion, latestVersion: latestVersion }` if app needs update, `{ isNeeded: false, currentVersion: currentVersion, latestVersion: latestVersion }` otherwise. Current and the latest app versions are first splitted by delimiter(`'.'` by default), and check each splitted numbers into depth(`Infinity` by default).
+- <a name="setAppID" href="#setAppID">#</a>**`setAppID(appId : Number)`** _()_ - Sets app id of application for App Store Url. **[Required only for iOS Apps]**
+- <a name="setAppName" href="#setAppName">#</a>**`setAppName(appName : String)`** _()_ - Sets app name of application for App Store Url. **[Required only for iOS Apps]**
+- <a name="getCountry" href="#getCountry">#</a>**`getCountry()`** _(String)_ - Returns device's country code of 2 characters.
+- <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(String)_ - Returns package name of app.
+- <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(Number)_ - Returns current app build number.
+- <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(String)_ - Returns current app version.
+- <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion()`** _(Promise <latestVersion>)_ - Returns the latest app version parsed from market. Returns `null` when parsing error occurs.
+  - Option  
   
+    Field | Type | Default  
+    --- | --- | ---  
+    forceUpdate | _boolean_ | ```false```  
+    url | _string_ | store url using app info  
+    fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)  
+    
+- <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate(option : object)`** _(Promise)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
+  - Option  
+  
+    Field | Type | Default   
+    --- | --- | ---  
+    currentVersion | _string_ | app's current version from [getCurrentVersion()](#getCurrentVersion)
+    latestVersion | _string_ | app's latest version from [getLatestVersion()](#getLatestVersion)
+    depth | _number_ | ```Infinity```
+    delimiter | _string_ | ```"."```
+    forceUpdate | _boolean_ | ```false```  
+    url | _string_ | store url using app info  
+    fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)  
+    
+  - Result
+  
+    Field | Type   
+    --- | ---  
+    isNeeded | _boolean_
+    currentVersion | _string_
+    latestVersion | _string_
+
+
+
 ## License
 MIT
 
