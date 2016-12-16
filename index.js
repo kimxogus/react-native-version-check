@@ -1,5 +1,5 @@
 import Native from "./src/native";
-import * as LatestVersion from "./src/getLatestVersion";
+import { getLatestVersion, setAppID, setAppName } from "./src/getLatestVersion";
 import { needUpdate } from "./src/needUpdate";
 
 export default {
@@ -8,7 +8,9 @@ export default {
   getCurrentBuildNumber: Native.getCurrentBuildNumber,
   getCurrentVersion: Native.getCurrentVersion,
 
-  ...LatestVersion,
+  setAppID,
+  setAppName,
+  getLatestVersion,
 
   needUpdate
 };
