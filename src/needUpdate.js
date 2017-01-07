@@ -40,13 +40,11 @@ export function needUpdate(option) {
   });
 
   if (isNil(option.latestVersion)) {
-    return Promise.resolve()
-      .then(() => getLatestVersion(pick(option, keys(defaultOptionForLatestVersion))))
+    return getLatestVersion(pick(option, keys(defaultOptionForLatestVersion)))
       .then((latestVersion) => checkIfUpdateNeeded(option.currentVersion, latestVersion, pick(option, ["depth", "delimiter"])));
   }
 
-  return Promise.resolve()
-    .then(() => checkIfUpdateNeeded(option.currentVersion, option.latestVersion, pick(option, ["depth", "delimiter"])));
+  return checkIfUpdateNeeded(option.currentVersion, option.latestVersion, pick(option, ["depth", "delimiter"]));
 }
 
 /**
@@ -61,8 +59,7 @@ function needUpdateDeprecated(depth = Infinity, delimiter = ".") {
 
   let currentVersion = Native.getCurrentVersion();
 
-  return Promise.resolve()
-    .then(() => getLatestVersion())
+  return getLatestVersion()
     .then((latestVersion) => checkIfUpdateNeeded(currentVersion, latestVersion, { depth, delimiter }));
 }
 

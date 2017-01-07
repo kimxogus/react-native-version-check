@@ -36,8 +36,7 @@ export function getLatestVersion(option) {
   if (!option.forceUpdate && !isNil(latestVersion)) {
     return Promise.resolve(latestVersion);
   } else {
-    return Promise.resolve()
-      .then(() => getLatestVersionFromUrl(option.url, option.fetchOptions));
+    return getLatestVersionFromUrl(option.url, option.fetchOptions);
   }
 }
 
