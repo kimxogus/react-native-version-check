@@ -8,11 +8,14 @@ This library gets the latest app version by parsing google play store, apple app
 Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
 ## Getting started
-
-`$ npm install react-native-version-check --save`
+```bash
+$ npm install react-native-version-check --save
+```
 
 ### Automatic Installation
-`$ react-native link`
+```bash
+$ react-native link
+```
 
 ### Manual Installation
 #### - iOS
