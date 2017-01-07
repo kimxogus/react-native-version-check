@@ -65,12 +65,13 @@ function getLatestVersionFromUrl(url, fetchOptions) {
         return Promise.resolve(latestVersion);
       }
 
+      text = text.substr(indexStart + startToken.length);
+
       const indexEnd = text.indexOf(endToken);
       if (indexEnd === -1) {
         return Promise.reject("Parse error.");
       }
 
-      text = text.substr(indexStart + startToken.length);
       text = text.substr(0, indexEnd);
 
       latestVersion = text.trim();
