@@ -11,10 +11,11 @@ Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
 `$ npm install react-native-version-check --save`
 
+### Automatic Installation
+`$ react-native link`
 
-### installation
-
-#### iOS
+### Manual Installation
+#### - iOS
 * Add ```.xcodeproj``` file as library to XCode project.  
   1. In project navigator, right click Libraries    
   2. Select ```Add Files to [PROJECT_NAME]```
@@ -23,7 +24,7 @@ Parsing code is referenced from [here](http://itmir.tistory.com/524)
 * Add the ```libRNVersionCheck.a``` from the ```RNVersionCheck``` project to your project's Build Phases > Link Binary With Libraries 
 
 
-#### Android
+#### - Android
 
 * Append the following lines to `android/settings.gradle`:
 ```gradle
@@ -74,9 +75,9 @@ console.log(VersionCheck.getCurrentBuildNumber()); // 10
 console.log(VersionCheck.getCurrentVersion());     // 0.1.1
 
 VersionCheck.getLatestVersion()
-    .then(latestVersion => {
-        console.log(latestVersion);    // 0.1.2
-    });
+  .then(latestVersion => {
+    console.log(latestVersion);    // 0.1.2
+  });
 
 VersionCheck.getLatestVersion({
   forceUpdate: true,
@@ -92,9 +93,9 @@ VersionCheck.getLatestVersion({
 });
 
 VersionCheck.needUpdate()
-    .then(res => {
-        console.log(res.isNeeded);    // true
-    });
+  .then(res => {
+    console.log(res.isNeeded);    // true
+  });
     
 VersionCheck.needUpdate({
   depth: 2
