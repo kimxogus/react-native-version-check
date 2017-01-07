@@ -55,10 +55,8 @@ const MARKETVERSION_STARTTOKEN_LENGTH = MARKETVERSION_STARTTOKEN.length;
 const MARKETVERSION_ENDTOKEN = "<";
 function getLatestVersionFromUrl(url, fetchOptions) {
   return fetch(url, fetchOptions)
-    .then(res => {
-      return res.text();
-    })
-    .then((text) => {
+    .then(res => res.text())
+    .then(text => {
       const indexStart = text.indexOf(MARKETVERSION_STARTTOKEN);
       if (indexStart === -1) {
         latestVersion = text.trim();
