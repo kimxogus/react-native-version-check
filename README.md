@@ -128,7 +128,15 @@ VersionCheck.needUpdate({
 - <a name="getCountry" href="#getCountry">#</a>**`getCountry()`** _(country: String)_ - Returns device's country code of 2 characters.
 - <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(packageName: String)_ - Returns package name of app.
 - <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(buildNumber: Number)_ - Returns current app build number.
-- <a name="getStoreUrl" href="#getStoreUrl">#</a>**`getStoreUrl()`** _(storeUrl: String)_ - Returns url of Play Market or App Store of app.
+- <a name="getStoreUrl" href="#getStoreUrl">#</a>**`getStoreUrl([option: Object])`** _(storeUrl: String)_ - Returns url of Play Market or App Store of app.
+  - Option  
+  
+    Field | Type | Default  
+    --- | --- | ---  
+    forceUpdate | _boolean_ | ```false```  
+    appID | _string_ | App ID which was set by [setAppID()](#setAppID)
+    appName | _string_ | App Name which was set by [setAppName()](#setAppName)
+    
 - <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(currentVersion: String)_ - Returns current app version.
 - <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion([option: Object])`** _(Promise<latestVersion: String>)_ - Returns the latest app version parsed from url. Returns `null` when parsing error occurs.
   - Option  
