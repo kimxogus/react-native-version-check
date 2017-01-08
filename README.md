@@ -93,7 +93,7 @@ VersionCheck.getLatestVersion({
       "x-custom-header": "param"
     }
   }
-}).then((latestVersion) =>{
+}).then(latestVersion =>{
   console.log(latestVersion);
 });
 
