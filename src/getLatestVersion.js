@@ -43,14 +43,13 @@ export function getLatestVersion(option) {
 }
 
 const defaultStoreUrlOption = {
-  forceUpdate: false,
   appName: _appName,
   appID: _appID
 };
 
 export function getStoreUrl(option) {
   option = defaultsDeep(option, defaultStoreUrlOption);
-  if (option.forceUpdate || isNil(storeUrl)) {
+  if (isNil(storeUrl) || option.appName !== _appName || option.appID !== _appID) {
 
     if (Platform.OS === "ios" && (!option.appName || !option.appID)) {
       throw new Error("'appName' or 'appID' is undefined.\nSet those values correctly using 'setAppName()' and 'setAppID()'");
