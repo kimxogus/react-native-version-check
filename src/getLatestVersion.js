@@ -42,15 +42,12 @@ export function getLatestVersion(option) {
   }
 }
 
-const defaultStoreUrlOption = {
-  appName: _appName,
-  appID: _appID
-};
-
 export function getStoreUrl(option) {
-  option = defaultsDeep(option, defaultStoreUrlOption);
+  option = defaultsDeep(option, {
+    appName: _appName,
+    appID: _appID
+  });
   if (isNil(storeUrl) || option.appName !== _appName || option.appID !== _appID) {
-
     if (Platform.OS === "ios" && (!option.appName || !option.appID)) {
       throw new Error("'appName' or 'appID' is undefined.\nSet those values correctly using 'setAppName()' and 'setAppID()'");
     }
@@ -59,7 +56,6 @@ export function getStoreUrl(option) {
       android: "https://play.google.com/store/apps/details?id=" + Native.getPackageName(),
       ios: "https://itunes.apple.com/" + Native.getCountry() + "/app/" + option.appName + "/id" + option.appID
     });
-
   } else {
     return storeUrl;
   }

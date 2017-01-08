@@ -133,7 +133,6 @@ VersionCheck.needUpdate({
   
     Field | Type | Default  
     --- | --- | ---  
-    forceUpdate | _boolean_ | ```false```  
     appID | _string_ | App ID which was set by [setAppID()](#setAppID)
     appName | _string_ | App Name which was set by [setAppName()](#setAppName)
     
