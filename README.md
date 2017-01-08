@@ -3,7 +3,7 @@
 [![npm version][npm-image]][npm-url]
 [![npm downloads][downloads-image]][downloads-url]
 
-A version checker for react-native.
+A version checker for react-native applications.  
 This library gets the latest app version by parsing google play store, apple app store's app information or custom url.
 Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
@@ -60,6 +60,7 @@ protected List<ReactPackage> getPackages() {
 
 ## Usage
 ```javascript
+import { Linking } from 'react-native';
 import VersionCheck from 'react-native-version-check';
 
 // START: iOS Only
@@ -98,6 +99,9 @@ VersionCheck.getLatestVersion({
 VersionCheck.needUpdate()
   .then(res => {
     console.log(res.isNeeded);    // true
+    if (res.isNeeded) {
+      Linking.openURL(VersionCheck.getStoreUrl());  // open store if update is needed.
+    }
   });
     
 VersionCheck.needUpdate({
@@ -123,6 +127,7 @@ VersionCheck.needUpdate({
 - <a name="getCountry" href="#getCountry">#</a>**`getCountry()`** _(String)_ - Returns device's country code of 2 characters.
 - <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(String)_ - Returns package name of app.
 - <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(Number)_ - Returns current app build number.
+- <a name="getStoreUrl" href="#getStoreUrl">#</a>**`getStoreUrl()`** _(String)_ - Returns url of Play Market or App Store of app.
 - <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(String)_ - Returns current app version.
 - <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion([option : object])`** _(Promise <latestVersion>)_ - Returns the latest app version parsed from url. Returns `null` when parsing error occurs.
   - Option  
