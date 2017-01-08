@@ -6,16 +6,18 @@ import { Platform } from "react-native";
 
 import Native from "./native";
 
-let latestVersion;
-// Used by iOS Only
-let appName;
-let appID;
+let storeUrl = null;
 
-export function setAppName(_appName) {
-  appName = _appName;
+let latestVersion = null;
+// Used by iOS Only
+let _appName = null;
+let _appID = null;
+
+export function setAppName(appName) {
+  _appName = appName;
 }
-export function setAppID(_appID) {
-  appID = _appID;
+export function setAppID(appID) {
+  _appID = appID;
 }
 
 export const defaultOption = {
@@ -40,14 +42,28 @@ export function getLatestVersion(option) {
   }
 }
 
-export function getStoreUrl() {
-  if (Platform.OS === "ios" && (!appName || !appID)) {
-    throw new Error("'appName' or 'appID' is undefined.\nSet those values correctly using 'setAppName()' and 'setAppID()'");
+const defaultStoreUrlOption = {
+  forceUpdate: false,
+  appName: _appName,
+  appID: _appID
+};
+
+export function getStoreUrl(option) {
+  option = defaultsDeep(option, defaultStoreUrlOption);
+  if (option.forceUpdate || isNil(storeUrl)) {
+
+    if (Platform.OS === "ios" && (!option.appName || !option.appID)) {
+      throw new Error("'appName' or 'appID' is undefined.\nSet those values correctly using 'setAppName()' and 'setAppID()'");
+    }
+
+    return Platform.select({
+      android: "https://play.google.com/store/apps/details?id=" + Native.getPackageName(),
+      ios: "https://itunes.apple.com/" + Native.getCountry() + "/app/" + option.appName + "/id" + option.appID
+    });
+
+  } else {
+    return storeUrl;
   }
-  return Platform.select({
-    android: "https://play.google.com/store/apps/details?id=" + Native.getPackageName(),
-    ios: "https://itunes.apple.com/" + Native.getCountry() + "/app/" + appName + "/id" + appID
-  });
 }
 
 const MARKETVERSION_STARTTOKEN = "softwareVersion\">";
