@@ -122,14 +122,14 @@ VersionCheck.needUpdate({
 
 ## Methods
 
-- <a name="setAppID" href="#setAppID">#</a>**`setAppID(appId : Number)`** _()_ - Sets app id of application for App Store Url. **[Required only for iOS Apps]**
-- <a name="setAppName" href="#setAppName">#</a>**`setAppName(appName : String)`** _()_ - Sets app name of application for App Store Url. **[Required only for iOS Apps]**
-- <a name="getCountry" href="#getCountry">#</a>**`getCountry()`** _(String)_ - Returns device's country code of 2 characters.
-- <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(String)_ - Returns package name of app.
-- <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(Number)_ - Returns current app build number.
-- <a name="getStoreUrl" href="#getStoreUrl">#</a>**`getStoreUrl()`** _(String)_ - Returns url of Play Market or App Store of app.
-- <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(String)_ - Returns current app version.
-- <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion([option : object])`** _(Promise <latestVersion>)_ - Returns the latest app version parsed from url. Returns `null` when parsing error occurs.
+- <a name="setAppID" href="#setAppID">#</a>**`setAppID(appId: Number)`** _()_ - Sets app id of application for App Store Url. **[Required only for iOS Apps]**
+- <a name="setAppName" href="#setAppName">#</a>**`setAppName(appName: String)`** _()_ - Sets app name of application for App Store Url. **[Required only for iOS Apps]**
+- <a name="getCountry" href="#getCountry">#</a>**`getCountry()`** _(country: String)_ - Returns device's country code of 2 characters.
+- <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(packageName: String)_ - Returns package name of app.
+- <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(buildNumber: Number)_ - Returns current app build number.
+- <a name="getStoreUrl" href="#getStoreUrl">#</a>**`getStoreUrl()`** _(storeUrl: String)_ - Returns url of Play Market or App Store of app.
+- <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(currentVersion: String)_ - Returns current app version.
+- <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion([option: Object])`** _(Promise<latestVersion: String>)_ - Returns the latest app version parsed from url. Returns `null` when parsing error occurs.
   - Option  
   
     Field | Type | Default  
@@ -138,7 +138,7 @@ VersionCheck.needUpdate({
     url | _string_ | store url using app info  
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)  
     
-- <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate([option : object])`** _(Promise)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
+- <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate([option: Object])`** _(Promise<result: Object>)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
   - Option  
   
     Field | Type | Default   
