@@ -1,5 +1,5 @@
 import Native from "./src/native";
-import { getLatestVersion, setAppID, setAppName } from "./src/getLatestVersion";
+import { getStoreUrl, getLatestVersion, setAppID, setAppName } from "./src/getLatestVersion";
 import { needUpdate } from "./src/needUpdate";
 
 export default {
@@ -10,6 +10,7 @@ export default {
 
   setAppID,
   setAppName,
+  getStoreUrl,
   getLatestVersion,
 
   needUpdate

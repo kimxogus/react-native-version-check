@@ -40,7 +40,7 @@ export function getLatestVersion(option) {
   }
 }
 
-function getStoreUrl() {
+export function getStoreUrl() {
   if (Platform.OS === "ios" && (!appName || !appID)) {
     throw new Error("'appName' or 'appID' is undefined.\nSet those values correctly using 'setAppName()' and 'setAppID()'");
   }
