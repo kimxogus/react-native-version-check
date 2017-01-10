@@ -8,3 +8,10 @@ install:
 
 script:
   - npm run lint
+
+notifications:
+  email:
+    recipients:
+      - kgyoo8232@gmail.com
+    on_success: never
+    on_failure: always
