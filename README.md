@@ -5,6 +5,7 @@
 [![Build Status][travis-image]][travis-url]
 [![Dependencies Status][dependencies-image]][dependencies-url]
 [![DevDependencies Status][dev-dependencies-image]][dev-dependencies-url]
+[![Known Vulnerabilities][vulnerabilities-image]][vulnerabilities-url]
 
 A version checker for react-native applications.  
 This library gets the latest app version by parsing google play store, apple app store's app information or custom url.
@@ -187,3 +188,5 @@ MIT
 [dependencies-url]: https://david-dm.org/kimxogus/react-native-version-check
 [dev-dependencies-image]: https://david-dm.org/kimxogus/react-native-version-check/dev-status.svg
 [dev-dependencies-url]: https://david-dm.org/kimxogus/react-native-version-check?type=dev
+[vulnerabilities-image]: https://snyk.io/test/github/kimxogus/react-native-version-check/badge.svg
+[vulnerabilities-url]: https://snyk.io/test/github/kimxogus/react-native-version-check
