@@ -33,9 +33,9 @@
     "react-native": ">=0.34.1"
   },
   "devDependencies": {
-    "eslint": "^3.13.0",
+    "eslint": "^3.14.1",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-react": "^6.8.0"
+    "eslint-plugin-react": "^6.9.0"
   },
   "dependencies": {
     "lodash": "^4.17.4"
