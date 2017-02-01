@@ -190,3 +190,4 @@ MIT
 [dev-dependencies-url]: https://david-dm.org/kimxogus/react-native-version-check?type=dev
 [vulnerabilities-image]: https://snyk.io/test/github/kimxogus/react-native-version-check/badge.svg
 [vulnerabilities-url]: https://snyk.io/test/github/kimxogus/react-native-version-check
+
