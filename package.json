@@ -1,7 +1,7 @@
 {
   "name": "react-native-version-check",
   "version": "1.1.0",
-  "description": "A version checker for react-native",
+  "description": "A version checker for react-native applications",
   "main": "index.js",
   "scripts": {
     "lint": "node node_modules/eslint/bin/eslint index.js src"
@@ -12,10 +12,12 @@
   "keywords": [
     "react-native",
     "android",
+    "ios",
     "version check",
     "version",
     "app version",
-    "market version"
+    "market version",
+    "app store version"
   ],
   "author": "Taehyun Kim <kgyoo8232@gmail.com> (https://github.com/kimxogus)",
   "contributors": [],
