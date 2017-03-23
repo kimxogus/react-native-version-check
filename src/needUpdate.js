@@ -68,8 +68,8 @@ function needUpdateDeprecated(depth = Infinity, delimiter = ".") {
 }
 
 function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
-  let currentVersionArr = getVersionNumberArray(currentVersion, option.depth, option.delimiter);
-  let latestVersionArr = getVersionNumberArray(latestVersion, option.depth, option.delimiter);
+  const currentVersionArr = getVersionNumberArray(currentVersion, option.depth, option.delimiter);
+  const latestVersionArr = getVersionNumberArray(latestVersion, option.depth, option.delimiter);
 
   const needed = {
     isNeeded: true,
