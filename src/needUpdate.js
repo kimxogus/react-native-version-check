@@ -61,10 +61,8 @@ function needUpdateDeprecated(depth = Infinity, delimiter = ".") {
     depth = Infinity;
   }
 
-  let currentVersion = Native.getCurrentVersion();
-
   return getLatestVersion()
-    .then((latestVersion) => checkIfUpdateNeeded(currentVersion, latestVersion, { depth, delimiter }));
+    .then((latestVersion) => checkIfUpdateNeeded(Native.getCurrentVersion(), latestVersion, { depth, delimiter }));
 }
 
 function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
