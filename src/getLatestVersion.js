@@ -1,7 +1,8 @@
 /**
  * Created by kimxogus on 2016. 12. 15..
  */
-import { isNil, defaultsDeep } from "lodash";
+import { isNil } from "lodash.isnil";
+import { defaultsDeep } from "lodash.defaultsdeep";
 import { Platform } from "react-native";
 
 import Native from "./native";

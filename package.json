@@ -38,6 +38,10 @@
     "eslint-plugin-react": "^6.10.3"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash.defaultsdeep": "^4.6.0",
+    "lodash.isnil": "^4.0.0",
+    "lodash.isplainobject": "^4.0.6",
+    "lodash.keys": "^4.2.0",
+    "lodash.pick": "^4.4.0"
   }
 }
