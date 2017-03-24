@@ -1,11 +1,11 @@
 /**
  * Created by kimxogus on 2016. 12. 16..
  */
-import { isNil } from "lodash.isnil";
-import { pick } from "lodash.pick";
-import { isPlainObject } from "lodash.isplainobject";
-import { keys } from "lodash.keys";
-import { defaultsDeep } from "lodash.defaultsdeep";
+import isNil from "lodash.isnil";
+import pick from "lodash.pick";
+import isPlainObject from "lodash.isplainobject";
+import keys from "lodash.keys";
+import defaultsDeep from "lodash.defaultsdeep";
 
 import Native  from "./native";
 import { getLatestVersion, defaultOption as defaultOptionForLatestVersion } from "./getLatestVersion";
