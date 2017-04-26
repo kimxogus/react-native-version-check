@@ -53,7 +53,8 @@ export function needUpdate(option) {
 
 /**
  * @see https://github.com/kimxogus/react-native-version-check#needUpdate
- * @deprecated Since 1.0. Use object type option instead.
+ * @deprecated Use object type option instead.
+ * @since 1.0
  */
 function needUpdateDeprecated(depth = Infinity, delimiter = ".") {
   if (typeof depth === "string") {
