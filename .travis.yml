@@ -13,7 +13,7 @@ install:
   - yarn
 
 script:
-  - npm run lint
+  - yarn run lint
 
 notifications:
   email: false
