@@ -19,7 +19,7 @@ function getVersionNumberArray(version, depth, delimiter) {
   } else {
     version = version.split(delimiter);
 
-    let result = [];
+    const result = [];
     for (let i = 0, d = Math.min(depth, version.length); i < d; i++) {
       result.push(version[i]);
     }
@@ -97,13 +97,13 @@ function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
 
   const needed = {
     isNeeded: true,
-    currentVersion: currentVersion,
-    latestVersion: latestVersion,
+    currentVersion,
+    latestVersion,
   };
   const notNeeded = {
     isNeeded: false,
-    currentVersion: currentVersion,
-    latestVersion: latestVersion,
+    currentVersion,
+    latestVersion,
   };
 
   for (let i = 0; i < option.depth; i++) {

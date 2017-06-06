@@ -57,16 +57,8 @@ export function getStoreUrl(option) {
     }
 
     return Platform.select({
-      android:
-        'https://play.google.com/store/apps/details?id=' +
-          Native.getPackageName(),
-      ios:
-        'https://itunes.apple.com/' +
-          Native.getCountry() +
-          '/app/' +
-          option.appName +
-          '/id' +
-          option.appID,
+      android: `https://play.google.com/store/apps/details?id=${Native.getPackageName()}`,
+      ios: `https://itunes.apple.com/${Native.getCountry()}/app/${option.appName}/id${option.appID}`,
     });
   }
 
