@@ -10,14 +10,14 @@ let storeUrl = null;
 
 let latestVersion = null;
 // Used by iOS Only
-let _appName = null;
-let _appID = null;
+let appNameGlobal = null;
+let appIDGlobal = null;
 
 export function setAppName(appName) {
-  _appName = appName;
+  appNameGlobal = appName;
 }
 export function setAppID(appID) {
-  _appID = appID;
+  appIDGlobal = appID;
 }
 
 export const defaultOption = {
@@ -43,12 +43,12 @@ export function getLatestVersion(option) {
 }
 
 export function getStoreUrl(option) {
-  option = { app: _appName, appID: _appID, ...option };
+  option = { app: appNameGlobal, appID: appIDGlobal, ...option };
 
   if (
     isNil(storeUrl) ||
-    option.appName !== _appName ||
-    option.appID !== _appID
+    option.appName !== appNameGlobal ||
+    option.appID !== appIDGlobal
   ) {
     if (Platform.OS === 'ios' && (!option.appName || !option.appID)) {
       throw new Error(
