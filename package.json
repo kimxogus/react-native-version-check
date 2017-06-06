@@ -36,8 +36,7 @@
   },
   "devDependencies": {
     "eslint": "^3.19.0",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-react": "^7.0.1"
+    "eslint-plugin-import": "^2.3.0"
   },
   "dependencies": {
     "lodash.defaultsdeep": "^4.6.0",
