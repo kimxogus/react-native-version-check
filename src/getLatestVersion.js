@@ -2,7 +2,6 @@
  * Created by kimxogus on 2016. 12. 15..
  */
 import isNil from 'lodash.isnil';
-import defaultsDeep from 'lodash.defaultsdeep';
 import { Platform } from 'react-native';
 
 import Native from './native';
@@ -44,10 +43,8 @@ export function getLatestVersion(option) {
 }
 
 export function getStoreUrl(option) {
-  option = defaultsDeep(option, {
-    appName: _appName,
-    appID: _appID,
-  });
+  option = { app: _appName, appID: _appID, ...option };
+
   if (
     isNil(storeUrl) ||
     option.appName !== _appName ||
