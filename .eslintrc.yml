@@ -19,7 +19,8 @@ rules:
     - unix
   quotes:
     - error
-    - double
+    - single
+    - { "avoidEscape": true }
   semi:
     - error
     - always

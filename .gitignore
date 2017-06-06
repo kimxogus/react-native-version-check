@@ -14,3 +14,4 @@ android/gradle/
 android/gradlew
 android/gradlew.bat
 android/local.properties
+.vscode
