@@ -4,7 +4,7 @@
   "description": "A version checker for react-native applications",
   "main": "index.js",
   "scripts": {
-    "lint": "node node_modules/eslint/bin/eslint index.js src"
+    "lint": "node node_modules/eslint/bin/eslint index.js src example"
   },
   "engines": {
     "node": ">= 6.0.0"
@@ -35,8 +35,11 @@
     "react-native": ">=0.34.1"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "eslint": "^3.19.0",
-    "eslint-plugin-import": "^2.3.0"
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-react": "^7.0.1",
+    "eslint-plugin-react-native": "^2.3.2"
   },
   "dependencies": {
     "lodash.isnil": "^4.0.0",
