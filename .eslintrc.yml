@@ -12,9 +12,6 @@ parserOptions:
     experimentalObjectRestSpread: true
     jsx: true
   sourceType: module
-plugins:
-  - react
-  - react-native
 rules:
   indent:
     - error
@@ -37,7 +34,3 @@ rules:
   object-curly-spacing:
     - error
     - always
-  react/jsx-uses-react:
-    - "error"
-  react/jsx-uses-vars:
-    - "error"
