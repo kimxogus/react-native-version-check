@@ -15,7 +15,7 @@ function getVersionNumberArray(version, depth, delimiter) {
   version = String(version);
 
   if (version.indexOf(delimiter) === -1) {
-    return version;
+    return [version];
   } else {
     version = version.split(delimiter);
 
