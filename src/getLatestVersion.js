@@ -50,9 +50,12 @@ export function getStoreUrl(option) {
     option.appName !== appNameGlobal ||
     option.appID !== appIDGlobal
   ) {
-    if (Platform.OS === 'ios' && (!option.appName || !option.appID)) {
+    if (
+      Platform.OS === 'ios' &&
+      (isNil(option.appName) || isNil(option.appID))
+    ) {
       throw new Error(
-        "'appName' or 'appID' is undefined.\nSet those values correctly using 'setAppName()' and 'setAppID()'"
+        "'appName' or 'appID' is empty.\nSet those values correctly using 'setAppName()' and 'setAppID()'"
       );
     }
 
