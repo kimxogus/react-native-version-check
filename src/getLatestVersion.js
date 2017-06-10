@@ -43,7 +43,7 @@ export function getLatestVersion(option) {
 }
 
 export function getStoreUrl(option) {
-  option = { app: appNameGlobal, appID: appIDGlobal, ...option };
+  option = { appName: appNameGlobal, appID: appIDGlobal, ...option };
 
   if (
     isNil(storeUrl) ||
