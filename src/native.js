@@ -1,6 +1,3 @@
-/**
- * Created by kimxogus on 2016. 12. 15..
- */
 import { NativeModules } from 'react-native';
 
 const { RNVersionCheck } = NativeModules;

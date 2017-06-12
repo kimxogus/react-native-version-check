@@ -1,6 +1,3 @@
-/**
- * Created by kimxogus on 2016. 12. 16..
- */
 import isNil from 'lodash.isnil';
 import pick from 'lodash.pick';
 import isPlainObject from 'lodash.isplainobject';
