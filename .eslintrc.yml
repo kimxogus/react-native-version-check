@@ -1,9 +1,11 @@
 parser: babel-eslint
 env:
-  browser: true
   commonjs: true
   es6: true
+  node: true
   jest: true
+globals:
+  fetch: true
 extends:
   - 'eslint:recommended'
 installedESLint: true

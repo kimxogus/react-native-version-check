@@ -1,6 +1,13 @@
 import { NativeModules } from 'react-native';
 
-const { RNVersionCheck } = NativeModules;
+const { RNVersionCheck } = process.env.NODE_ENV === 'test'
+  ? {
+    country: 'ko',
+    packageName: 'com.reactnative.versioncheck',
+    currentBuildNumber: 1,
+    currentVersion: '0.0.1',
+  }
+  : NativeModules;
 
 const COUNTRY = RNVersionCheck.country;
 const PACKAGE_NAME = RNVersionCheck.packageName;
