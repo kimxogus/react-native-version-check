@@ -1,7 +1,7 @@
 import path from 'path';
 import jest from 'jest';
 
-process.env.NODE_ENV = 'test';
+process.env.RNVC_ENV = 'test';
 process.env.HOME = path.join(process.cwd(), 'testHome');
 
 const argv = process.argv.slice(2);

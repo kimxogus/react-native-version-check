@@ -104,13 +104,19 @@ function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
   };
 
   for (let i = 0; i < option.depth; i++) {
-    if (!latestVersionArr[i] && !currentVersionArr[i]) {
+    const latestVersionToken = latestVersionArr[i];
+    const currentVersionToken = currentVersionArr[i];
+
+    if (!latestVersionToken && !currentVersionToken) {
       return Promise.resolve(notNeeded);
     }
-    if (!currentVersionArr[i]) {
+    if (!currentVersionToken) {
       return Promise.resolve(needed);
     }
-    if (latestVersionArr[i] > currentVersionArr[i]) {
+    if (!isNaN(+latestVersionToken) && !isNaN(+currentVersionToken) && +latestVersionToken > +currentVersionToken) {
+      return Promise.resolve(needed);
+    }
+    if (latestVersionToken > currentVersionToken) {
       return Promise.resolve(needed);
     }
   }

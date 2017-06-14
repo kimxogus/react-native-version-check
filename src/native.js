@@ -1,4 +1,4 @@
-const RNVersionCheck = process.env.NODE_ENV === 'test'
+const RNVersionCheck = process.env.RNVC_ENV === 'test'
   ? {
     country: 'ko',
     packageName: 'com.reactnative.versioncheck',

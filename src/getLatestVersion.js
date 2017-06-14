@@ -2,10 +2,10 @@ import isNil from 'lodash.isnil';
 
 import Native from './native';
 
-const Platform = process.env.NODE_ENV === 'test'
+const Platform = process.env.RNVC_ENV === 'test'
   ? {
     select(selection) {
-      return selection[process.env.RN_DEVICE || 'android'];
+      return selection[process.env.RNVC_DEVICE || 'android'];
     },
   }
   : require('react-native').Platform;
