@@ -15,6 +15,7 @@ android/gradlew.bat
 android/local.properties
 .vscode
 
+.babelrc
 yarn.lock
 .editorconfig
 .eslint*
