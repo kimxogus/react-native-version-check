@@ -10,7 +10,8 @@
     "test": "npm run test:android && npm run test:ios",
     "test:android": "cross-env RNVC_DEVICE=android babel-node scripts/test",
     "test:ios": "cross-env RNVC_DEVICE=ios babel-node scripts/test",
-    "test:watch": "babel-node scripts/test --watch"
+    "test:watch": "babel-node scripts/test --watch",
+    "prepublish": "npm run test"
   },
   "pre-commit": [
     "format"
@@ -48,7 +49,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.0.1",
-    "eslint": "^3.19.0",
+    "eslint": "^4.0.0",
     "eslint-plugin-import": "^2.3.0",
     "jest": "^20.0.4",
     "pre-commit": "^1.2.2"
