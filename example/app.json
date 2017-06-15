@@ -1,5 +1,20 @@
 {
   "expo": {
-    "sdkVersion": "17.0.0"
+    "sdkVersion": "17.0.0",
+    "ios": {
+      "bundleIdentifier": "io.xogus.reactnative.versioncheck.example"
+    },
+    "android": {
+      "package": "io.xogus.reactnative.versioncheck.example"
+    },
+    "name": "example",
+    "slug": "example",
+    "version": "0.1.0",
+    "isDetached": true,
+    "detach": {
+      "scheme": "expc37467d375724d2198195694e2dd6845",
+      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v1.16.2-sdk17.0.0-b5bce87c-1a42-4b6d-888f-877f855c9680.tar.gz",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v1.16.1-sdk17.0.0-87570a36-13ff-4017-9b89-6c9930b78572.tar.gz"
+    }
   }
 }

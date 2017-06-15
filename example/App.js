@@ -1,7 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import VersionCheck from 'react-native-version-check';
 
 export default class App extends React.Component {
+  componentDidMount() {
+    VersionCheck.needUpdate({
+      latestVersion: '1.0.0'
+    }).then(res => {
+      console.log(res);
+    })
+  }
   render() {
     return (
       <View style={styles.container}>
