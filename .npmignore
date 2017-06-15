@@ -22,3 +22,4 @@ yarn.lock
 .travis.yml
 .git*
 .yarnclean
+example/
