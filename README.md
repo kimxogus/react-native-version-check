@@ -7,7 +7,7 @@
 [![DevDependencies Status][dev-dependencies-image]][dev-dependencies-url]
 [![Known Vulnerabilities][vulnerabilities-image]][vulnerabilities-url]
 
-A version checker for react-native applications.  
+A version checker for react-native applications.
 This library gets the latest app version by parsing google play store, apple app store's app information or custom url.
 Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
@@ -23,13 +23,21 @@ $ react-native link
 
 ### Manual Installation
 #### - iOS
-* Add ```.xcodeproj``` file as library to XCode project.  
-  1. In project navigator, right click Libraries    
+* Add ```.xcodeproj``` file as library to XCode project.
+  1. In project navigator, right click Libraries
   2. Select ```Add Files to [PROJECT_NAME]```
   3. Add the ```node_modules/react-native-version-check/ios/RNVersionCheck.xcodeproj``` file
 
-* Add the ```libRNVersionCheck.a``` from the ```RNVersionCheck``` project to your project's Build Phases > Link Binary With Libraries 
+* Add the ```libRNVersionCheck.a``` from the ```RNVersionCheck``` project to your project's Build Phases > Link Binary With Libraries
 
+
+### Example
+```bash
+git clone https://github.com/kimxogus/react-native-version-check.git
+cd react-native-version-check/example
+yarn # or npm install
+react-native run-android # or react-native run-ios
+```
 
 #### - Android
 
@@ -107,7 +115,7 @@ VersionCheck.needUpdate()
       Linking.openURL(VersionCheck.getStoreUrl());  // open store if update is needed.
     }
   });
-    
+
 VersionCheck.needUpdate({
   depth: 2
 }).then(res => {
@@ -132,40 +140,40 @@ VersionCheck.needUpdate({
 - <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(packageName: String)_ - Returns package name of app.
 - <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(buildNumber: Number)_ - Returns current app build number.
 - <a name="getStoreUrl" href="#getStoreUrl">#</a>**`getStoreUrl([option: Object])`** _(storeUrl: String)_ - Returns url of Play Market or App Store of app.
-  - Option  
-  
-    Field | Type | Default  
-    --- | --- | ---  
+  - Option
+
+    Field | Type | Default
+    --- | --- | ---
     appID | _string_ | App ID which was set by [setAppID()](#setAppID)
     appName | _string_ | App Name which was set by [setAppName()](#setAppName)
-    
+
 - <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(currentVersion: String)_ - Returns current app version.
 - <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion([option: Object])`** _(Promise<latestVersion: String>)_ - Returns the latest app version parsed from url. Returns `null` when parsing error occurs.
-  - Option  
-  
-    Field | Type | Default  
-    --- | --- | ---  
-    forceUpdate | _boolean_ | ```false```  
-    url | _string_ | store url using app info  
-    fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)  
-    
+  - Option
+
+    Field | Type | Default
+    --- | --- | ---
+    forceUpdate | _boolean_ | ```false```
+    url | _string_ | store url using app info
+    fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
+
 - <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate([option: Object])`** _(Promise<result: Object>)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
-  - Option  
-  
-    Field | Type | Default   
-    --- | --- | ---  
+  - Option
+
+    Field | Type | Default
+    --- | --- | ---
     currentVersion | _string_ | app's current version from [getCurrentVersion()](#getCurrentVersion)
     latestVersion | _string_ | app's latest version from [getLatestVersion()](#getLatestVersion)
     depth | _number_ | ```Infinity```
     delimiter | _string_ | ```"."```
-    forceUpdate | _boolean_ | ```false```  
-    url | _string_ | store url using app info  
-    fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)  
-    
+    forceUpdate | _boolean_ | ```false```
+    url | _string_ | store url using app info
+    fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
+
   - Result
-  
-    Field | Type   
-    --- | ---  
+
+    Field | Type
+    --- | ---
     isNeeded | _boolean_
     currentVersion | _string_
     latestVersion | _string_
