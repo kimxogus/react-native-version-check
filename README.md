@@ -12,16 +12,21 @@ This library gets the latest app version by parsing google play store, apple app
 Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
 ## Getting started
-```bash
-$ npm install react-native-version-check --save
-```
+  - npm
+  ```bash
+  $ npm install react-native-version-check --save
+  ```
+  - yarn
+  ```bash
+  $ yarn add react-native-version-check
+  ```
 
 ### Example
 ```bash
-git clone https://github.com/kimxogus/react-native-version-check.git
-cd react-native-version-check/example
-yarn # or npm install
-react-native run-android # or react-native run-ios
+$ git clone https://github.com/kimxogus/react-native-version-check.git
+$ cd react-native-version-check/example
+$ yarn # or npm install
+$ react-native run-android # or react-native run-ios
 ```
 
 ### Automatic Installation
