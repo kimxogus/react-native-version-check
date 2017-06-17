@@ -1,27 +1,23 @@
 {
-  "name": "example",
-  "version": "0.1.0",
-  "private": true,
-  "devDependencies": {
-    "jest-expo": "~1.0.1",
-    "react-native-scripts": "0.0.31",
-    "react-test-renderer": "16.0.0-alpha.6"
-  },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
-  "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
-  },
-  "jest": {
-    "preset": "jest-expo"
-  },
-  "dependencies": {
-    "expo": "^17.0.0",
-    "react": "16.0.0-alpha.6",
-    "react-native": "^0.44.0",
-    "react-native-version-check": "https://github.com/kimxogus/react-native-version-check.git"
-  }
+	"name": "example",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node node_modules/react-native/local-cli/cli.js start",
+		"test": "jest"
+	},
+	"dependencies": {
+		"react": "16.0.0-alpha.12",
+		"react-native": "0.45.1",
+		"react-native-version-check": "https://github.com/kimxogus/react-native-version-check.git"
+	},
+	"devDependencies": {
+		"babel-jest": "20.0.3",
+		"babel-preset-react-native": "2.0.0",
+		"jest": "20.0.4",
+		"react-test-renderer": "16.0.0-alpha.12"
+	},
+	"jest": {
+		"preset": "react-native"
+	}
 }

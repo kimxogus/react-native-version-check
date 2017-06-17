@@ -51,10 +51,13 @@
     "cross-env": "^5.0.1",
     "eslint": "^4.0.0",
     "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-react-native": "^2.3.2",
     "jest": "^20.0.4",
     "pre-commit": "^1.2.2"
   },
   "dependencies": {
+    "babel-preset-react-native": "^2.0.0",
     "lodash.isnil": "^4.0.0",
     "lodash.isplainobject": "^4.0.6",
     "lodash.pick": "^4.4.0"
@@ -68,7 +71,7 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
     ],
     "testPathIgnorePatterns": [
-      "<rootDir>[/\\\\](build|docs|node_modules|scripts)[/\\\\]"
+      "<rootDir>[/\\\\](build|docs|node_modules|scripts|example)[/\\\\]"
     ]
   }
 }
