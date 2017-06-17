@@ -110,7 +110,7 @@ function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
     if (!latestVersionToken && !currentVersionToken) {
       return Promise.resolve(notNeeded);
     }
-    if (!currentVersionToken && +latestVersionToken === 0) {
+    if (!currentVersionToken && +latestVersionToken !== 0) {
       return Promise.resolve(needed);
     }
     if (!isNaN(+latestVersionToken) && !isNaN(+currentVersionToken) && +latestVersionToken > +currentVersionToken) {

@@ -699,7 +699,7 @@ babel-preset-jest@^20.0.3:
   dependencies:
     babel-plugin-jest-hoist "^20.0.3"
 
-babel-preset-react-native@2.0.0:
+babel-preset-react-native@2.0.0, babel-preset-react-native@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/babel-preset-react-native/-/babel-preset-react-native-2.0.0.tgz#c26c7066c7399df30926fa03c012ef87f2cce5b7"
   dependencies:
@@ -3008,8 +3008,9 @@ react-devtools-core@^2.1.8:
 
 "react-native-version-check@https://github.com/kimxogus/react-native-version-check.git":
   version "1.3.1"
-  resolved "https://github.com/kimxogus/react-native-version-check.git#59307e3582c06f26ddad41d5166208675c7261cb"
+  resolved "https://github.com/kimxogus/react-native-version-check.git#1e54f8ef9afbd0074075eb65d0067bc9183e572f"
   dependencies:
+    babel-preset-react-native "^2.0.0"
     lodash.isnil "^4.0.0"
     lodash.isplainobject "^4.0.6"
     lodash.pick "^4.4.0"
