@@ -16,6 +16,14 @@ Parsing code is referenced from [here](http://itmir.tistory.com/524)
 $ npm install react-native-version-check --save
 ```
 
+### Example
+```bash
+git clone https://github.com/kimxogus/react-native-version-check.git
+cd react-native-version-check/example
+yarn # or npm install
+react-native run-android # or react-native run-ios
+```
+
 ### Automatic Installation
 ```bash
 $ react-native link
@@ -29,15 +37,6 @@ $ react-native link
   3. Add the ```node_modules/react-native-version-check/ios/RNVersionCheck.xcodeproj``` file
 
 * Add the ```libRNVersionCheck.a``` from the ```RNVersionCheck``` project to your project's Build Phases > Link Binary With Libraries
-
-
-### Example
-```bash
-git clone https://github.com/kimxogus/react-native-version-check.git
-cd react-native-version-check/example
-yarn # or npm install
-react-native run-android # or react-native run-ios
-```
 
 #### - Android
 
