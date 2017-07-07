@@ -76,23 +76,25 @@ const MARKETVERSION_STARTTOKEN = 'softwareVersion">';
 const MARKETVERSION_STARTTOKEN_LENGTH = MARKETVERSION_STARTTOKEN.length;
 const MARKETVERSION_ENDTOKEN = '<';
 function getLatestVersionFromUrl(url, fetchOptions) {
-  return fetch(url, fetchOptions).then(res => res.text()).then(text => {
-    const indexStart = text.indexOf(MARKETVERSION_STARTTOKEN);
-    if (indexStart === -1) {
+  return fetch(url, fetchOptions)
+    .then(res => res.text())
+    .then(text => {
+      const indexStart = text.indexOf(MARKETVERSION_STARTTOKEN);
+      if (indexStart === -1) {
+        latestVersion = text.trim();
+        return Promise.resolve(latestVersion);
+      }
+
+      text = text.substr(indexStart + MARKETVERSION_STARTTOKEN_LENGTH);
+
+      const indexEnd = text.indexOf(MARKETVERSION_ENDTOKEN);
+      if (indexEnd === -1) {
+        return Promise.reject('Parse error.');
+      }
+
+      text = text.substr(0, indexEnd);
+
       latestVersion = text.trim();
       return Promise.resolve(latestVersion);
-    }
-
-    text = text.substr(indexStart + MARKETVERSION_STARTTOKEN_LENGTH);
-
-    const indexEnd = text.indexOf(MARKETVERSION_ENDTOKEN);
-    if (indexEnd === -1) {
-      return Promise.reject('Parse error.');
-    }
-
-    text = text.substr(0, indexEnd);
-
-    latestVersion = text.trim();
-    return Promise.resolve(latestVersion);
-  });
+    });
 }
