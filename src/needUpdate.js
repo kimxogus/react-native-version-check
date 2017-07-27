@@ -37,6 +37,7 @@ export function needUpdate(option) {
     currentVersion: Native.getCurrentVersion(),
     latestVersion: null,
     depth: Infinity,
+    semantic: false,
     delimiter: '.',
     ...defaultOptionForLatestVersion,
     ...option,
@@ -49,7 +50,7 @@ export function needUpdate(option) {
       checkIfUpdateNeeded(
         option.currentVersion,
         latestVersion,
-        pick(option, ['depth', 'delimiter'])
+        pick(option, ['depth', 'delimiter', 'semantic'])
       )
     );
   }
@@ -57,7 +58,7 @@ export function needUpdate(option) {
   return checkIfUpdateNeeded(
     option.currentVersion,
     option.latestVersion,
-    pick(option, ['depth', 'delimiter'])
+    pick(option, ['depth', 'delimiter', 'semantic'])
   );
 }
 
@@ -101,7 +102,7 @@ function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
     isNeeded: false,
     currentVersion,
     latestVersion,
-  };
+  }; 
 
   for (let i = 0; i < option.depth; i++) {
     const latestVersionToken = latestVersionArr[i];
@@ -118,6 +119,9 @@ function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
     }
     if (latestVersionToken > currentVersionToken) {
       return Promise.resolve(needed);
+    }
+    if (option.semantic && latestVersionToken < currentVersionToken) {
+      return Promise.resolve(notNeeded);
     }
   }
   return Promise.resolve(notNeeded);

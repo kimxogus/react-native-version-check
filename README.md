@@ -134,6 +134,14 @@ VersionCheck.needUpdate({
   console.log(res.isNeeded);  // true
 });
 
+VersionCheck.needUpdate({
+  currentVersion: "1.1",
+  latestVersion: "2.0",
+  semantic: true
+}).then(res => {
+  console.log(res.isNeeded);  // false
+});
+
 ```
 
 ## Methods
@@ -170,6 +178,7 @@ VersionCheck.needUpdate({
     latestVersion | _string_ | app's latest version from [getLatestVersion()](#getLatestVersion)
     depth | _number_ | ```Infinity```
     delimiter | _string_ | ```"."```
+    semantic | _boolean_ | ```false```
     forceUpdate | _boolean_ | ```false```
     url | _string_ | store url using app info
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
