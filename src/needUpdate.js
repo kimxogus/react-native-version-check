@@ -1,6 +1,5 @@
 import isNil from 'lodash.isnil';
 import pick from 'lodash.pick';
-import isPlainObject from 'lodash.isplainobject';
 
 import Native from './native';
 import {
