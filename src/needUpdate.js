@@ -26,13 +26,6 @@ function getVersionNumberArray(version, depth, delimiter) {
 }
 
 export function needUpdate(option) {
-  if (arguments.length && !isPlainObject(option)) {
-    console.warn(
-      '[DEPRECATED] Use object type option instead. https://github.com/kimxogus/react-native-version-check#needUpdate'
-    );
-    needUpdateDeprecated.apply(null, arguments);
-  }
-
   option = {
     currentVersion: Native.getCurrentVersion(),
     latestVersion: null,
@@ -62,25 +55,6 @@ export function needUpdate(option) {
   );
 }
 
-/**
- * @see https://github.com/kimxogus/react-native-version-check#needUpdate
- * @deprecated Use object type option instead.
- * @since 1.0
- */
-function needUpdateDeprecated(depth = Infinity, delimiter = '.') {
-  if (typeof depth === 'string') {
-    delimiter = depth;
-    depth = Infinity;
-  }
-
-  return getLatestVersion().then(latestVersion =>
-    checkIfUpdateNeeded(Native.getCurrentVersion(), latestVersion, {
-      depth,
-      delimiter,
-    })
-  );
-}
-
 function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
   const currentVersionArr = getVersionNumberArray(
     currentVersion,
@@ -102,7 +76,7 @@ function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
     isNeeded: false,
     currentVersion,
     latestVersion,
-  }; 
+  };
 
   for (let i = 0; i < option.depth; i++) {
     const latestVersionToken = latestVersionArr[i];
