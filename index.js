@@ -1,10 +1,12 @@
 import Native from './src/native';
 import {
-  getStoreUrl,
   getLatestVersion,
+} from './src/getLatestVersion';
+import {
+  getStoreUrl,
   setAppID,
   setAppName,
-} from './src/getLatestVersion';
+} from './src/providers/store';
 import { needUpdate } from './src/needUpdate';
 
 export default {
