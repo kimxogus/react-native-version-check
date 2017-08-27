@@ -31,15 +31,11 @@ $ react-native run-android # or react-native run-ios
 
 
 ### Automatic Installation
-- [Expo](https://expo.io/)
-  - No additional installation process required! just `yarn add`.
-- Native
 ```bash
 $ react-native link
 ```
 
 ### Manual Installation
-- Only for native installations
 #### - iOS
 * Add ```.xcodeproj``` file as library to XCode project.
   1. In project navigator, right click Libraries

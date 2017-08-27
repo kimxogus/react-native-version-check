@@ -7,30 +7,7 @@ if (process.env.RNVC_ENV === 'test') {
     currentVersion: '0.0.1',
   };
 } else {
-  try {
-    const {
-      version,
-      android: { versionCode = null, package: androidPackage } = {},
-      ios: { buildNumber = null, bundleIdentifier } = {},
-    } = require('expo').Constants.manifest;
-    const country = require('expo').Util.getCurrentDeviceCountryAsync();
-    RNVersionCheck = require('react-native').Platform.select({
-      android: {
-        currentVersion: version,
-        currentBuildNumber: versionCode,
-        packageName: androidPackage,
-        country
-      },
-      ios: {
-        currentVersion: version,
-        currentBuildNumber: buildNumber,
-        package: bundleIdentifier,
-        country
-      }
-    });
-  } catch (e) {
-    RNVersionCheck = require('react-native').NativeModules.RNVersionCheck;
-  }
+  RNVersionCheck = require('react-native').NativeModules.RNVersionCheck;
 }
 
 const COUNTRY = RNVersionCheck.country;
