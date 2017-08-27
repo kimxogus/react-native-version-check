@@ -77,4 +77,4 @@ export function getLatestVersionFromUrl(url, fetchOptions) {
 
 
 export const get = (option) =>
-  getLatestVersionFromUrl(option.url || getStoreUrl(), option.fetchOptions);
+  getLatestVersionFromUrl(getStoreUrl(), option.fetchOptions);
