@@ -100,13 +100,19 @@ VersionCheck.getLatestVersion()
   });
 
 VersionCheck.getLatestVersion({
+    provider: 'store'
+  })
+  .then(latestVersion => {
+    console.log(latestVersion);    // 0.1.2
+  });
+
+VersionCheck.getLatestVersion({
   forceUpdate: true,
-  url: "https://path.to/your/version/api",   // You can get latest version from your own api.
+  provider: () => fetch('http://your.own/api')
+    .then(r => r.json())
+    .then(({version}) => version),   // You can get latest version from your own api.
   fetchOptions: {
-    method: "GET",
-    headers: {
-      "x-custom-header": "param"
-    }
+    method: "GET"
   }
 }).then(latestVersion =>{
   console.log(latestVersion);
@@ -166,7 +172,7 @@ VersionCheck.needUpdate({
     Field | Type | Default
     --- | --- | ---
     forceUpdate | _boolean_ | ```false```
-    url | _string_ | store url using app info
+    provider | _string_ | _function_ | provider name or function that returns promise or value of the latest version
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
 
 - <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate([option: Object])`** _(Promise<result: Object>)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
@@ -180,7 +186,7 @@ VersionCheck.needUpdate({
     delimiter | _string_ | ```"."```
     semantic | _boolean_ | ```false```
     forceUpdate | _boolean_ | ```false```
-    url | _string_ | store url using app info
+    provider | _string_ | _function_ | provider name or function that returns promise or value of the latest version
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
 
   - Result
