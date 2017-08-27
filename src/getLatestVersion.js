@@ -30,7 +30,7 @@ export function getLatestVersion(option) {
   }
 
   if (isFunction(option.provider)) {
-    return option.provider(option);
+    return Promise.resolve(option.provider(option));
   }
 
   return Promise.reject(`Invalid provider: ${option.provider}`);
