@@ -11,7 +11,7 @@
     "test:android": "cross-env RNVC_DEVICE=android babel-node scripts/test",
     "test:ios": "cross-env RNVC_DEVICE=ios babel-node scripts/test",
     "test:watch": "babel-node scripts/test --watch",
-    "prepublish": "npm run test"
+    "prepublishOnly": "npm run test"
   },
   "pre-commit": [
     "format"
