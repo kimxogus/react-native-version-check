@@ -11,6 +11,10 @@ A version checker for react-native applications.
 This library gets the latest app version by parsing google play store, apple app store's app information or custom url.
 Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
+### expo Supports!
+Now react-native-version-check supports [expo](https://expo.io)! since `v2.0.0-alpha.4`.
+API Usage is as same as native.
+
 ## Getting started
   - npm
   ```bash
