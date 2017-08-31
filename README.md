@@ -15,13 +15,15 @@ Parsing code is referenced from [here](http://itmir.tistory.com/524)
 Now react-native-version-check supports [expo](https://expo.io)! since `v2.0.0-alpha.6`.
 - usage
 ```js
+// import
 import VersionCheck from 'react-native-version-check/expo'
-
 // or
-
 // define RNVC_EXPO env var (not false, null or undefined)
 process.env.RNVC_EXPO = true;
 import VersionCheck from 'react-native-version-check'
+
+
+// in getCountry
 ```
 
 ## Getting started
@@ -103,7 +105,8 @@ VersionCheck.setAppName(APP_NAME);                // Your App Name for App Store
 
 // END: iOS Only
 
-console.log(VersionCheck.getCountry());            // KR
+VersionCheck.getCountryAsync()
+  .then(country => console.log(country));          // KR
 console.log(VersionCheck.getPackageName());        // com.reactnative.app
 console.log(VersionCheck.getCurrentBuildNumber()); // 10
 console.log(VersionCheck.getCurrentVersion());     // 0.1.1
@@ -133,10 +136,10 @@ VersionCheck.getLatestVersion({
 });
 
 VersionCheck.needUpdate()
-  .then(res => {
+  .then(async res => {
     console.log(res.isNeeded);    // true
     if (res.isNeeded) {
-      Linking.openURL(VersionCheck.getStoreUrl());  // open store if update is needed.
+      Linking.openURL(await VersionCheck.getStoreUrl());  // open store if update is needed.
     }
   });
 
@@ -169,9 +172,18 @@ VersionCheck.needUpdate({
 - <a name="setAppID" href="#setAppID">#</a>**`setAppID(appId: Number)`** _()_ - Sets app id of application for App Store Url. **[Required only for iOS Apps]**
 - <a name="setAppName" href="#setAppName">#</a>**`setAppName(appName: String)`** _()_ - Sets app name of application for App Store Url. **[Required only for iOS Apps]**
 - <a name="getCountry" href="#getCountry">#</a>**`getCountry()`** _(country: String)_ - Returns device's country code of 2 characters.
+- <a name="getCountryAsync" href="#getCountryAsync">#</a>**`getCountryAsync()`** _(Promise<country: String>)_ - Returns device's country code of 2 characters.
 - <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(packageName: String)_ - Returns package name of app.
 - <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(buildNumber: Number)_ - Returns current app build number.
 - <a name="getStoreUrl" href="#getStoreUrl">#</a>**`getStoreUrl([option: Object])`** _(storeUrl: String)_ - Returns url of Play Market or App Store of app.
+  - Option
+
+    Field | Type | Default
+    --- | --- | ---
+    appID | _string_ | App ID which was set by [setAppID()](#setAppID)
+    appName | _string_ | App Name which was set by [setAppName()](#setAppName)
+
+- <a name="getStoreUrlAsync" href="#getStoreUrlAsync">#</a>**`getStoreUrlAsync([option: Object])`** _(Promise<storeUrl: String>)_ - Returns url of Play Market or App Store of app.
   - Option
 
     Field | Type | Default
@@ -186,7 +198,7 @@ VersionCheck.needUpdate({
     Field | Type | Default
     --- | --- | ---
     forceUpdate | _boolean_ | ```false```
-    provider | _string_ | _function_ | provider name or function that returns promise or value of the latest version
+    provider | _string_ or _function_ | provider name or function that returns promise or value of the latest version
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
 
 - <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate([option: Object])`** _(Promise<result: Object>)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
@@ -200,7 +212,7 @@ VersionCheck.needUpdate({
     delimiter | _string_ | ```"."```
     semantic | _boolean_ | ```false```
     forceUpdate | _boolean_ | ```false```
-    provider | _string_ | _function_ | provider name or function that returns promise or value of the latest version
+    provider | _string_ or _function_ | provider name or function that returns promise or value of the latest version
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
 
   - Result

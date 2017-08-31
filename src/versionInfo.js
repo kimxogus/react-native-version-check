@@ -47,9 +47,8 @@ const CURRENT_VERSION = RNVersionCheck.currentVersion;
 
 export default {
   getCountry: () => {
-    if (useExpo) {
-      console.warn('getCountry will return Promise<country>. Use "await getCountry() or await getCountryAsync()"');
-    }
+    console.warn('getCountry will return Promise<country> in expo. Please use "await getCountry() or await getCountryAsync()". This will be deprecated from v3');
+
     return COUNTRY;
   },
   getCountryAsync: () => Promise.resolve(COUNTRY),

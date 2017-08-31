@@ -11,6 +11,7 @@ const Platform =
     }
     : require('react-native').Platform;
 
+
 let storeUrl = null;
 // Used by iOS Only
 let appNameGlobal = null;
@@ -25,6 +26,8 @@ export function setAppID(appID) {
 
 export function getStoreUrl(option) {
   option = { appName: appNameGlobal, appID: appIDGlobal, ...option };
+
+  console.warn('getStoreUrl will not work in expo. Please use "getCountryAsync()" instead. This will be deprecated from v3');
 
   if (
     isNil(storeUrl) ||
@@ -43,6 +46,37 @@ export function getStoreUrl(option) {
     return Platform.select({
       android: `https://play.google.com/store/apps/details?id=${VersionInfo.getPackageName()}`,
       ios: `https://itunes.apple.com/${VersionInfo.getCountry()}/app/${option.appName}/id${option.appID}`,
+    });
+  }
+
+  return storeUrl;
+}
+
+export function getStoreUrlAsync(option) {
+  option = { appName: appNameGlobal, appID: appIDGlobal, ...option };
+
+  if (
+    isNil(storeUrl) ||
+    option.appName !== appNameGlobal ||
+    option.appID !== appIDGlobal
+  ) {
+    if (
+      Platform.OS === 'ios' &&
+      (isNil(option.appName) || isNil(option.appID))
+    ) {
+      throw new Error(
+        "'appName' or 'appID' is empty.\nSet those values correctly using 'setAppName()' and 'setAppID()'"
+      );
+    }
+
+    return Platform.select({
+      android: Promise.resolve(
+        `https://play.google.com/store/apps/details?id=${VersionInfo.getPackageName()}`
+      ),
+      ios: VersionInfo.getCountryAsync()
+        .then(country =>
+          `https://itunes.apple.com/${country}/app/${option.appName}/id${option.appID}`
+        ),
     });
   }
 
@@ -77,4 +111,5 @@ export function getLatestVersionFromUrl(url, fetchOptions) {
 
 
 export const get = (option) =>
-  getLatestVersionFromUrl(getStoreUrl(), option.fetchOptions);
+  getStoreUrlAsync()
+    .then(storeUrl => getLatestVersionFromUrl(storeUrl, option.fetchOptions));
