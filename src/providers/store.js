@@ -91,8 +91,7 @@ export function getLatestVersionFromUrl(url, fetchOptions) {
     const indexStart = text.indexOf(MARKETVERSION_STARTTOKEN);
     let latestVersion = null;
     if (indexStart === -1) {
-      latestVersion = text.trim();
-      return Promise.resolve(latestVersion);
+      return Promise.reject(text.trim());
     }
 
     text = text.substr(indexStart + MARKETVERSION_STARTTOKEN_LENGTH);
