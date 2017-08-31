@@ -23,7 +23,9 @@ process.env.RNVC_EXPO = true;
 import VersionCheck from 'react-native-version-check'
 
 
-// in getCountry
+VersionCheck.getCountry() // this will return promise!!
+
+VersionCheck.getCountryAsync().then(country => console.log(country)) // or use this!
 ```
 
 ## Getting started
