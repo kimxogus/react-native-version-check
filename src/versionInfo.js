@@ -1,10 +1,3 @@
-const path = require('path');
-const fs = require('fs');
-
-const packageJson = JSON.parse(
-  fs.readFileSync(path.resolve(process.cwd(), 'package.json'), 'utf-8')
-);
-
 let RNVersionCheck;
 if (process.env.RNVC_ENV === 'test') {
   RNVersionCheck = {
@@ -12,35 +5,6 @@ if (process.env.RNVC_ENV === 'test') {
     packageName: 'com.reactnative.versioncheck',
     currentBuildNumber: 1,
     currentVersion: '0.0.1',
-  };
-} else if (packageJson.dependencies && packageJson.dependencies.expo) {
-  const { Platform } = require('react-native');
-  const { Constants, Util } = require('expo');
-
-  const { manifest = {} } = Constants;
-  const {
-    version = null,
-    android: {
-      versionCode = null,
-      package: androidPackageName = null
-    } = {},
-    ios: {
-      bundleIdentifier = null,
-      buildNumber = null
-    } = {}
-  } = manifest;
-
-  RNVersionCheck = {
-    currentVersion: version,
-    country: Util.getCurrentDeviceCountryAsync(),
-    currentBuildNumber: Platform.select({
-      android: versionCode,
-      ios: buildNumber
-    }),
-    packageName: Platform.select({
-      android: androidPackageName,
-      ios: bundleIdentifier
-    })
   };
 } else {
   RNVersionCheck = require('react-native').NativeModules.RNVersionCheck;
