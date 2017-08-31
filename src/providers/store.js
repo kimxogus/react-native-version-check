@@ -1,6 +1,6 @@
 import isNil from 'lodash.isnil';
 
-import Native from '../native';
+import VersionInfo from '../versionInfo';
 
 const Platform =
   process.env.RNVC_ENV === 'test'
@@ -41,8 +41,8 @@ export function getStoreUrl(option) {
     }
 
     return Platform.select({
-      android: `https://play.google.com/store/apps/details?id=${Native.getPackageName()}`,
-      ios: `https://itunes.apple.com/${Native.getCountry()}/app/${option.appName}/id${option.appID}`,
+      android: `https://play.google.com/store/apps/details?id=${VersionInfo.getPackageName()}`,
+      ios: `https://itunes.apple.com/${VersionInfo.getCountry()}/app/${option.appName}/id${option.appID}`,
     });
   }
 

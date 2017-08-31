@@ -1,10 +1,10 @@
-import Native from '../native';
+import VersionInfo from '../versionInfo';
 
 describe('Native', () => {
   it('Native variables should match', () => {
-    expect(Native.getCountry()).toBe('ko');
-    expect(Native.getPackageName()).toBe('com.reactnative.versioncheck');
-    expect(Native.getCurrentBuildNumber()).toBe(1);
-    expect(Native.getCurrentVersion()).toBe('0.0.1');
+    expect(VersionInfo.getCountry()).toBe('ko');
+    expect(VersionInfo.getPackageName()).toBe('com.reactnative.versioncheck');
+    expect(VersionInfo.getCurrentBuildNumber()).toBe(1);
+    expect(VersionInfo.getCurrentVersion()).toBe('0.0.1');
   });
 });

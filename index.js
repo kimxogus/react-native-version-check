@@ -1,4 +1,4 @@
-import Native from './src/native';
+import VersionInfo from './src/versionInfo';
 import {
   getLatestVersion,
 } from './src/getLatestVersion';
@@ -10,10 +10,10 @@ import {
 import { needUpdate } from './src/needUpdate';
 
 export default {
-  getCountry: Native.getCountry,
-  getPackageName: Native.getPackageName,
-  getCurrentBuildNumber: Native.getCurrentBuildNumber,
-  getCurrentVersion: Native.getCurrentVersion,
+  getCountry: VersionInfo.getCountry,
+  getPackageName: VersionInfo.getPackageName,
+  getCurrentBuildNumber: VersionInfo.getCurrentBuildNumber,
+  getCurrentVersion: VersionInfo.getCurrentVersion,
 
   setAppID,
   setAppName,
