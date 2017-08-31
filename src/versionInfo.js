@@ -25,7 +25,7 @@ if (process.env.RNVC_ENV === 'test') {
 
   RNVersionCheck = {
     currentVersion: version,
-    country: Util.getCurrentDeviceCountryAsync(),
+    country: (async () => await Util.getCurrentDeviceCountryAsync())(),
     currentBuildNumber: Platform.select({
       android: versionCode,
       ios: buildNumber
