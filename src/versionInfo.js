@@ -6,6 +6,35 @@ if (process.env.RNVC_ENV === 'test') {
     currentBuildNumber: 1,
     currentVersion: '0.0.1',
   };
+} else if (process.env.RNVC_EXPO) {
+  const { Platform } = require('react-native');
+  const { Constants, Util } = require('expo');
+
+  const { manifest = {} } = Constants;
+  const {
+    version = null,
+    android: {
+      versionCode = null,
+      package: androidPackageName = null
+    } = {},
+    ios: {
+      bundleIdentifier = null,
+      buildNumber = null
+    } = {}
+  } = manifest;
+
+  RNVersionCheck = {
+    currentVersion: version,
+    country: Util.getCurrentDeviceCountryAsync(),
+    currentBuildNumber: Platform.select({
+      android: versionCode,
+      ios: buildNumber
+    }),
+    packageName: Platform.select({
+      android: androidPackageName,
+      ios: bundleIdentifier
+    })
+  };
 } else {
   RNVersionCheck = require('react-native').NativeModules.RNVersionCheck;
 }

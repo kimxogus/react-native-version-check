@@ -12,8 +12,17 @@ This library gets the latest app version by parsing google play store, apple app
 Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
 ### expo Supports!
-Now react-native-version-check supports [expo](https://expo.io)! since `v2.0.0-alpha.4`.
-API Usage is as same as native.
+Now react-native-version-check supports [expo](https://expo.io)! since `v2.0.0-alpha.6`.
+- usage
+```js
+import VersionCheck from 'react-native-version-check/expo'
+
+// or
+
+// define RNVC_EXPO env var (not false, null or undefined)
+process.env.RNVC_EXPO = true;
+import VersionCheck from 'react-native-version-check'
+```
 
 ## Getting started
   - npm
