@@ -57,9 +57,11 @@
   },
   "dependencies": {
     "babel-preset-react-native": "^2.1.0",
+    "fs": "^0.0.1-security",
     "lodash.isfunction": "^3.0.8",
     "lodash.isnil": "^4.0.0",
-    "lodash.pick": "^4.4.0"
+    "lodash.pick": "^4.4.0",
+    "path": "^0.12.7"
   },
   "jest": {
     "testEnvironment": "node",
