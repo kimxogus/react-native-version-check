@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import VersionCheck from 'react-native-version-check';
 
 export default class example extends Component {
   state = {
     currentVersion: null,
     latestVersion: null,
-    isNeeded: false
-  }
+    isNeeded: false,
+  };
   componentDidMount() {
     VersionCheck.needUpdate({
-      latestVersion: '1.0.0'
+      latestVersion: '1.0.0',
     }).then(res => this.setState(res));
   }
   render() {

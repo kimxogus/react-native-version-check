@@ -1,7 +1,5 @@
 import VersionInfo from './src/versionInfo';
-import {
-  getLatestVersion,
-} from './src/getLatestVersion';
+import { getLatestVersion } from './src/getLatestVersion';
 import {
   getStoreUrl,
   getStoreUrlAsync,

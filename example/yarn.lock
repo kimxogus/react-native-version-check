@@ -3046,6 +3046,15 @@ react-devtools-core@^2.1.8:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-version-check-expo@^2.0.0-alpha.10:
+  version "2.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/react-native-version-check-expo/-/react-native-version-check-expo-2.0.0-alpha.10.tgz#90fb8efae0d46d707f6ea3a8bcfa6caeadba02be"
+  dependencies:
+    babel-preset-react-native "^3.0.2"
+    lodash.isfunction "^3.0.8"
+    lodash.isnil "^4.0.0"
+    lodash.pick "^4.4.0"
+
 react-native-version-check@^2.0.0-alpha.10:
   version "2.0.0-alpha.10"
   resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-2.0.0-alpha.10.tgz#ac6511ea897974539caa62364379b7c1a4b5cfd2"

@@ -1,4 +1,7 @@
 let RNVersionCheck;
+if (process.env.RNVC_EXPO) {
+  throw new Error("expo support moved to 'react-native-version-check-expo' (https://npmjs.org/packages/react-native-version-check-expo)");
+}
 if (process.env.RNVC_ENV === 'test') {
   RNVersionCheck = {
     country: 'ko',

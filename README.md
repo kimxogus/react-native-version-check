@@ -11,17 +11,12 @@ A version checker for react-native applications.
 This library gets the latest app version by parsing google play store, apple app store's app information or custom url.
 Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
-### expo Supports!
-Now react-native-version-check supports [expo](https://expo.io)! since `v2.0.0-alpha.6`.
+### expo
+react-native-version-check supports [expo](https://expo.io)! with [react-native-version-check-expo](https://npmjs.org/packages/react-native-version-check-expo)
 - usage
 ```js
 // import
-import VersionCheck from 'react-native-version-check/expo'
-// or
-// define RNVC_EXPO env var (not false, null or undefined)
-process.env.RNVC_EXPO = true;
-import VersionCheck from 'react-native-version-check'
-
+import VersionCheck from 'react-native-version-check-expo'
 
 VersionCheck.getCountry() // this will return promise!!
 
