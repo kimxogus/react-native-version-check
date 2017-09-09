@@ -1,40 +1,10 @@
 let RNVersionCheck;
-const useExpo = !!process.env.RNVC_EXPO;
 if (process.env.RNVC_ENV === 'test') {
   RNVersionCheck = {
     country: 'ko',
     packageName: 'com.reactnative.versioncheck',
     currentBuildNumber: 1,
     currentVersion: '0.0.1',
-  };
-} else if (useExpo) {
-  const { Platform } = require('react-native');
-  const { Constants, Util } = require('expo');
-
-  const { manifest = {} } = Constants;
-  const {
-    version = null,
-    android: {
-      versionCode = null,
-      package: androidPackageName = null
-    } = {},
-    ios: {
-      bundleIdentifier = null,
-      buildNumber = null
-    } = {}
-  } = manifest;
-
-  RNVersionCheck = {
-    currentVersion: version,
-    country: Util.getCurrentDeviceCountryAsync(),
-    currentBuildNumber: Platform.select({
-      android: versionCode,
-      ios: buildNumber
-    }),
-    packageName: Platform.select({
-      android: androidPackageName,
-      ios: bundleIdentifier
-    })
   };
 } else {
   RNVersionCheck = require('react-native').NativeModules.RNVersionCheck;
