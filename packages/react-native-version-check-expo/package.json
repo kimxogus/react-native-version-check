@@ -1,0 +1,18 @@
+{
+  "name": "react-native-version-check-expo",
+  "version": "2.0.0-alpha.10",
+  "description": "A version checker for react-native expo applications",
+  "main": "index.js",
+  "keywords": [
+    "react-native",
+    "expo",
+    "android",
+    "ios",
+    "version check",
+    "version",
+    "app version",
+    "market version",
+    "app store version"
+  ],
+  "license": "MIT"
+}

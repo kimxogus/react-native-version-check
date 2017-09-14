@@ -1,0 +1,25 @@
+{
+  "name": "react-native-version-check",
+  "version": "2.0.0-alpha.11",
+  "description": "A version checker for react-native applications",
+  "main": "index.js",
+  "keywords": [
+    "react-native",
+    "android",
+    "ios",
+    "version check",
+    "version",
+    "app version",
+    "market version",
+    "app store version"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/kimxogus/react-native-version-check",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kimxogus/react-native-version-check.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kimxogus/react-native-version-check/issues"
+  }
+}
