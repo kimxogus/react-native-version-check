@@ -2855,9 +2855,9 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-lerna@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.1.2.tgz#b07eb7a4d7dd7d44a105262fef49b2229301c577"
+lerna@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/lerna/-/lerna-2.2.0.tgz#dcf588f8c8feb57d76b34ef72cfedef23f1b5807"
   dependencies:
     async "^1.5.0"
     chalk "^2.1.0"
