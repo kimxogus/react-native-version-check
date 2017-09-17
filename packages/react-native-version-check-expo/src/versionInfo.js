@@ -1,10 +1,3 @@
-const path = require('path');
-const fs = require('fs');
-
-const packageJson = JSON.parse(
-  fs.readFileSync(path.resolve(process.cwd(), 'package.json'), 'utf-8')
-);
-
 let RNVersionCheck;
 if (process.env.RNVC_ENV === 'test') {
   RNVersionCheck = {
@@ -13,7 +6,7 @@ if (process.env.RNVC_ENV === 'test') {
     currentBuildNumber: 1,
     currentVersion: '0.0.1',
   };
-} else if (packageJson.dependencies && packageJson.dependencies.expo) {
+} else {
   const { Platform } = require('react-native');
   const { Constants, Util } = require('expo');
 
@@ -42,8 +35,6 @@ if (process.env.RNVC_ENV === 'test') {
       ios: bundleIdentifier
     })
   };
-} else {
-  RNVersionCheck = require('react-native').NativeModules.RNVersionCheck;
 }
 
 const COUNTRY = RNVersionCheck.country;
