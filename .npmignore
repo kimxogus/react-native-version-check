@@ -22,5 +22,5 @@ yarn.lock
 .travis.yml
 .git*
 .yarnclean
-example/
+packages/*/example/
 **/__tests__
