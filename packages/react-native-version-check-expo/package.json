@@ -14,5 +14,8 @@
     "market version",
     "app store version"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "peerDependencies": {
+    "expo": ">=20"
+  }
 }
