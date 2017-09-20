@@ -6,6 +6,7 @@ yarn-error.log*
 node_modules
 npm-debug.log*
 .vscode
+lerna-debug.log
 
 *.pbxuser
 !default.pbxuser
