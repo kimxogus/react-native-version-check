@@ -9,8 +9,7 @@
 	"dependencies": {
 		"react": "16.0.0-alpha.12",
 		"react-native": "0.45.1",
-		"react-native-version-check": "^2.0.0-alpha.10",
-		"react-native-version-check-expo": "^2.0.0-alpha.10"
+		"react-native-version-check": "^2.0.0-alpha.f9fbd364"
 	},
 	"devDependencies": {
 		"babel-jest": "20.0.3",
