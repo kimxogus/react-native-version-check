@@ -15,8 +15,7 @@ public class RNVersionCheckPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
       return Arrays.<NativeModule>asList(new RNVersionCheckModule(reactContext));
     }
-
-    @Override
+    
     public List<Class<? extends JavaScriptModule>> createJSModules() {
       return Collections.emptyList();
     }
