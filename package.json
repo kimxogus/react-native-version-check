@@ -30,7 +30,6 @@
     "babel-eslint": "^8.0.0",
     "babel-jest": "^21.0.2",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react-native": "^4.0.0",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.0.4",
     "eslint": "^4.6.0",
@@ -43,13 +42,11 @@
   },
   "dependencies": {},
   "jest": {
+    "verbose": true,
     "testEnvironment": "node",
     "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+      "^.+\\.js?$": "babel-jest"
     },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
     "testPathIgnorePatterns": [
       "<rootDir>[/\\\\](build|docs|node_modules|scripts|example)[/\\\\]"
     ],
