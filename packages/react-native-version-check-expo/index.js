@@ -1,3 +1,4 @@
-import VersionCheck from '../../index';
+import { builder } from 'react-native-version-check';
+import VersionInfo from './src/versionInfo';
 
-export default VersionCheck;
+export default builder(VersionInfo);

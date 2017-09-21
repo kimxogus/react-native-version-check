@@ -8,7 +8,7 @@ import {
 } from './src/providers/store';
 import { needUpdate } from './src/needUpdate';
 
-export default {
+export const builder =  (VersionInfo) => ({
   getCountry: VersionInfo.getCountry,
   getCountryAsync: VersionInfo.getCountryAsync,
   getPackageName: VersionInfo.getPackageName,
@@ -22,4 +22,7 @@ export default {
   getLatestVersion,
 
   needUpdate,
-};
+});
+
+
+export default builder(VersionInfo);

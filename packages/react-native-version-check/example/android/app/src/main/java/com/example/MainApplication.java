@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import io.xogus.reactnative.versioncheck.RNVersionCheckPackage;
-import io.xogus.reactnative.versioncheck.RNVersionCheckPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -25,7 +24,6 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNVersionCheckPackage(),
             new RNVersionCheckPackage()
       );
     }
