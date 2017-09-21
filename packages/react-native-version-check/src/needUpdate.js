@@ -1,7 +1,7 @@
 import isNil from 'lodash.isnil';
 import pick from 'lodash.pick';
 
-import VersionInfo from './versionInfo';
+import { getVersionInfo } from './versionInfo';
 import {
   getLatestVersion,
   defaultOption as defaultOptionForLatestVersion,
@@ -26,7 +26,7 @@ function getVersionNumberArray(version, depth, delimiter) {
 
 export function needUpdate(option) {
   option = {
-    currentVersion: VersionInfo.getCurrentVersion(),
+    currentVersion: getVersionInfo().getCurrentVersion(),
     latestVersion: null,
     depth: Infinity,
     semantic: false,

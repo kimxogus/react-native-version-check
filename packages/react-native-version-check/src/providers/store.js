@@ -1,6 +1,6 @@
 import isNil from 'lodash.isnil';
 
-import VersionInfo from '../versionInfo';
+import { getVersionInfo } from '../versionInfo';
 
 const Platform =
   process.env.RNVC_ENV === 'test'
@@ -43,6 +43,8 @@ export function getStoreUrl(option) {
       );
     }
 
+    const VersionInfo = getVersionInfo();
+
     return Platform.select({
       android: `https://play.google.com/store/apps/details?id=${VersionInfo.getPackageName()}`,
       ios: `https://itunes.apple.com/${VersionInfo.getCountry()}/app/${option.appName}/id${option.appID}`,
@@ -68,6 +70,8 @@ export function getStoreUrlAsync(option) {
         "'appName' or 'appID' is empty.\nSet those values correctly using 'setAppName()' and 'setAppID()'"
       );
     }
+
+    const VersionInfo = getVersionInfo();
 
     return Platform.select({
       android: Promise.resolve(

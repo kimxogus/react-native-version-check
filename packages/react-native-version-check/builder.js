@@ -8,18 +8,24 @@ import {
 } from './src/providers/store';
 import { needUpdate } from './src/needUpdate';
 
-export default (VersionInfo) => ({
-  getCountry: VersionInfo.getCountry,
-  getCountryAsync: VersionInfo.getCountryAsync,
-  getPackageName: VersionInfo.getPackageName,
-  getCurrentBuildNumber: VersionInfo.getCurrentBuildNumber,
-  getCurrentVersion: VersionInfo.getCurrentVersion,
+import { setVersionInfo } from './src/versionInfo';
 
-  setAppID,
-  setAppName,
-  getStoreUrl,
-  getStoreUrlAsync,
-  getLatestVersion,
+export default (VersionInfoObject) => {
 
-  needUpdate,
-});
+  setVersionInfo(VersionInfoObject);
+
+  return {
+    getCountry: VersionInfoObject.getCountry,
+    getCountryAsync: VersionInfoObject.getCountryAsync,
+    getPackageName: VersionInfoObject.getPackageName,
+    getCurrentBuildNumber: VersionInfoObject.getCurrentBuildNumber,
+    getCurrentVersion: VersionInfoObject.getCurrentVersion,
+
+    setAppID,
+    setAppName,
+    getStoreUrl,
+    getStoreUrlAsync,
+    getLatestVersion,
+
+    needUpdate,
+  };};
