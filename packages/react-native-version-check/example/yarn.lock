@@ -3533,9 +3533,9 @@ react-devtools-core@^2.5.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-native-version-check@2.0.0-alpha.1e841df8:
-  version "2.0.0-alpha.1e841df8"
-  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-2.0.0-alpha.1e841df8.tgz#b0d12ca4e718b9ec838b36cd7c4ee9ed19dd1fc3"
+react-native-version-check@2.0.0-alpha.b7b6c53b:
+  version "2.0.0-alpha.b7b6c53b"
+  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-2.0.0-alpha.b7b6c53b.tgz#191f7879108542928d1a6528b4cce2d16cf69db1"
   dependencies:
     lodash.isfunction "^3.0.8"
     lodash.isnil "^4.0.0"
