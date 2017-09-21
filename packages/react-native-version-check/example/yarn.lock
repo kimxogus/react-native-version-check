@@ -3521,9 +3521,9 @@ react-devtools-core@^2.5.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-native-version-check@^2.0.0-alpha.f9fbd364:
-  version "2.0.0-alpha.f9fbd364"
-  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-2.0.0-alpha.f9fbd364.tgz#aa13fa7db42c56b968389d001210369690fcc4a1"
+react-native-version-check@2.0.0-alpha.dc9f84fd:
+  version "2.0.0-alpha.dc9f84fd"
+  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-2.0.0-alpha.dc9f84fd.tgz#5ab479707e6a00e378f2f69b013f64071dc35502"
 
 react-native@0.48.3:
   version "0.48.3"
