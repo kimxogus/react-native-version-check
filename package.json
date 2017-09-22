@@ -42,13 +42,12 @@
   },
   "dependencies": {},
   "jest": {
-    "verbose": true,
     "testEnvironment": "node",
     "transform": {
       "^.+\\.js?$": "babel-jest"
     },
     "testPathIgnorePatterns": [
-      "<rootDir>[/\\\\](build|docs|node_modules|scripts|example)[/\\\\]"
+      "[/\\\\](build|docs|node_modules|scripts|example)[/\\\\]"
     ],
     "automock": false,
     "setupFiles": [

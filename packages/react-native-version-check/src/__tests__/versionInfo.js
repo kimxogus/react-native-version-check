@@ -1,4 +1,4 @@
-import VersionInfo from '../versionInfo';
+import VersionInfo from '../RNVersionInfo';
 
 describe('Native', () => {
   it('Native variables should match', () => {

@@ -1,3 +1,8 @@
+import { setVersionInfo } from '../versionInfo';
+import VersionInfo from '../RNVersionInfo';
+
+setVersionInfo(VersionInfo);
+
 import { needUpdate } from '../needUpdate';
 
 describe('needUpdate', () => {
