@@ -1,6 +1,6 @@
 {
   "name": "react-native-version-check-expo",
-  "version": "2.0.0-alpha.13",
+  "version": "2.0.0-alpha.14",
   "description": "A version checker for react-native expo applications",
   "main": "index.js",
   "keywords": [
@@ -25,6 +25,6 @@
     "expo": ">=20"
   },
   "dependencies": {
-    "react-native-version-check": "^2.0.0-alpha.13"
+    "react-native-version-check": "^2.0.0-alpha.14"
   }
 }
