@@ -22,6 +22,6 @@
     "expo": "^20",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.48.3",
-    "react-native-version-check-expo": "2.0.0-alpha.962d7760"
+    "react-native-version-check-expo": "2.0.0-alpha.13"
   }
 }

@@ -19,6 +19,6 @@
     "expo": ">=20"
   },
   "dependencies": {
-    "react-native-version-check": "2.0.0-alpha.1ea61508"
+    "react-native-version-check": "^2.0.0-alpha.13"
   }
 }
