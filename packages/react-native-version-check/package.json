@@ -22,6 +22,15 @@
   "bugs": {
     "url": "https://github.com/kimxogus/react-native-version-check/issues"
   },
+  "files": [
+    "android",
+    "ios",
+    "src",
+    "builder.js",
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ],
   "dependencies": {
     "babel-preset-react-native": "^4.0.0",
     "lodash.isfunction": "^3.0.8",

@@ -15,6 +15,12 @@
     "app store version"
   ],
   "license": "MIT",
+  "files": [
+    "src",
+    "index.js",
+    "LICENSE",
+    "README.md"
+  ],
   "peerDependencies": {
     "expo": ">=20"
   },
