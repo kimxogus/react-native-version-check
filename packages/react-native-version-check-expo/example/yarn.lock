@@ -3425,14 +3425,6 @@ lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
 
-lodash.isfunction@^3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.8.tgz#4db709fc81bc4a8fd7127a458a5346c5cdce2c6b"
-
-lodash.isnil@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/lodash.isnil/-/lodash.isnil-4.0.0.tgz#49e28cd559013458c814c5479d3c663a21bfaa6c"
-
 lodash.keys@^3.0.0:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/lodash.keys/-/lodash.keys-3.1.2.tgz#4dbc0472b156be50a0b286855d1bd0b0c656098a"
@@ -3460,10 +3452,6 @@ lodash.padend@^4.1.0:
 lodash.padstart@^4.1.0:
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/lodash.padstart/-/lodash.padstart-4.6.1.tgz#d2e3eebff0d9d39ad50f5cbd1b52a7bce6bb611b"
-
-lodash.pick@^4.4.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/lodash.pick/-/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
 
 lodash.restparam@^3.0.0:
   version "3.6.1"
@@ -4459,19 +4447,15 @@ react-native-vector-icons@4.1.1:
     prop-types "^15.5.8"
     yargs "^6.3.0"
 
-react-native-version-check-expo@2.0.0-alpha.962d7760:
-  version "2.0.0-alpha.962d7760"
-  resolved "https://registry.yarnpkg.com/react-native-version-check-expo/-/react-native-version-check-expo-2.0.0-alpha.962d7760.tgz#122da24aafc9972933a0b5ababf76003202cc92d"
+react-native-version-check-expo@2.0.0-alpha.13:
+  version "2.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/react-native-version-check-expo/-/react-native-version-check-expo-2.0.0-alpha.13.tgz#cdab3f7ed9f0c2bc3b9975b9d78ce83e191e9593"
   dependencies:
-    react-native-version-check "2.0.0-alpha.1ea61508"
+    react-native-version-check "^2.0.0-alpha.13"
 
-react-native-version-check@2.0.0-alpha.1ea61508:
-  version "2.0.0-alpha.1ea61508"
-  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-2.0.0-alpha.1ea61508.tgz#79b700c49949059accc735dc5dc2f3f217d2e958"
-  dependencies:
-    lodash.isfunction "^3.0.8"
-    lodash.isnil "^4.0.0"
-    lodash.pick "^4.4.0"
+react-native-version-check@^2.0.0-alpha.13:
+  version "2.0.0-alpha.f9fbd364"
+  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-2.0.0-alpha.f9fbd364.tgz#aa13fa7db42c56b968389d001210369690fcc4a1"
 
 react-native@^0.48.3:
   version "0.48.3"
@@ -5696,7 +5680,7 @@ webidl-conversions@^4.0.0:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
 
-"websql@github:expo/node-websql#18.0.0":
+websql@expo/node-websql#18.0.0:
   version "0.4.4"
   resolved "https://codeload.github.com/expo/node-websql/tar.gz/e364fa65146a9e2157a19e5c719e7702c2b6b87a"
   dependencies:
