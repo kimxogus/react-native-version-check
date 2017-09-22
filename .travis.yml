@@ -12,7 +12,8 @@ before_install:
   - export PATH=$HOME/.yarn/bin:$PATH
 
 install:
-  - yarn
+  - yarn global add lerna@2.2.0
+  - lerna bootstrap --hoist
 
 script:
   - yarn test
