@@ -55,4 +55,12 @@ describe('needUpdate', () => {
       expect(res.isNeeded).toBe(false);
     });
   });
+  it('should return result that update not needed if latest version is lower', () => {
+    needUpdate({
+      currentVersion: '3.0.2',
+      latestVersion: '2.6.1'
+    }).then(res => {
+      expect(res.isNeeded).toBe(false);
+    });
+  });
 });
