@@ -48,13 +48,20 @@ $ react-native link
 ```
 
 ### Manual Installation
-#### - iOS
+#### - iOS - Link Manually
 * Add ```.xcodeproj``` file as library to XCode project.
   1. In project navigator, right click Libraries
   2. Select ```Add Files to [PROJECT_NAME]```
   3. Add the ```node_modules/react-native-version-check/ios/RNVersionCheck.xcodeproj``` file
 
 * Add the ```libRNVersionCheck.a``` from the ```RNVersionCheck``` project to your project's Build Phases > Link Binary With Libraries
+
+#### iOS - CocoaPods Package Manager
+* Add to your `Podfile` (assuming it's in `ios/Podfile`):
+  ```ruby
+  pod 'react-native-version-check', :path => '../node_modules/react-native-version-check'
+  ```
+* Reinstall pod with `cd ios && pod install && cd ..`
 
 #### - Android
 
