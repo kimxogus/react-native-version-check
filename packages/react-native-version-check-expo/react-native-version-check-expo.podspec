@@ -1,17 +1,22 @@
+require "json"
+package = JSON.parse(File.read(File.join(__dir__, "package.json")))
+
 Pod::Spec.new do |s|
-  s.name         = "react-native-version-check-expo"
-  s.version      = "2.0.1"
-  s.summary      = "Version Check Expo for react-native"
+  s.name         = "react-native-version-check"
+  s.version      = package["version"]
+  s.summary      = package["description"]
 
-  s.homepage     = "https://github.com/kimxogus/react-native-version-check"
+  s.homepage     = package["homepage"]
 
-  s.license      = "MIT"
+  s.license      = package["license"]
   s.authors      = { "kimxogus" => "emailhere" }
   s.platform     = :ios, "7.0"
 
-  s.source       = { :git => "https://github.com/kimxogus/react-native-version-check.git" }
+  s.source       = { :git => package["repository"]["url"] }
 
   s.source_files  = "ios/RNVersionCheck.{h,m}"
+  
+  s.preserve_paths= "package.json", "LICENSE"
 
   s.dependency 'React'
 end
