@@ -3,7 +3,6 @@
 [![npm version][npm-image]][npm-url]
 [![npm downloads][downloads-image]][downloads-url]
 [![Build Status][travis-image]][travis-url]
-[![Dependencies Status][dependencies-image]][dependencies-url]
 [![DevDependencies Status][dev-dependencies-image]][dev-dependencies-url]
 [![Known Vulnerabilities][vulnerabilities-image]][vulnerabilities-url]
 
@@ -239,10 +238,6 @@ MIT
 [downloads-url]: https://npmjs.org/package/react-native-version-check
 [travis-image]: https://travis-ci.org/kimxogus/react-native-version-check.svg?branch=develop
 [travis-url]: https://travis-ci.org/kimxogus/react-native-version-check
-[dependencies-image]: https://david-dm.org/kimxogus/react-native-version-check.svg
-[dependencies-url]: https://david-dm.org/kimxogus/react-native-version-check
-[dependencies-image]: https://david-dm.org/kimxogus/react-native-version-check/status.svg
-[dependencies-url]: https://david-dm.org/kimxogus/react-native-version-check
 [dev-dependencies-image]: https://david-dm.org/kimxogus/react-native-version-check/dev-status.svg
 [dev-dependencies-url]: https://david-dm.org/kimxogus/react-native-version-check?type=dev
 [vulnerabilities-image]: https://snyk.io/test/github/kimxogus/react-native-version-check/badge.svg
