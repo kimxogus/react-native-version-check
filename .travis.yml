@@ -13,7 +13,7 @@ before_install:
 
 install:
   - yarn global add lerna@2.5.1
-  - lerna bootstrap --hoist
+  - lerna bootstrap
 
 script:
   - yarn test
