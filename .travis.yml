@@ -13,6 +13,7 @@ before_install:
 
 install:
   - yarn global add lerna@2.5.1
+  - yarn
   - lerna bootstrap
 
 script:
