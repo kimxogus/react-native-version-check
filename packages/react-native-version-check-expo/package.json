@@ -25,6 +25,6 @@
     "expo": ">=20"
   },
   "dependencies": {
-    "react-native-version-check": "^2.0.1"
+    "react-native-version-check": "^2.1.0"
   }
 }
