@@ -1,15 +1,7 @@
+import { Platform } from 'react-native';
 import isNil from 'lodash.isnil';
 
 import { getVersionInfo } from '../versionInfo';
-
-const Platform =
-  process.env.RNVC_ENV === 'test'
-    ? {
-      select(selection) {
-        return selection[process.env.RNVC_DEVICE || 'android'];
-      },
-    }
-    : require('react-native').Platform;
 
 
 let storeUrl = null;

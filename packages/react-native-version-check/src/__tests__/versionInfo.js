@@ -1,3 +1,5 @@
+jest.mock('react-native');
+
 import VersionInfo from '../RNVersionInfo';
 
 describe('Native', () => {
