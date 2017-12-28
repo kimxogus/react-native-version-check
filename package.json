@@ -39,7 +39,8 @@
     "isomorphic-fetch": "^2.2.1",
     "jest": "^22.0.4",
     "lerna": "^2.5.1",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "promise": "^8.0.1"
   },
   "dependencies": {},
   "jest": {
