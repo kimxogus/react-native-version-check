@@ -3,6 +3,11 @@
 
 @implementation RNVersionCheck
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+    
 - (dispatch_queue_t)methodQueue
 {
     return dispatch_get_main_queue();
