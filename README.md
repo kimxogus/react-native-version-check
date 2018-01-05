@@ -23,6 +23,7 @@ VersionCheck.getCountryAsync().then(country => console.log(country)) // or use t
 ```
 
 ## Getting started
+To supress iOS warnings in `RN>=0.51`, use `react-native-version-check@>=2.2.0`. [#18](https://github.com/kimxogus/react-native-version-check/issues/18)
   - npm
   ```bash
   $ npm install react-native-version-check --save
@@ -39,7 +40,6 @@ $ cd react-native-version-check/example
 $ yarn # or npm install
 $ react-native run-android # or react-native run-ios
 ```
-
 
 ### Automatic Installation
 ```bash
