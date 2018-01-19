@@ -121,7 +121,7 @@ export function getLatestVersionFromUrl(url, fetchOptions) {
         latestVersion = text.trim();
         return Promise.resolve(latestVersion);
       })
-      .catch((err) => {
+      .catch(() => {
         return Promise.reject('Parse error.');
       });
   }

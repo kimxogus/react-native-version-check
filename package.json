@@ -42,7 +42,11 @@
     "pre-commit": "^1.2.2",
     "promise": "^8.0.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash.isfunction": "^3.0.8",
+    "lodash.isnil": "^4.0.0",
+    "lodash.pick": "^4.4.0"
+  },
   "jest": {
     "testEnvironment": "node",
     "transform": {
