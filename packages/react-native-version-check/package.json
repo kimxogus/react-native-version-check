@@ -29,6 +29,7 @@
     "builder.js",
     "index.js",
     "LICENSE",
+    "react-native-version-check.podspec",
     "README.md"
   ],
   "dependencies": {
