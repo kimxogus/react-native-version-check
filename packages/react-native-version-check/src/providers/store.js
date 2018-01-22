@@ -93,7 +93,7 @@ export function getLatestVersionFromUrl(url, fetchOptions) {
           return Promise.reject('No info about this app.');
         }
       })
-      .catch((err) => {
+      .catch(() => {
         return Promise.reject('Parse error.');
       });
   } else {
@@ -134,4 +134,4 @@ export const get = (option) => {
     getStoreUrlAsync()
       .then(storeUrl => getLatestVersionFromUrl(storeUrl, option.fetchOptions));
   }
-}
+};
