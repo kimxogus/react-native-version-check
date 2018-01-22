@@ -128,7 +128,7 @@ export function getLatestVersionFromUrl(url, fetchOptions) {
 export const get = (option) => {
   if (Platform.OS === 'ios') {
     const VersionInfo = getVersionInfo();
-    url = `http://itunes.apple.com/lookup?bundleId=${VersionInfo.getPackageName()}`;
+    const url = `http://itunes.apple.com/lookup?bundleId=${VersionInfo.getPackageName()}`;
     getLatestVersionFromUrl(url, option.fetchOptions);
   } else {
     getStoreUrlAsync()
