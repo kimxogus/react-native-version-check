@@ -129,9 +129,9 @@ export const get = (option) => {
   if (Platform.OS === 'ios') {
     const VersionInfo = getVersionInfo();
     const url = `http://itunes.apple.com/lookup?bundleId=${VersionInfo.getPackageName()}`;
-    getLatestVersionFromUrl(url, option.fetchOptions);
+    return getLatestVersionFromUrl(url, option.fetchOptions);
   } else {
-    getStoreUrlAsync()
+    return getStoreUrlAsync()
       .then(storeUrl => getLatestVersionFromUrl(storeUrl, option.fetchOptions));
   }
 };
