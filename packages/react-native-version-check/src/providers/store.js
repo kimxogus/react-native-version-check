@@ -84,8 +84,6 @@ const MARKETVERSION_STARTTOKEN_LENGTH = MARKETVERSION_STARTTOKEN.length;
 const MARKETVERSION_ENDTOKEN = '<';
 export function getLatestVersionFromUrl(url, fetchOptions) {
   if (Platform.OS === 'ios') {
-    const VersionInfo = getVersionInfo();
-    url = `http://itunes.apple.com/lookup?bundleId=${VersionInfo.getPackageName()}`;
     return fetch(url, fetchOptions)
       .then(res => res.json())
       .then(json => {
@@ -96,7 +94,6 @@ export function getLatestVersionFromUrl(url, fetchOptions) {
         }
       })
       .catch((err) => {
-        console.log(err);
         return Promise.reject('Parse error.');
       });
   } else {
@@ -128,6 +125,13 @@ export function getLatestVersionFromUrl(url, fetchOptions) {
 }
 
 
-export const get = (option) =>
-  getStoreUrlAsync()
-    .then(storeUrl => getLatestVersionFromUrl(storeUrl, option.fetchOptions));
+export const get = (option) => {
+  if (Platform.OS === 'ios') {
+    const VersionInfo = getVersionInfo();
+    url = `http://itunes.apple.com/lookup?bundleId=${VersionInfo.getPackageName()}`;
+    getLatestVersionFromUrl(url, option.fetchOptions);
+  } else {
+    getStoreUrlAsync()
+      .then(storeUrl => getLatestVersionFromUrl(storeUrl, option.fetchOptions));
+  }
+}
