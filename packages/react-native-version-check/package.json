@@ -1,6 +1,6 @@
 {
   "name": "react-native-version-check",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "A version checker for react-native applications",
   "main": "index.js",
   "keywords": [
@@ -29,6 +29,7 @@
     "builder.js",
     "index.js",
     "LICENSE",
+    "react-native-version-check.podspec",
     "README.md"
   ],
   "dependencies": {
