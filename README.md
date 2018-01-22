@@ -98,16 +98,6 @@ protected List<ReactPackage> getPackages() {
 import { Linking } from 'react-native';
 import VersionCheck from 'react-native-version-check';
 
-// START: iOS Only
-
-VersionCheck.setAppID(APP_ID);                    // Your App ID for App Store URL
-VersionCheck.setAppName(APP_NAME);                // Your App Name for App Store URL
-
-// Your app's id, name and country info will be use for App Store URL like
-// https://itunes.apple.com/{COUNTRY}/app/{APP_NAME}/id{APP_ID}
-
-// END: iOS Only
-
 VersionCheck.getCountryAsync()
   .then(country => console.log(country));          // KR
 console.log(VersionCheck.getPackageName());        // com.reactnative.app
@@ -172,20 +162,9 @@ VersionCheck.needUpdate({
 
 ## Methods
 
-- <a name="setAppID" href="#setAppID">#</a>**`setAppID(appId: Number)`** _()_ - Sets app id of application for App Store Url. **[Required only for iOS Apps]**
-- <a name="setAppName" href="#setAppName">#</a>**`setAppName(appName: String)`** _()_ - Sets app name of application for App Store Url. **[Required only for iOS Apps]**
-- <a name="getCountry" href="#getCountry">#</a>**`getCountry()`** _(country: String)_ - Returns device's country code of 2 characters.
 - <a name="getCountryAsync" href="#getCountryAsync">#</a>**`getCountryAsync()`** _(Promise<country: String>)_ - Returns device's country code of 2 characters.
 - <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(packageName: String)_ - Returns package name of app.
 - <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(buildNumber: Number)_ - Returns current app build number.
-- <a name="getStoreUrl" href="#getStoreUrl">#</a>**`getStoreUrl([option: Object])`** _(storeUrl: String)_ - Returns url of Play Market or App Store of app.
-  - Option
-
-    Field | Type | Default
-    --- | --- | ---
-    appID | _string_ | App ID which was set by [setAppID()](#setAppID)
-    appName | _string_ | App Name which was set by [setAppName()](#setAppName)
-
 - <a name="getStoreUrlAsync" href="#getStoreUrlAsync">#</a>**`getStoreUrlAsync([option: Object])`** _(Promise<storeUrl: String>)_ - Returns url of Play Market or App Store of app.
   - Option
 
