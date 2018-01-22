@@ -83,28 +83,55 @@ const MARKETVERSION_STARTTOKEN = 'softwareVersion">';
 const MARKETVERSION_STARTTOKEN_LENGTH = MARKETVERSION_STARTTOKEN.length;
 const MARKETVERSION_ENDTOKEN = '<';
 export function getLatestVersionFromUrl(url, fetchOptions) {
-  return fetch(url, fetchOptions).then(res => res.text()).then(text => {
-    const indexStart = text.indexOf(MARKETVERSION_STARTTOKEN);
-    let latestVersion = null;
-    if (indexStart === -1) {
-      return Promise.reject(text.trim());
-    }
+  if (Platform.OS === 'ios') {
+    return fetch(url, fetchOptions)
+      .then(res => res.json())
+      .then(json => {
+        if (json.resultCount) {
+          return Promise.resolve(json.results[0].version);
+        } else {
+          return Promise.reject('No info about this app.');
+        }
+      })
+      .catch(() => {
+        return Promise.reject('Parse error.');
+      });
+  } else {
+    return fetch(url, fetchOptions)
+      .then(res => res.text())
+      .then(text => {
+        const indexStart = text.indexOf(MARKETVERSION_STARTTOKEN);
+        let latestVersion = null;
+        if (indexStart === -1) {
+          return Promise.reject(text.trim());
+        }
 
-    text = text.substr(indexStart + MARKETVERSION_STARTTOKEN_LENGTH);
+        text = text.substr(indexStart + MARKETVERSION_STARTTOKEN_LENGTH);
 
-    const indexEnd = text.indexOf(MARKETVERSION_ENDTOKEN);
-    if (indexEnd === -1) {
-      return Promise.reject('Parse error.');
-    }
+        const indexEnd = text.indexOf(MARKETVERSION_ENDTOKEN);
+        if (indexEnd === -1) {
+          return Promise.reject('Parse error.');
+        }
 
-    text = text.substr(0, indexEnd);
+        text = text.substr(0, indexEnd);
 
-    latestVersion = text.trim();
-    return Promise.resolve(latestVersion);
-  });
+        latestVersion = text.trim();
+        return Promise.resolve(latestVersion);
+      })
+      .catch(() => {
+        return Promise.reject('Parse error.');
+      });
+  }
 }
 
 
-export const get = (option) =>
-  getStoreUrlAsync()
-    .then(storeUrl => getLatestVersionFromUrl(storeUrl, option.fetchOptions));
+export const get = (option) => {
+  if (Platform.OS === 'ios') {
+    const VersionInfo = getVersionInfo();
+    const url = `http://itunes.apple.com/lookup?bundleId=${VersionInfo.getPackageName()}`;
+    return getLatestVersionFromUrl(url, option.fetchOptions);
+  } else {
+    return getStoreUrlAsync()
+      .then(storeUrl => getLatestVersionFromUrl(storeUrl, option.fetchOptions));
+  }
+};
