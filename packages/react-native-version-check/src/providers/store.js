@@ -137,8 +137,12 @@ export function getLatestVersionFromUrl(url, fetchOptions) {
 export const get = (option) => {
   if (Platform.OS === 'ios') {
     const VersionInfo = getVersionInfo();
-    const url = `http://itunes.apple.com/lookup?bundleId=${VersionInfo.getPackageName()}`;
-    return getLatestVersionFromUrl(url, option.fetchOptions);
+
+    return VersionInfo.getCountryAsync()
+      .then(country => {
+        const url = `http://itunes.apple.com/${country}/lookup?bundleId=${VersionInfo.getPackageName()}`;
+        return getLatestVersionFromUrl(url, option.fetchOptions);
+      });
   } else {
     return getStoreUrlAsync()
       .then(storeUrl => getLatestVersionFromUrl(storeUrl, option.fetchOptions));
