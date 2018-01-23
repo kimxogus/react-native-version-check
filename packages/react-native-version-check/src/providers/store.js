@@ -9,9 +9,18 @@ let storeUrl = null;
 let appNameGlobal = null;
 let appIDGlobal = null;
 
+/**
+ * @deprecated You dont need to set AppName.
+ * @since 2.3.0
+ */
 export function setAppName(appName) {
   appNameGlobal = appName;
 }
+
+/**
+ * @deprecated You dont need to set AppID.
+ * @since 2.3.0
+ */
 export function setAppID(appID) {
   appIDGlobal = appID;
 }
