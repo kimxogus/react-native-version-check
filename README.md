@@ -10,6 +10,9 @@ A version checker for react-native applications.
 This library gets the latest app version by parsing google play store, apple app store's app information or custom url.
 Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
+#### Prerelease Status
+react-native-version-check@3.0.0 is now on alpha release. If you want stable release, follow [master branch](https://github.com/kimxogus/react-native-version-check/tree/master)
+
 ### expo
 react-native-version-check supports [expo](https://expo.io)! with [react-native-version-check-expo](https://npmjs.org/packages/react-native-version-check-expo)
 - usage
@@ -24,11 +27,11 @@ VersionCheck.getCountryAsync().then(country => console.log(country))
 To supress iOS warnings in `RN>=0.51`, use `react-native-version-check@>=2.2.0`. [#18](https://github.com/kimxogus/react-native-version-check/issues/18)
   - npm
   ```bash
-  $ npm install react-native-version-check
+  $ npm install react-native-version-check@next
   ```
   - yarn
   ```bash
-  $ yarn add react-native-version-check
+  $ yarn add react-native-version-check@next
   ```
 
 ### Example
@@ -96,7 +99,7 @@ protected List<ReactPackage> getPackages() {
 import { Linking } from 'react-native';
 import VersionCheck from 'react-native-version-check';
 
-VersionCheck.getCountryAsync()
+VersionCheck.getCountry()
   .then(country => console.log(country));          // KR
 console.log(VersionCheck.getPackageName());        // com.reactnative.app
 console.log(VersionCheck.getCurrentBuildNumber()); // 10
@@ -108,8 +111,20 @@ VersionCheck.getLatestVersion()
   });
 
 VersionCheck.getLatestVersion({
-    provider: 'store'
+    provider: 'appStore'  // for iOS
   })
+  .then(latestVersion => {
+    console.log(latestVersion);    // 0.1.2
+  });
+
+VersionCheck.getLatestVersion({
+    provider: 'playStore'  // for Android
+  })
+  .then(latestVersion => {
+    console.log(latestVersion);    // 0.1.2
+  });
+
+VersionCheck.getLatestVersion()    // Automatically choose profer provider using `Platform.select` by device platform.
   .then(latestVersion => {
     console.log(latestVersion);    // 0.1.2
   });
@@ -119,9 +134,6 @@ VersionCheck.getLatestVersion({
   provider: () => fetch('http://your.own/api')
     .then(r => r.json())
     .then(({version}) => version),   // You can get latest version from your own api.
-  fetchOptions: {
-    method: "GET"
-  }
 }).then(latestVersion =>{
   console.log(latestVersion);
 });
@@ -151,7 +163,6 @@ VersionCheck.needUpdate({
 VersionCheck.needUpdate({
   currentVersion: "1.1",
   latestVersion: "2.0",
-  semantic: true
 }).then(res => {
   console.log(res.isNeeded);  // false
 });
@@ -160,16 +171,23 @@ VersionCheck.needUpdate({
 
 ## Methods
 
-- <a name="getCountryAsync" href="#getCountryAsync">#</a>**`getCountryAsync()`** _(Promise<country: String>)_ - Returns device's country code of 2 characters.
+- <a name="getCountry" href="#getCountry">#</a>**`getCountry()`** _(Promise<country: String>)_ - Returns device's country code of 2 characters.
 - <a name="getPackageName" href="#getPackageName">#</a>**`getPackageName()`** _(packageName: String)_ - Returns package name of app.
 - <a name="getCurrentBuildNumber" href="#getCurrentBuildNumber">#</a>**`getCurrentBuildNumber()`** _(buildNumber: Number)_ - Returns current app build number.
-- <a name="getStoreUrlAsync" href="#getStoreUrlAsync">#</a>**`getStoreUrlAsync([option: Object])`** _(Promise<storeUrl: String>)_ - Returns url of Play Market or App Store of app.
+- <a name="getStoreUrl" href="#getStoreUrl">#</a>**`getStoreUrl([option: Object])`** _(Promise<storeUrl: String>)_ - Returns url of Play Market or App Store of app.
+- <a name="getAppStoreUrl" href="#getAppStoreUrl">#</a>**`getAppStoreUrl([option: Object])`** _(Promise<storeUrl: String>)_ - Returns url of App Store of app.
   - Option
 
     Field | Type | Default
     --- | --- | ---
-    appID | _string_ | App ID which was set by [setAppID()](#setAppID)
-    appName | _string_ | App Name which was set by [setAppName()](#setAppName)
+    appID | _string_ | App ID
+    appName | _string_ | App Name
+- <a name="getPlayStoreUrl" href="#getPlayStoreUrl">#</a>**`getPlayStoreUrl([option: Object])`** _(Promise<storeUrl: String>)_ - Returns url of Play Store of app.
+  - Option
+
+    Field | Type | Default
+    --- | --- | ---
+    packageName | _string_ | Package Name
 
 - <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(currentVersion: String)_ - Returns current app version.
 - <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion([option: Object])`** _(Promise<latestVersion: String>)_ - Returns the latest app version parsed from url. Returns `null` when parsing error occurs.
@@ -189,8 +207,6 @@ VersionCheck.needUpdate({
     currentVersion | _string_ | app's current version from [getCurrentVersion()](#getCurrentVersion)
     latestVersion | _string_ | app's latest version from [getLatestVersion()](#getLatestVersion)
     depth | _number_ | ```Infinity```
-    delimiter | _string_ | ```"."```
-    semantic | _boolean_ | ```false```
     forceUpdate | _boolean_ | ```false```
     provider | _string_ or _function_ | provider name or function that returns promise or value of the latest version
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
