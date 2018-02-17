@@ -2,6 +2,7 @@
   "scripts": {
     "format": "babel-node scripts/format",
     "lint": "eslint .",
+    "flow": "flow",
     "pretest": "npm run lint",
     "test": "npm run test:android && npm run test:ios",
     "test:android": "cross-env RNVC_DEVICE=android babel-node scripts/test",
@@ -26,6 +27,7 @@
     "url": "https://github.com/kimxogus/react-native-version-check/issues"
   },
   "devDependencies": {
+    "@types/semver": "^5.5.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.1.2",
     "babel-jest": "^22.0.4",
@@ -36,13 +38,14 @@
     "eslint": "^4.14.0",
     "eslint-plugin-react": "^7.5.1",
     "eslint-plugin-react-native": "^3.2.0",
+    "flow-bin": "^0.66.0",
+    "flow-typed": "^2.3.0",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^22.0.4",
     "lerna": "^2.5.1",
     "pre-commit": "^1.2.2",
     "promise": "^8.0.1"
   },
-  "dependencies": {},
   "jest": {
     "testEnvironment": "node",
     "transform": {

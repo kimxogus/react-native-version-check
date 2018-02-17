@@ -5,14 +5,10 @@ import VersionInfo from '../RNVersionInfo';
 
 setVersionInfo(VersionInfo);
 
-import { setAppID, setAppName } from '../providers/store';
 import { getLatestVersion } from '../getLatestVersion';
 
 describe('getLatestVersion', () => {
   it('get latest version properly', async () => {
-    setAppID('375380948');
-    setAppName('apple-store');
-
     if (process.env.RNVC_DEVICE==='android') {
       getLatestVersion().catch((err) => expect(err).toBeDefined());
     } else {

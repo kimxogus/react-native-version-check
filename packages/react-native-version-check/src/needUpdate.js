@@ -1,5 +1,6 @@
+// @flow
+import semver from 'semver';
 import isNil from 'lodash.isnil';
-import pick from 'lodash.pick';
 
 import { getVersionInfo } from './versionInfo';
 import {
@@ -7,63 +8,65 @@ import {
   defaultOption as defaultOptionForLatestVersion,
 } from './getLatestVersion';
 
-function getVersionNumberArray(version, depth, delimiter) {
-  version = String(version);
+const DELIMITER = '.';
 
-  if (version.indexOf(delimiter) === -1) {
-    return [version];
+function getVersionWithDepth(version: string, depth: number): string[] {
+  version = semver.clean(version);
+
+  let versionArray = null;
+  if (version.indexOf(DELIMITER) === -1) {
+    versionArray = [version];
   } else {
-    version = version.split(delimiter);
-
-    const result = [];
-    for (let i = 0, d = Math.min(depth, version.length); i < d; i++) {
-      result.push(version[i]);
-    }
-
-    return result;
+    versionArray = version.split(DELIMITER).slice(0, Math.min(depth, version.length));
   }
+  return [...versionArray, ...[0, 0, 0].slice(0, 3 - versionArray.length)]
+    .join(DELIMITER);
 }
 
-export function needUpdate(option) {
+export type NeedUpdateOption = {
+  currentVersion?: string,
+  latestVersion?: string,
+  depth?: number,
+}
+
+export type NeedUpdateResult = {
+  isNeeded: boolean,
+  currentVersion: string,
+  latestVersion: string,
+}
+
+export async function needUpdate(option: ?NeedUpdateOption = {}): Promise<NeedUpdateResult> {
   option = {
-    currentVersion: getVersionInfo().getCurrentVersion(),
+    currentVersion: null,
     latestVersion: null,
     depth: Infinity,
-    semantic: false,
-    delimiter: '.',
     ...defaultOptionForLatestVersion,
     ...option,
   };
 
+  if (isNil(option.currentVersion)) {
+    option.currentVersion = getVersionInfo().getCurrentVersion();
+  }
+
   if (isNil(option.latestVersion)) {
-    return getLatestVersion(
-      pick(option, Object.keys(defaultOptionForLatestVersion))
-    ).then(latestVersion =>
-      checkIfUpdateNeeded(
-        option.currentVersion,
-        latestVersion,
-        pick(option, ['depth', 'delimiter', 'semantic'])
-      )
-    );
+    option.latestVersion = await getLatestVersion(option);
   }
 
   return checkIfUpdateNeeded(
     option.currentVersion,
     option.latestVersion,
-    pick(option, ['depth', 'delimiter', 'semantic'])
+    option
   );
 }
 
 function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
-  const currentVersionArr = getVersionNumberArray(
+  const currentVersionWithDepth = getVersionWithDepth(
     currentVersion,
-    option.depth,
-    option.delimiter
+    option.depth
   );
-  const latestVersionArr = getVersionNumberArray(
+  const latestVersionWithDepth = getVersionWithDepth(
     latestVersion,
-    option.depth,
-    option.delimiter
+    option.depth
   );
 
   const needed = {
@@ -77,30 +80,9 @@ function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
     latestVersion,
   };
 
-  for (let i = 0; i < option.depth; i++) {
-    const latestVersionToken = latestVersionArr[i];
-    const currentVersionToken = currentVersionArr[i];
-
-    if (!latestVersionToken && !currentVersionToken) {
-      return Promise.resolve(notNeeded);
-    }
-    if (!currentVersionToken && +latestVersionToken !== 0) {
-      return Promise.resolve(needed);
-    }
-    if (!isNaN(+latestVersionToken) && !isNaN(+currentVersionToken)) {
-      if (+latestVersionToken > +currentVersionToken){
-        return Promise.resolve(needed);
-      }
-      else if (+latestVersionToken < +currentVersionToken) {
-        return Promise.resolve(notNeeded);
-      }
-    }
-    if (latestVersionToken > currentVersionToken) {
-      return Promise.resolve(needed);
-    }
-    if (option.semantic && latestVersionToken < currentVersionToken) {
-      return Promise.resolve(notNeeded);
-    }
-  }
-  return Promise.resolve(notNeeded);
+  return Promise.resolve(
+    semver.gt(latestVersionWithDepth, currentVersionWithDepth)
+      ? needed
+      : notNeeded
+  );
 }

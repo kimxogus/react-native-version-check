@@ -1,4 +1,4 @@
-
+// @flow
 import { getLatestVersion } from './src/getLatestVersion';
 import {
   getStoreUrl,
