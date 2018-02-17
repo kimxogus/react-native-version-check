@@ -22,8 +22,7 @@ class PlayStoreProvider implements IProvider {
       option.packageName = getVersionInfo().getPackageName();
     }
 
-    const storeUrl = `http://itunes.apple.com/${option.country}/lookup?bundleId=${option.packageName}`;
-    return fetch(storeUrl, option.fetchOptions)
+    return fetch(`http://itunes.apple.com/${option.country}/lookup?bundleId=${option.packageName}`, option.fetchOptions)
       .then(res => res.json())
       .then(json => {
         if (json.resultCount) {

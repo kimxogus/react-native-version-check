@@ -1,5 +1,7 @@
 // @flow
 import VersionInfo from './src/RNVersionInfo';
-import builder from './builder';
+import builder, { type ReactNativeVersionCheck } from './builder';
 
-export default builder(VersionInfo);
+const RNVC: ReactNativeVersionCheck = builder(VersionInfo);
+
+export default RNVC;
