@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.0.0-alpha.1"></a>
+# [3.0.0-alpha.1](https://github.com/kimxogus/react-native-version-check/compare/react-native-version-check@3.0.0-1...react-native-version-check@3.0.0-alpha.1) (2018-02-17)
+
+
+
+
+**Note:** Version bump only for package react-native-version-check
+
 <a name="3.0.0-1"></a>
 # [3.0.0-1](https://github.com/kimxogus/react-native-version-check/compare/react-native-version-check@3.0.0-0...react-native-version-check@3.0.0-1) (2018-02-17)
 
