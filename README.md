@@ -17,16 +17,14 @@ react-native-version-check supports [expo](https://expo.io)! with [react-native-
 // import
 import VersionCheck from 'react-native-version-check-expo'
 
-VersionCheck.getCountry() // this will return promise!!
-
-VersionCheck.getCountryAsync().then(country => console.log(country)) // or use this!
+VersionCheck.getCountryAsync().then(country => console.log(country))
 ```
 
 ## Getting started
 To supress iOS warnings in `RN>=0.51`, use `react-native-version-check@>=2.2.0`. [#18](https://github.com/kimxogus/react-native-version-check/issues/18)
   - npm
   ```bash
-  $ npm install react-native-version-check --save
+  $ npm install react-native-version-check
   ```
   - yarn
   ```bash
