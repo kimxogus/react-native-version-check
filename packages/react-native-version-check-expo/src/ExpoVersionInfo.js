@@ -43,7 +43,7 @@ const CURRENT_BUILD_NUMBER = RNVersionCheck.currentBuildNumber;
 const CURRENT_VERSION = RNVersionCheck.currentVersion;
 
 export default {
-  getCountryAsync: () => Promise.resolve(COUNTRY),
+  getCountry: () => Promise.resolve(COUNTRY),
   getPackageName: () => PACKAGE_NAME,
   getCurrentBuildNumber: () => CURRENT_BUILD_NUMBER,
   getCurrentVersion: () => CURRENT_VERSION,
