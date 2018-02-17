@@ -20,7 +20,7 @@ react-native-version-check supports [expo](https://expo.io)! with [react-native-
 // import
 import VersionCheck from 'react-native-version-check-expo'
 
-VersionCheck.getCountryAsync().then(country => console.log(country))
+VersionCheck.getCountry().then(country => console.log(country))
 ```
 
 ## Getting started
