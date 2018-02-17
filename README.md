@@ -10,7 +10,7 @@ A version checker for react-native applications.
 This library gets the latest app version by parsing google play store, apple app store's app information or custom url.
 Parsing code is referenced from [here](http://itmir.tistory.com/524)
 
-#### Prerelease Status
+### Prerelease Status
 react-native-version-check@3.0.0 is now on alpha release. If you want stable release, follow [master branch](https://github.com/kimxogus/react-native-version-check/tree/master)
 
 ### expo
@@ -24,7 +24,6 @@ VersionCheck.getCountryAsync().then(country => console.log(country))
 ```
 
 ## Getting started
-To supress iOS warnings in `RN>=0.51`, use `react-native-version-check@>=2.2.0`. [#18](https://github.com/kimxogus/react-native-version-check/issues/18)
   - npm
   ```bash
   $ npm install react-native-version-check@next
