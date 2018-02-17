@@ -28,7 +28,7 @@ export function setAppID(appID) {
 export function getStoreUrl(option) {
   option = { appName: appNameGlobal, appID: appIDGlobal, ...option };
 
-  console.warn('getStoreUrl will not work in expo. Please use "getCountryAsync()" instead. This will be deprecated from v3');
+  console.warn('getStoreUrl will not work in expo. Please use "getStoreUrlAsync()" instead. This will be deprecated from v3');
 
   if (
     isNil(storeUrl) ||
