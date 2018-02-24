@@ -11,8 +11,6 @@ import {
 const DELIMITER = '.';
 
 function getVersionWithDepth(version: string, depth: number): string[] {
-  version = semver.clean(version);
-
   let versionArray = null;
   if (version.indexOf(DELIMITER) === -1) {
     versionArray = [version];
