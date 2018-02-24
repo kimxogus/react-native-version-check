@@ -3458,9 +3458,9 @@ lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
 
-lodash.isfunction@^3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.8.tgz#4db709fc81bc4a8fd7127a458a5346c5cdce2c6b"
+lodash.isfunction@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
 
 lodash.isnil@^4.0.0:
   version "4.0.0"
@@ -4488,20 +4488,21 @@ react-native-vector-icons@4.1.1:
     prop-types "^15.5.8"
     yargs "^6.3.0"
 
-react-native-version-check-expo@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-version-check-expo/-/react-native-version-check-expo-2.0.0.tgz#16e8fb83ce81e69d476c53994d22fc35feac75d8"
+react-native-version-check-expo@^3.0.0-alpha.3:
+  version "3.0.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/react-native-version-check-expo/-/react-native-version-check-expo-3.0.0-alpha.3.tgz#e910c76ba98732362c78642bdbed5a06ee89e8d2"
   dependencies:
-    react-native-version-check "^2.0.0"
+    react-native-version-check "^3.0.0-alpha.3"
 
-react-native-version-check@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-2.0.0.tgz#ec9f69133b1e131309d8edd103f9c787ab137b86"
+react-native-version-check@^3.0.0-alpha.3:
+  version "3.0.0-alpha.d7ed157a"
+  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-3.0.0-alpha.d7ed157a.tgz#8bf7d94fa15764ddda320931e7f52964bbb2bd03"
   dependencies:
     babel-preset-react-native "^4.0.0"
-    lodash.isfunction "^3.0.8"
+    lodash.isfunction "^3.0.9"
     lodash.isnil "^4.0.0"
     lodash.pick "^4.4.0"
+    semver "^5.5.0"
 
 react-native@^0.48.3:
   version "0.48.3"
@@ -4960,6 +4961,10 @@ sax@~1.1.1:
 "semver@2 || 3 || 4 || 5", semver@5.x, semver@^5.0.1, semver@^5.0.3, semver@^5.1.0, semver@^5.3.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
+
+semver@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
 semver@~5.0.1:
   version "5.0.3"
