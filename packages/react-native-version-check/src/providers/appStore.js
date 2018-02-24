@@ -16,7 +16,7 @@ export interface IPlayStoreProvider extends IProvider {
 class PlayStoreProvider implements IProvider {
   async getVersion(option: PlayStoreGetVersionOption): Promise<string> {
     if (!option.country) {
-      option.country = await getVersionInfo().getCountryNameAsync();
+      option.country = await getVersionInfo().getCountry();
     }
     if (!option.packageName) {
       option.packageName = getVersionInfo().getPackageName();
