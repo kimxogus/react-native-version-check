@@ -224,7 +224,7 @@ VersionCheck.needUpdate({
 MIT
 
 
-[npm-image]: https://img.shields.io/npm/v/react-native-version-check.svg
+[npm-image]: https://img.shields.io/npm/v/react-native-version-check/next.svg
 [npm-url]: https://npmjs.org/package/react-native-version-check
 [downloads-image]: https://img.shields.io/npm/dm/react-native-version-check.svg
 [downloads-url]: https://npmjs.org/package/react-native-version-check
