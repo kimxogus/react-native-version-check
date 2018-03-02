@@ -436,9 +436,9 @@ js-tokens@^3.0.0, js-tokens@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
 
-lodash.isfunction@^3.0.8:
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.8.tgz#4db709fc81bc4a8fd7127a458a5346c5cdce2c6b"
+lodash.isfunction@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
 
 lodash.isnil@^4.0.0:
   version "4.0.0"
@@ -480,14 +480,15 @@ react-deep-force-update@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.1.1.tgz#bcd31478027b64b3339f108921ab520b4313dc2c"
 
-react-native-version-check@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-2.0.1.tgz#1769f0c4d83ec17c67e5522826415a0992eed82e"
+react-native-version-check@^3.0.0-rc.1:
+  version "3.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-3.0.0-rc.1.tgz#51626d4f3c6919b4e3820c8b99cdac702eeedb25"
   dependencies:
     babel-preset-react-native "^4.0.0"
-    lodash.isfunction "^3.0.8"
+    lodash.isfunction "^3.0.9"
     lodash.isnil "^4.0.0"
     lodash.pick "^4.4.0"
+    semver "^5.5.0"
 
 react-proxy@^1.1.7:
   version "1.1.8"
@@ -514,6 +515,10 @@ regenerator-transform@^0.10.0:
     babel-runtime "^6.18.0"
     babel-types "^6.19.0"
     private "^0.1.6"
+
+semver@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.5.0.tgz#dc4bbc7a6ca9d916dee5d43516f0092b58f7b8ab"
 
 strip-ansi@^3.0.0:
   version "3.0.1"
