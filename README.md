@@ -23,11 +23,11 @@ VersionCheck.getCountry().then(country => console.log(country))
 ## Getting started
   - npm
   ```bash
-  $ npm install react-native-version-check@next
+  $ npm install react-native-version-check
   ```
   - yarn
   ```bash
-  $ yarn add react-native-version-check@next
+  $ yarn add react-native-version-check
   ```
 
 ### Example
