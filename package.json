@@ -8,7 +8,8 @@
     "test:android": "cross-env RNVC_DEVICE=android babel-node scripts/test",
     "test:ios": "cross-env RNVC_DEVICE=ios babel-node scripts/test",
     "test:watch": "babel-node scripts/test --watch",
-    "prepublishOnly": "npm run test"
+    "prepublishOnly": "npm run test",
+    "lerna-publish": "lerna publish --conventional-commits"
   },
   "pre-commit": [
     "format"
