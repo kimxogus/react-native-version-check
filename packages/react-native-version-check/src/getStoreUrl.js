@@ -21,7 +21,7 @@ export const getAppStoreUrl = async (option: GetAppStoreUrlOption): Promise<stri
   }
 
   if (!option.country) {
-    option.country = await getVersionInfo().getCountryAsync();
+    option.country = await getVersionInfo().getCountry();
   }
 
   return `https://itunes.apple.com/${option.country}/app/${option.appName}/id${option.appID}`;
