@@ -15,7 +15,7 @@ export interface ReactNativeVersionCheck extends IVersionInfo {
   needUpdate: typeof needUpdate;
 }
 
-export default (VersionInfoObject): ReactNativeVersionCheck => {
+export default (VersionInfoObject: IVersionInfo): ReactNativeVersionCheck => {
   setVersionInfo(VersionInfoObject);
 
   return {
