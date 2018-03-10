@@ -7,14 +7,13 @@ const MARKETVERSION_STARTTOKEN = 'softwareVersion">';
 const MARKETVERSION_STARTTOKEN_LENGTH = MARKETVERSION_STARTTOKEN.length;
 const MARKETVERSION_ENDTOKEN = '<';
 
-
 export type PlayStoreGetVersionOption = {
   packageName?: string,
   fetchOptions?: any,
 };
 
 export interface IPlayStoreProvider extends IProvider {
-  getVersion: PlayStoreGetVersionOption => Promise<string>
+  getVersion: PlayStoreGetVersionOption => Promise<string>;
 }
 
 class PlayStoreProvider implements IProvider {
@@ -23,7 +22,10 @@ class PlayStoreProvider implements IProvider {
       option.packageName = getVersionInfo().getPackageName();
     }
 
-    return fetch(`https://play.google.com/store/apps/details?id=${option.packageName}`, option.fetchOptions)
+    return fetch(
+      `https://play.google.com/store/apps/details?id=${option.packageName}`,
+      option.fetchOptions
+    )
       .then(res => res.text())
       .then(text => {
         const indexStart = text.indexOf(MARKETVERSION_STARTTOKEN);

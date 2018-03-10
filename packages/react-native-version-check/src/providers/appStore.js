@@ -3,18 +3,18 @@ import { getVersionInfo } from '../versionInfo';
 
 import { type IProvider } from './types';
 
-export type PlayStoreGetVersionOption = {
+export type AppStoreGetVersionOption = {
   country?: string,
   packageName?: string,
   fetchOptions?: any,
 };
 
-export interface IPlayStoreProvider extends IProvider {
-  getVersion: PlayStoreGetVersionOption => Promise<string>
+export interface IAppStoreProvider extends IProvider {
+  getVersion: AppStoreGetVersionOption => Promise<string>;
 }
 
-class PlayStoreProvider implements IProvider {
-  async getVersion(option: PlayStoreGetVersionOption): Promise<string> {
+class AppStoreProvider implements IProvider {
+  async getVersion(option: AppStoreGetVersionOption): Promise<string> {
     if (!option.country) {
       option.country = await getVersionInfo().getCountry();
     }
@@ -22,16 +22,20 @@ class PlayStoreProvider implements IProvider {
       option.packageName = getVersionInfo().getPackageName();
     }
 
-    return fetch(`http://itunes.apple.com/${option.country}/lookup?bundleId=${option.packageName}`, option.fetchOptions)
+    return fetch(
+      `http://itunes.apple.com/${option.country}/lookup?bundleId=${
+        option.packageName
+      }`,
+      option.fetchOptions
+    )
       .then(res => res.json())
       .then(json => {
         if (json.resultCount) {
           return Promise.resolve(json.results[0].version);
-        } else {
-          return Promise.reject('No info about this app.');
         }
+        return Promise.reject('No info about this app.');
       });
   }
 }
 
-export default new PlayStoreProvider();
+export default new AppStoreProvider();

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-commonjs */
 module.exports = {
   Platform: {
     select(selection) {
@@ -10,6 +11,6 @@ module.exports = {
       packageName: 'com.reactnative.versioncheck',
       currentBuildNumber: 1,
       currentVersion: '0.0.1',
-    }
-  }
+    },
+  },
 };

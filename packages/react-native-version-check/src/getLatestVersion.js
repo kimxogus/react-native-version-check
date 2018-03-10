@@ -6,13 +6,13 @@ import isFunction from 'lodash.isfunction';
 import * as providers from './providers';
 import { IProvider } from './providers/types';
 
-let latestVersion = null;
+const latestVersion = null;
 
 export type GetLatestVersionOption = {
   forceUpdate?: boolean,
   provider?: string | Function | IProvider,
-  fetchOptions?: any
-}
+  fetchOptions?: any,
+};
 
 export const defaultOption: GetLatestVersionOption = {
   forceUpdate: false,
@@ -22,7 +22,9 @@ export const defaultOption: GetLatestVersionOption = {
   }),
 };
 
-export function getLatestVersion(option: ?GetLatestVersionOption = {}): Promise<string> {
+export function getLatestVersion(
+  option: ?GetLatestVersionOption = {}
+): Promise<string> {
   option = { ...defaultOption, ...option };
 
   if (!option.forceUpdate && !isNil(latestVersion)) {

@@ -15,25 +15,30 @@ function getVersionWithDepth(version: string, depth: number): string[] {
   if (version.indexOf(DELIMITER) === -1) {
     versionArray = [version];
   } else {
-    versionArray = version.split(DELIMITER).slice(0, Math.min(depth, version.length));
+    versionArray = version
+      .split(DELIMITER)
+      .slice(0, Math.min(depth, version.length));
   }
-  return [...versionArray, ...[0, 0, 0].slice(0, 3 - versionArray.length)]
-    .join(DELIMITER);
+  return [...versionArray, ...[0, 0, 0].slice(0, 3 - versionArray.length)].join(
+    DELIMITER
+  );
 }
 
 export type NeedUpdateOption = {
   currentVersion?: string,
   latestVersion?: string,
   depth?: number,
-}
+};
 
 export type NeedUpdateResult = {
   isNeeded: boolean,
   currentVersion: string,
   latestVersion: string,
-}
+};
 
-export async function needUpdate(option: ?NeedUpdateOption = {}): Promise<NeedUpdateResult> {
+export default async function needUpdate(
+  option: ?NeedUpdateOption = {}
+): Promise<NeedUpdateResult> {
   option = {
     currentVersion: null,
     latestVersion: null,
