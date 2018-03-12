@@ -1,0 +1,37 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:8
+
+aliases:
+  - &restore-cache
+      keys:
+        - dependency-cache-{{ checksum "package.json" }}
+
+version: 2
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore-cache: *restore-cache
+      - run:
+          name: "Install Dependencies"
+          command: |
+            yarn
+            lerna bootstrap
+      - save-cache:
+          key: dependency-cache-{{ checksum "project/Build.scala" }}-{{ checksum "build.sbt" }}-{{ checksum "project/plugins.sbt" }}
+          paths:
+            - ./node_modules/
+            - ./packages/react-native-version-check/node_modules/
+            - ./packages/react-native-version-check-expo/node_modules/
+      - run:
+          name: "Test"
+          command: |
+            yarn test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
