@@ -20,7 +20,7 @@ jobs:
             yarn
             ./node_modules/.bin/lerna bootstrap
       - save-cache:
-          key: dependency-cache-{{ checksum "project/Build.scala" }}-{{ checksum "build.sbt" }}-{{ checksum "project/plugins.sbt" }}
+          key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules/
             - ./packages/react-native-version-check/node_modules/
