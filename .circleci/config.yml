@@ -18,7 +18,7 @@ jobs:
           name: "Install Dependencies"
           command: |
             yarn
-            lerna bootstrap
+            ./node_modules/.bin/lerna bootstrap
       - save-cache:
           key: dependency-cache-{{ checksum "project/Build.scala" }}-{{ checksum "build.sbt" }}-{{ checksum "project/plugins.sbt" }}
           paths:
