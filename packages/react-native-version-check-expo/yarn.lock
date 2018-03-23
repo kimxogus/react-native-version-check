@@ -480,9 +480,9 @@ react-deep-force-update@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.1.1.tgz#bcd31478027b64b3339f108921ab520b4313dc2c"
 
-react-native-version-check@^3.0.0-rc.1:
-  version "3.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-3.0.0-rc.1.tgz#51626d4f3c6919b4e3820c8b99cdac702eeedb25"
+react-native-version-check@^3.0.0-rc.3:
+  version "3.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-3.0.0-rc.3.tgz#6a343f36536368044411951536079041c04d14fe"
   dependencies:
     babel-preset-react-native "^4.0.0"
     lodash.isfunction "^3.0.9"
