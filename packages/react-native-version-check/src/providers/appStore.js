@@ -7,6 +7,7 @@ export type AppStoreGetVersionOption = {
   country?: string,
   packageName?: string,
   fetchOptions?: any,
+  ignoreErrors?: boolean,
 };
 
 export interface IAppStoreProvider extends IProvider {
@@ -15,26 +16,34 @@ export interface IAppStoreProvider extends IProvider {
 
 class AppStoreProvider implements IProvider {
   async getVersion(option: AppStoreGetVersionOption): Promise<string> {
-    if (!option.country) {
-      option.country = await getVersionInfo().getCountry();
-    }
-    if (!option.packageName) {
-      option.packageName = getVersionInfo().getPackageName();
-    }
+    try {
+      if (!option.country) {
+        option.country = await getVersionInfo().getCountry();
+      }
+      if (!option.packageName) {
+        option.packageName = getVersionInfo().getPackageName();
+      }
 
-    return fetch(
-      `http://itunes.apple.com/${option.country}/lookup?bundleId=${
-        option.packageName
-      }`,
-      option.fetchOptions
-    )
-      .then(res => res.json())
-      .then(json => {
-        if (json.resultCount) {
-          return Promise.resolve(json.results[0].version);
-        }
-        return Promise.reject('No info about this app.');
-      });
+      return fetch(
+        `http://itunes.apple.com/${option.country}/lookup?bundleId=${
+          option.packageName
+        }`,
+        option.fetchOptions
+      )
+        .then(res => res.json())
+        .then(json => {
+          if (json.resultCount) {
+            return Promise.resolve(json.results[0].version);
+          }
+          return Promise.reject('No info about this app.');
+        });
+    } catch (e) {
+      if (option.ignoreErrors) {
+        console.warn(e); // eslint-disable-line no-console
+      } else {
+        throw e;
+      }
+    }
   }
 }
 

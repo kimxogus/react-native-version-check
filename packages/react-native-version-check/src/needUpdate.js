@@ -28,6 +28,7 @@ export type NeedUpdateOption = {
   currentVersion?: string,
   latestVersion?: string,
   depth?: number,
+  ignoreErrors?: boolean,
 };
 
 export type NeedUpdateResult = {
@@ -39,27 +40,36 @@ export type NeedUpdateResult = {
 export default async function needUpdate(
   option: ?NeedUpdateOption = {}
 ): Promise<NeedUpdateResult> {
-  option = {
-    currentVersion: null,
-    latestVersion: null,
-    depth: Infinity,
-    ...defaultOptionForLatestVersion,
-    ...option,
-  };
+  try {
+    option = {
+      currentVersion: null,
+      latestVersion: null,
+      depth: Infinity,
+      ignoreErrors: true,
+      ...defaultOptionForLatestVersion,
+      ...option,
+    };
 
-  if (isNil(option.currentVersion)) {
-    option.currentVersion = getVersionInfo().getCurrentVersion();
+    if (isNil(option.currentVersion)) {
+      option.currentVersion = getVersionInfo().getCurrentVersion();
+    }
+
+    if (isNil(option.latestVersion)) {
+      option.latestVersion = await getLatestVersion(option);
+    }
+
+    return checkIfUpdateNeeded(
+      option.currentVersion,
+      option.latestVersion,
+      option
+    );
+  } catch (e) {
+    if (option.ignoreErrors) {
+      console.warn(e); // eslint-disable-line no-console
+    } else {
+      throw e;
+    }
   }
-
-  if (isNil(option.latestVersion)) {
-    option.latestVersion = await getLatestVersion(option);
-  }
-
-  return checkIfUpdateNeeded(
-    option.currentVersion,
-    option.latestVersion,
-    option
-  );
 }
 
 function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
