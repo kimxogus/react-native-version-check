@@ -5,7 +5,7 @@ import VersionInfo from '../RNVersionInfo';
 
 setVersionInfo(VersionInfo);
 
-import { needUpdate } from '../needUpdate';
+import needUpdate from '../needUpdate';
 
 describe('needUpdate', () => {
   it('should work well', () => {
@@ -24,7 +24,7 @@ describe('needUpdate', () => {
       expect(res.isNeeded).toBe(false);
     });
   });
-  it('should ignore spare \'0\' tokens.', () => {
+  it("should ignore spare '0' tokens.", () => {
     needUpdate({
       currentVersion: '1.0',
       latestVersion: '1.0.0',
@@ -32,7 +32,7 @@ describe('needUpdate', () => {
       expect(res.isNeeded).toBe(false);
     });
   });
-  it('should ignore spare \'0\' tokens.', () => {
+  it("should ignore spare '0' tokens.", () => {
     needUpdate({
       currentVersion: '1.0.0',
       latestVersion: '1.0',
@@ -40,7 +40,7 @@ describe('needUpdate', () => {
       expect(res.isNeeded).toBe(false);
     });
   });
-  it('should not ignore spare none \'0\' tokens.', () => {
+  it("should not ignore spare none '0' tokens.", () => {
     needUpdate({
       currentVersion: '1.0',
       latestVersion: '1.0.1',
@@ -51,7 +51,7 @@ describe('needUpdate', () => {
   it('should return result that update not needed if latest version is lower', () => {
     needUpdate({
       currentVersion: '3.0.2',
-      latestVersion: '2.6.1'
+      latestVersion: '2.6.1',
     }).then(res => {
       expect(res.isNeeded).toBe(false);
     });

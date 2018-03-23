@@ -1,6 +1,6 @@
 {
   "name": "react-native-version-check",
-  "version": "3.0.0-rc.2",
+  "version": "3.0.0-rc.3",
   "description": "A version checker for react-native applications",
   "main": "index.js",
   "keywords": [
@@ -38,5 +38,11 @@
     "lodash.isnil": "^4.0.0",
     "lodash.pick": "^4.4.0",
     "semver": "^5.5.0"
+  },
+  "devDependencies": {
+    "react-native": "^0.48.0"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.48.0"
   }
 }

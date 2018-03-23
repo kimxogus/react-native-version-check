@@ -178,12 +178,14 @@ VersionCheck.needUpdate({
     --- | --- | ---
     appID | _string_ | App ID
     appName | _string_ | App Name
+    ignoreErrors | _boolean_ | true
 - <a name="getPlayStoreUrl" href="#getPlayStoreUrl">#</a>**`getPlayStoreUrl([option: Object])`** _(Promise<storeUrl: String>)_ - Returns url of Play Store of app.
   - Option
 
     Field | Type | Default
     --- | --- | ---
     packageName | _string_ | Package Name
+    ignoreErrors | _boolean_ | true
 
 - <a name="getCurrentVersion" href="#getCurrentVersion">#</a>**`getCurrentVersion()`** _(currentVersion: String)_ - Returns current app version.
 - <a name="getLatestVersion" href="#getLatestVersion">#</a>**`getLatestVersion([option: Object])`** _(Promise<latestVersion: String>)_ - Returns the latest app version parsed from url. Returns `null` when parsing error occurs.
@@ -194,6 +196,7 @@ VersionCheck.needUpdate({
     forceUpdate | _boolean_ | ```false```
     provider | _string_ or _function_ | provider name or function that returns promise or value of the latest version
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
+    ignoreErrors | _boolean_ | true
 
 - <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate([option: Object])`** _(Promise<result: Object>)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
   - Option
@@ -206,6 +209,7 @@ VersionCheck.needUpdate({
     forceUpdate | _boolean_ | ```false```
     provider | _string_ or _function_ | provider name or function that returns promise or value of the latest version
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
+    ignoreErrors | _boolean_ | true
 
   - Result
 

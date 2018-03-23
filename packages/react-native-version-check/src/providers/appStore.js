@@ -3,35 +3,48 @@ import { getVersionInfo } from '../versionInfo';
 
 import { type IProvider } from './types';
 
-export type PlayStoreGetVersionOption = {
+export type AppStoreGetVersionOption = {
   country?: string,
   packageName?: string,
   fetchOptions?: any,
+  ignoreErrors?: boolean,
 };
 
-export interface IPlayStoreProvider extends IProvider {
-  getVersion: PlayStoreGetVersionOption => Promise<string>
+export interface IAppStoreProvider extends IProvider {
+  getVersion: AppStoreGetVersionOption => Promise<string>;
 }
 
-class PlayStoreProvider implements IProvider {
-  async getVersion(option: PlayStoreGetVersionOption): Promise<string> {
-    if (!option.country) {
-      option.country = await getVersionInfo().getCountry();
-    }
-    if (!option.packageName) {
-      option.packageName = getVersionInfo().getPackageName();
-    }
+class AppStoreProvider implements IProvider {
+  async getVersion(option: AppStoreGetVersionOption): Promise<string> {
+    try {
+      if (!option.country) {
+        option.country = await getVersionInfo().getCountry();
+      }
+      if (!option.packageName) {
+        option.packageName = getVersionInfo().getPackageName();
+      }
 
-    return fetch(`http://itunes.apple.com/${option.country}/lookup?bundleId=${option.packageName}`, option.fetchOptions)
-      .then(res => res.json())
-      .then(json => {
-        if (json.resultCount) {
-          return Promise.resolve(json.results[0].version);
-        } else {
+      return fetch(
+        `http://itunes.apple.com/${option.country}/lookup?bundleId=${
+          option.packageName
+        }`,
+        option.fetchOptions
+      )
+        .then(res => res.json())
+        .then(json => {
+          if (json.resultCount) {
+            return Promise.resolve(json.results[0].version);
+          }
           return Promise.reject('No info about this app.');
-        }
-      });
+        });
+    } catch (e) {
+      if (option.ignoreErrors) {
+        console.warn(e); // eslint-disable-line no-console
+      } else {
+        throw e;
+      }
+    }
   }
 }
 
-export default new PlayStoreProvider();
+export default new AppStoreProvider();

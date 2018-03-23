@@ -13,14 +13,8 @@ if (process.env.RNVC_ENV === 'test') {
   const { manifest = {} } = Constants;
   const {
     version = null,
-    android: {
-      versionCode = null,
-      package: androidPackageName = null
-    } = {},
-    ios: {
-      bundleIdentifier = null,
-      buildNumber = null
-    } = {}
+    android: { versionCode = null, package: androidPackageName = null } = {},
+    ios: { bundleIdentifier = null, buildNumber = null } = {},
   } = manifest;
 
   RNVersionCheck = {
@@ -28,12 +22,12 @@ if (process.env.RNVC_ENV === 'test') {
     country: Util.getCurrentDeviceCountryAsync(),
     currentBuildNumber: Platform.select({
       android: versionCode,
-      ios: buildNumber
+      ios: buildNumber,
     }),
     packageName: Platform.select({
       android: androidPackageName,
-      ios: bundleIdentifier
-    })
+      ios: bundleIdentifier,
+    }),
   };
 }
 

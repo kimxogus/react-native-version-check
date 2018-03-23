@@ -1,12 +1,12 @@
 // @flow
 export interface IVersionInfo {
-  getCountry: () => Promise<string>,
-  getPackageName: () => string,
-  getCurrentBuildNumber: () => number,
-  getCurrentVersion: () => string,
+  getCountry: () => Promise<string>;
+  getPackageName: () => string;
+  getCurrentBuildNumber: () => number;
+  getCurrentVersion: () => string;
 }
 
-let VersionInfo: ?VersionInfo = null;
+let VersionInfo: ?IVersionInfo = null;
 
 export const setVersionInfo = (VI: IVersionInfo): void => (VersionInfo = VI);
 
