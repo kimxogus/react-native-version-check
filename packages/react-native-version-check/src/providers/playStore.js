@@ -16,6 +16,14 @@ export interface IPlayStoreProvider extends IProvider {
   getVersion: PlayStoreGetVersionOption => Promise<string>;
 }
 
+function error(text: string) {
+  return {
+    message:
+      "Parse Error. Your app's play store page doesn't seem to have div[itemprop=softwareVersion].",
+    text,
+  };
+}
+
 class PlayStoreProvider implements IProvider {
   getVersion(option: PlayStoreGetVersionOption): Promise<string> {
     if (!option.packageName) {
@@ -31,14 +39,14 @@ class PlayStoreProvider implements IProvider {
         const indexStart = text.indexOf(MARKETVERSION_STARTTOKEN);
         let latestVersion = null;
         if (indexStart === -1) {
-          return Promise.reject({ message: 'Parse error.', text });
+          return Promise.reject(error(text));
         }
 
         text = text.substr(indexStart + MARKETVERSION_STARTTOKEN_LENGTH);
 
         const indexEnd = text.indexOf(MARKETVERSION_ENDTOKEN);
         if (indexEnd === -1) {
-          return Promise.reject({ message: 'Parse error.', text });
+          return Promise.reject(error(text));
         }
 
         text = text.substr(0, indexEnd);
