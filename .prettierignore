@@ -1,4 +1,4 @@
 /flow-typed/
 /node_modules/
 package.json
-/coverage/
+/test-results/

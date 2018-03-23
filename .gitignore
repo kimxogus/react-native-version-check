@@ -8,7 +8,7 @@ npm-debug.log*
 .vscode
 lerna-debug.log
 flow-typed/npm
-coverage
+test-results
 
 *.pbxuser
 !default.pbxuser
