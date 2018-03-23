@@ -2,12 +2,12 @@
   "scripts": {
     "lint": "eslint .",
     "flow": "flow",
-    "pretest": "npm run lint",
-    "test": "npm run test:android && npm run test:ios",
+    "pretest": "yarn lint",
+    "test": "yarn test:android && yarn test:ios",
     "test:android": "cross-env RNVC_DEVICE=android babel-node scripts/test",
     "test:ios": "cross-env RNVC_DEVICE=ios babel-node scripts/test",
     "test:watch": "babel-node scripts/test --watch",
-    "prepublishOnly": "npm run test",
+    "prepublishOnly": "yarn test",
     "lerna-publish": "lerna publish --conventional-commits",
     "precommit": "lint-staged"
   },
