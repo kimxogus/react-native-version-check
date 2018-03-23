@@ -4,6 +4,7 @@
     "flow": "flow",
     "pretest": "yarn lint",
     "test": "yarn test:android && yarn test:ios",
+    "test:coverage": "jest --coverage --coverageDirectory coverage --collectCoverageOnlyFrom packages/**/*",
     "test:android": "cross-env RNVC_DEVICE=android babel-node scripts/test",
     "test:ios": "cross-env RNVC_DEVICE=ios babel-node scripts/test",
     "test:watch": "babel-node scripts/test --watch",

@@ -29,6 +29,13 @@ jobs:
           name: "Test"
           command: |
             yarn test
+      - run:
+          name: "Generate Coverage Report"
+          command: |
+            yarn test:coverage
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
 
 workflows:
   version: 2
