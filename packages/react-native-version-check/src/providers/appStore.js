@@ -25,7 +25,7 @@ class AppStoreProvider implements IProvider {
       }
 
       return fetch(
-        `http://itunes.apple.com/${option.country}/lookup?bundleId=${
+        `https://itunes.apple.com/${option.country}/lookup?bundleId=${
           option.packageName
         }`,
         option.fetchOptions
