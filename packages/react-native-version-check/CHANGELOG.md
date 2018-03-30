@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.0.0-rc.4"></a>
+# [3.0.0-rc.4](https://github.com/kimxogus/react-native-version-check/compare/react-native-version-check@3.0.0-rc.3...react-native-version-check@3.0.0-rc.4) (2018-03-30)
+
+
+### Bug Fixes
+
+* http => https ([fabe097](https://github.com/kimxogus/react-native-version-check/commit/fabe097))
+
+
+
+
 <a name="3.0.0-rc.3"></a>
 # [3.0.0-rc.3](https://github.com/kimxogus/react-native-version-check/compare/react-native-version-check@3.0.0-rc.2...react-native-version-check@3.0.0-rc.3) (2018-03-23)
 
