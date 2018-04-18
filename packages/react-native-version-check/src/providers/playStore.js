@@ -34,7 +34,9 @@ class PlayStoreProvider implements IProvider {
       }
 
       return fetch(
-        `https://play.google.com/store/apps/details?id=${option.packageName}`,
+        `https://play.google.com/store/apps/details?id=${
+          option.packageName
+        }&hl=en`,
         option.fetchOptions
       )
         .then(res => res.text())
