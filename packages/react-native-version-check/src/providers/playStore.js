@@ -5,7 +5,8 @@ import { type IProvider } from './types';
 
 const MARKETVERSION_STARTTOKEN = 'softwareVersion">';
 const MARKETVERSION_ENDTOKEN = '</span>';
-const MARKETVERSION_STARTTOKEN_NEW = 'Current Version</div><span class="htlgb"><div><span class="htlgb">';
+const MARKETVERSION_STARTTOKEN_NEW =
+  'Current Version</div><span class="htlgb"><div><span class="htlgb">';
 
 export type PlayStoreGetVersionOption = {
   packageName?: string,
@@ -20,7 +21,7 @@ export interface IPlayStoreProvider extends IProvider {
 function error(text: string) {
   return {
     message:
-      "Parse Error. Your app's play store page doesn't seem to have div[itemprop=softwareVersion].",
+      "Parse Error. Your app's play store page doesn't seem to have latest app version info.",
     text,
   };
 }
