@@ -19,7 +19,11 @@ if (process.env.RNVC_ENV === 'test') {
 
   RNVersionCheck = {
     currentVersion: version,
-    country: `${Constants.expoVersion < 26 ? Util.getCurrentDeviceCountryAsync : Localization.getCurrentDeviceCountryAsync()}`,
+    country: `${
+      Constants.expoVersion < 26
+        ? Util.getCurrentDeviceCountryAsync()
+        : Localization.getCurrentDeviceCountryAsync()
+    }`,
     currentBuildNumber: Platform.select({
       android: versionCode,
       ios: buildNumber,
