@@ -2,3 +2,4 @@
 **/node_modules/
 /flow-typed/
 /test-results/
+/packages/*/example/

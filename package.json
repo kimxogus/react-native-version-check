@@ -10,18 +10,7 @@
     "test:ios": "cross-env RNVC_DEVICE=ios babel-node scripts/test",
     "test:watch": "babel-node scripts/test --watch",
     "prepublishOnly": "yarn test",
-    "lerna-publish": "lerna publish --conventional-commits",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js}": [
-      "eslint --fix .",
-      "git add"
-    ],
-    "*.{json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "lerna-publish": "lerna publish --conventional-commits"
   },
   "engines": {
     "node": ">= 6.0.0"
