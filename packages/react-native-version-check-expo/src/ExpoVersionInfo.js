@@ -8,7 +8,7 @@ if (process.env.RNVC_ENV === 'test') {
   };
 } else {
   const { Platform } = require('react-native');
-  const { Constants, Util } = require('expo');
+  const { Constants, Localization, Util } = require('expo');
 
   const { manifest = {} } = Constants;
   const {
@@ -19,7 +19,7 @@ if (process.env.RNVC_ENV === 'test') {
 
   RNVersionCheck = {
     currentVersion: version,
-    country: Util.getCurrentDeviceCountryAsync(),
+    country: `${Constants.expoVersion < 26 ? Util.getCurrentDeviceCountryAsync : Localization.getCurrentDeviceCountryAsync()}`,
     currentBuildNumber: Platform.select({
       android: versionCode,
       ios: buildNumber,
