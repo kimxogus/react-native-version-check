@@ -29,7 +29,7 @@ export const getAppStoreUrl = async (
       option.country = await getVersionInfo().getCountry();
     }
 
-    const countryCode = !option.country ? `${option.country}/` : '';
+    const countryCode = option.country ? `${option.country}/` : '';
 
     return `https://itunes.apple.com/${countryCode}/app/${option.appName}/id${
       option.appID
