@@ -8,7 +8,11 @@ if (process.env.RNVC_ENV === 'test') {
   };
 } else {
   const { Platform } = require('react-native');
-  const { Constants, Localization, Util } = require('expo');
+  const {
+    Constants,
+    DangerZone: { Localization },
+    Util,
+  } = require('expo');
 
   const { manifest = {} } = Constants;
   const {
