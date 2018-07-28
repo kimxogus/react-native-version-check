@@ -5587,15 +5587,15 @@ react-native-vector-icons@4.5.0:
     prop-types "^15.5.10"
     yargs "^8.0.2"
 
-react-native-version-check-expo@3.0.0-alpha.2676e424:
-  version "3.0.0-alpha.2676e424"
-  resolved "https://registry.yarnpkg.com/react-native-version-check-expo/-/react-native-version-check-expo-3.0.0-alpha.2676e424.tgz#fca44f28dcea2d2dd0a2f5913e6dea14bce29c30"
+react-native-version-check-expo@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-version-check-expo/-/react-native-version-check-expo-3.0.0.tgz#4d80a47486e2794028f5abe6067aefda3b7e1e60"
   dependencies:
-    react-native-version-check "3.0.0-alpha.3ef87290"
+    react-native-version-check "3.0.0"
 
-react-native-version-check@3.0.0-alpha.3ef87290:
-  version "3.0.0-alpha.3ef87290"
-  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-3.0.0-alpha.3ef87290.tgz#2605b199fa3bdc15ab26155ca0b41b0735b47734"
+react-native-version-check@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-3.0.0.tgz#1f48781d5b016af160f823d59b840f2596d3fbbe"
   dependencies:
     babel-preset-react-native "^4.0.0"
     lodash.isfunction "^3.0.9"
