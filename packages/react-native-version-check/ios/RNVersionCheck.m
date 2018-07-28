@@ -40,7 +40,7 @@ RCT_EXPORT_MODULE()
 - (NSDictionary *)constantsToExport
 {
     return @{
-             @"country": self.country,
+             @"country": (self.country) ? self.country : @"",
              @"packageName": self.packageName,
              @"currentVersion": self.currentVersion,
              @"currentBuildNumber": self.currentBuildNumber,
