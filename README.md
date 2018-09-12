@@ -160,7 +160,7 @@ VersionCheck.needUpdate({
 });
 
 VersionCheck.needUpdate({
-  currentVersion: "1.1",
+  currentVersion: "2.1",
   latestVersion: "2.0",
 }).then(res => {
   console.log(res.isNeeded);  // false
