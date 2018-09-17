@@ -1326,9 +1326,9 @@ react-native-vector-icons@4.5.0:
     prop-types "^15.5.10"
     yargs "^8.0.2"
 
-react-native-version-check@^3.0.0-rc.5:
-  version "3.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-3.0.0-rc.5.tgz#28b2d1a166d30b189b70c0801703a2bdc7e98c89"
+react-native-version-check@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-version-check/-/react-native-version-check-3.0.0.tgz#1f48781d5b016af160f823d59b840f2596d3fbbe"
   dependencies:
     babel-preset-react-native "^4.0.0"
     lodash.isfunction "^3.0.9"

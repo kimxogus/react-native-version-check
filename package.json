@@ -1,4 +1,6 @@
 {
+  "name": "react-native-version-check",
+  "version": "3.0.0",
   "scripts": {
     "lint": "eslint .",
     "flow": "flow",
