@@ -31,7 +31,7 @@ export const getAppStoreUrl = async (
 
     const countryCode = option.country ? `${option.country}/` : '';
 
-    return `https://itunes.apple.com/${countryCode}/app/${option.appName}/id${
+    return `https://itunes.apple.com/${countryCode}app/${option.appName}/id${
       option.appID
     }`;
   } catch (e) {
