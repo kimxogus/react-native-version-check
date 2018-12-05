@@ -6,7 +6,7 @@ import { type IProvider } from './types';
 const MARKETVERSION_STARTTOKEN = 'softwareVersion">';
 const MARKETVERSION_ENDTOKEN = '</span>';
 const MARKETVERSION_STARTTOKEN_NEW =
-  'Current Version</div><span class="htlgb"><div><span class="htlgb">';
+  'Current Version</div><span class="htlgb"><div class="IQ1z0d"><span class="htlgb">';
 
 export type PlayStoreGetVersionOption = {
   packageName?: string,
