@@ -43,7 +43,7 @@ $ react-native run-android # or react-native run-ios
 
 ### Automatic Installation
 ```bash
-$ react-native link
+$ react-native link react-native-version-check
 ```
 
 ### Manual Installation
