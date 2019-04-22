@@ -14,6 +14,11 @@
     "app store version"
   ],
   "license": "MIT",
+  "author": "Taehyun Kim <kgyoo8232@gmail.com> (https://github.com/kimxogus)",
+  "contributors": [
+    "Taehyun Kim <kgyoo8232@gmail.com>",
+    "Thomas Schoffelen <thomas@includable.com>"
+  ],
   "homepage": "https://github.com/kimxogus/react-native-version-check",
   "repository": {
     "type": "git",

@@ -27,7 +27,9 @@
     "node": ">= 6.0.0"
   },
   "author": "Taehyun Kim <kgyoo8232@gmail.com> (https://github.com/kimxogus)",
-  "contributors": [],
+  "contributors": [
+    "Thomas Schoffelen <thomas@includable.com>"
+  ],
   "homepage": "https://github.com/kimxogus/react-native-version-check",
   "repository": {
     "type": "git",
