@@ -1,15 +1,17 @@
 {
   "scripts": {
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "flow": "flow",
-    "pretest": "yarn lint",
-    "test": "yarn test:android && yarn test:ios",
-    "test:ci": "JEST_JUNIT_OUTPUT=test-results/jest-android.xml yarn test:android --ci --testResultsProcessor='jest-junit' && JEST_JUNIT_OUTPUT=test-results/jest-ios.xml yarn test:ios --ci --testResultsProcessor='jest-junit'",
+    "pretest": "npm run lint",
+    "test": "npm run test:android && npm run test:ios",
+    "test:ci": "JEST_JUNIT_OUTPUT=test-results/jest-android.xml npm run test:android --ci --testResultsProcessor='jest-junit' && JEST_JUNIT_OUTPUT=test-results/jest-ios.xml npm run test:ios --ci --testResultsProcessor='jest-junit'",
     "test:coverage": "jest --coverage --coverageDirectory test-results/coverage --collectCoverageOnlyFrom packages/**/*",
     "test:android": "cross-env RNVC_DEVICE=android babel-node scripts/test",
     "test:ios": "cross-env RNVC_DEVICE=ios babel-node scripts/test",
     "test:watch": "babel-node scripts/test --watch",
-    "prepublishOnly": "yarn test",
+    "prepublishOnly": "npm run test",
+    "lerna-bootstrap": "lerna bootstrap --hoist",
     "lerna-publish": "lerna publish --conventional-commits",
     "precommit": "lint-staged"
   },
@@ -24,7 +26,7 @@
     ]
   },
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">= 8"
   },
   "author": "Taehyun Kim <kgyoo8232@gmail.com> (https://github.com/kimxogus)",
   "contributors": [
