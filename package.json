@@ -12,8 +12,12 @@
     "test:watch": "babel-node scripts/test --watch",
     "prepublishOnly": "npm run test",
     "lerna-bootstrap": "lerna bootstrap --hoist",
-    "lerna-publish": "lerna publish --conventional-commits",
-    "precommit": "lint-staged"
+    "lerna-publish": "lerna publish --conventional-commits"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{js}": [
@@ -41,29 +45,29 @@
     "url": "https://github.com/kimxogus/react-native-version-check/issues"
   },
   "devDependencies": {
-    "@types/semver": "^5.5.0",
+    "@types/semver": "^6.0.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.1.2",
     "babel-jest": "^22.0.4",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react-native": "^4.0.0",
+    "babel-preset-react-native": "^4.0.1",
     "babel-preset-stage-0": "^6.24.1",
     "cross-env": "^5.1.3",
     "eslint": "^4.14.0",
     "eslint-config-aroundus": "^1.1.0",
     "eslint-config-react-native": "^2.0.0",
-    "eslint-plugin-react-native": "^3.2.0",
+    "eslint-plugin-react-native": "^3.6.0",
     "flow-bin": "^0.66.0",
     "flow-typed": "^2.3.0",
-    "husky": "^0.14.3",
+    "husky": "^1.3.1",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^22.0.4",
     "jest-junit": "^3.6.0",
     "lerna": "^2.5.1",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^8.1.5",
     "pre-commit": "^1.2.2",
-    "prettier": "^1.11.1",
-    "promise": "^8.0.1"
+    "prettier": "^1.17.0",
+    "promise": "^8.0.3"
   },
   "jest": {
     "testEnvironment": "node",
