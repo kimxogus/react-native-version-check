@@ -17,22 +17,19 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
-            yarn
-            ./node_modules/.bin/lerna bootstrap
+            ./node_modules/.bin/lerna bootstrap --hoist
       - save-cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules/
-            - ./packages/react-native-version-check/node_modules/
-            - ./packages/react-native-version-check-expo/node_modules/
       - run:
           name: "Test"
           command: |
-            yarn test:ci
+            npm run test:ci
       - run:
           name: "Generate Coverage Report"
           command: |
-            yarn test:coverage
+            npm run test:coverage
       - store_artifacts:
           path: test-results/coverage
           prefix: coverage
