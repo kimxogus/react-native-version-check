@@ -3,3 +3,4 @@
 /flow-typed/
 /test-results/
 /packages/*/example/
+babel.config.js
