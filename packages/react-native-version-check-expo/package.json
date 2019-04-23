@@ -33,6 +33,7 @@
     "react-native-version-check": "^3.0.3"
   },
   "devDependencies": {
-    "expo": "^29.0.0"
+    "expo": "^29.0.0",
+    "react-native": "^0.48.0"
   }
 }

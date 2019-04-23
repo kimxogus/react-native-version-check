@@ -21,7 +21,7 @@
   "dependencies": {
     "expo": "^27.0.1",
     "react": "16.3.1",
-    "react-native": "~0.55.2",
+    "react-native": "^0.59.6",
     "react-native-version-check-expo": "3.0.0"
   }
 }
