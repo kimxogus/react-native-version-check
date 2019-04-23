@@ -5,7 +5,9 @@ defaults: &defaults
 aliases:
   - &restore-cache
       keys:
-        - dependency-cache-{{ checksum "package.json" }}
+        - dependency-cache-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+        - dependency-cache-{{ checksum "package.json" }}-
+        - dependency-cache-
 
 version: 2
 jobs:
@@ -20,7 +22,7 @@ jobs:
             npm install
             ./node_modules/.bin/lerna bootstrap --hoist
       - save-cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules/
       - run:
