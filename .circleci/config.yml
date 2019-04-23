@@ -17,6 +17,7 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
+            npm install
             ./node_modules/.bin/lerna bootstrap --hoist
       - save-cache:
           key: dependency-cache-{{ checksum "package.json" }}
