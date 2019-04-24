@@ -5,8 +5,8 @@ import { getVersionInfo } from './versionInfo';
 
 export type GetAppStoreUrlOption = {
   country?: string,
-  appName: string,
   appID: string,
+  fetchOptions?: any,
   ignoreErrors?: boolean,
 };
 
@@ -18,11 +18,11 @@ export type GetPlayStoreUrlOption = {
 export type GetStoreUrlOption = GetAppStoreUrlOption & GetPlayStoreUrlOption;
 
 export const getAppStoreUrl = async (
-  option: GetAppStoreUrlOption = {}
+  option: GetAppStoreUrlOption
 ): Promise<string> => {
   try {
-    if (isNil(option.appID) || isNil(option.appName)) {
-      throw new Error('At least one of appID and appName is empty.');
+    if (isNil(option.appID)) {
+      throw new Error('appID is empty.');
     }
 
     if (!option.country) {
@@ -31,9 +31,19 @@ export const getAppStoreUrl = async (
 
     const countryCode = option.country ? `${option.country}/` : '';
 
-    return `https://itunes.apple.com/${countryCode}app/${option.appName}/id${
-      option.appID
-    }`;
+    return fetch(
+      `https://itunes.apple.com/${countryCode}lookup?id=${option.appID}`,
+      option.fetchOptions
+    )
+      .then(res => res.json())
+      .then(json => {
+        if (json.resultCount) {
+          return `https://itunes.apple.com/${countryCode}app/${
+            json.results[0].trackName
+          }/id${option.appID}`;
+        }
+        return Promise.reject('No info about this app.');
+      });
   } catch (e) {
     if (option.ignoreErrors) {
       console.warn(e); // eslint-disable-line no-console
