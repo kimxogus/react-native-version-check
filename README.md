@@ -180,7 +180,7 @@ VersionCheck.needUpdate({
     Field | Type | Default
     --- | --- | ---
     appID | _string_ | App ID
-    appName | _string_ | App Name
+    fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
     ignoreErrors | _boolean_ | true
 - <a name="getPlayStoreUrl" href="#getPlayStoreUrl">#</a>**`getPlayStoreUrl([option: Object])`** _(Promise<storeUrl: String>)_ - Returns url of Play Store of app.
   - Option
