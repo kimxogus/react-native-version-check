@@ -5,7 +5,6 @@ import { getVersionInfo } from './versionInfo';
 
 export type GetAppStoreUrlOption = {
   country?: string,
-  appName: string,
   appID: string,
   ignoreErrors?: boolean,
 };
@@ -18,11 +17,11 @@ export type GetPlayStoreUrlOption = {
 export type GetStoreUrlOption = GetAppStoreUrlOption & GetPlayStoreUrlOption;
 
 export const getAppStoreUrl = async (
-  option: GetAppStoreUrlOption = {}
+  option: GetAppStoreUrlOption
 ): Promise<string> => {
   try {
-    if (isNil(option.appID) || isNil(option.appName)) {
-      throw new Error('At least one of appID and appName is empty.');
+    if (isNil(option.appID)) {
+      throw new Error('appID is empty.');
     }
 
     if (!option.country) {
@@ -31,9 +30,7 @@ export const getAppStoreUrl = async (
 
     const countryCode = option.country ? `${option.country}/` : '';
 
-    return `https://itunes.apple.com/${countryCode}app/${option.appName}/id${
-      option.appID
-    }`;
+    return `https://itunes.apple.com/${countryCode}app/id${option.appID}`;
   } catch (e) {
     if (option.ignoreErrors) {
       console.warn(e); // eslint-disable-line no-console
