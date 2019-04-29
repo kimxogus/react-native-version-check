@@ -5,7 +5,9 @@ defaults: &defaults
 aliases:
   - &restore-cache
       keys:
-        - dependency-cache-{{ checksum "package.json" }}
+        - dependency-cache-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+        - dependency-cache-{{ checksum "package.json" }}-
+        - dependency-cache-
 
 version: 2
 jobs:
@@ -17,22 +19,20 @@ jobs:
       - run:
           name: "Install Dependencies"
           command: |
-            yarn
-            ./node_modules/.bin/lerna bootstrap
+            npm install
+            ./node_modules/.bin/lerna bootstrap --hoist
       - save-cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cache-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules/
-            - ./packages/react-native-version-check/node_modules/
-            - ./packages/react-native-version-check-expo/node_modules/
       - run:
           name: "Test"
           command: |
-            yarn test:ci
+            npm run test:ci
       - run:
           name: "Generate Coverage Report"
           command: |
-            yarn test:coverage
+            npm run test:coverage
       - store_artifacts:
           path: test-results/coverage
           prefix: coverage

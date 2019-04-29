@@ -38,11 +38,10 @@
     "README.md"
   ],
   "dependencies": {
-    "babel-preset-react-native": "^4.0.0",
     "lodash.isfunction": "^3.0.9",
     "lodash.isnil": "^4.0.0",
     "lodash.pick": "^4.4.0",
-    "semver": "^5.5.0"
+    "semver": "^6.0.0"
   },
   "devDependencies": {
     "react-native": "^0.48.0"
