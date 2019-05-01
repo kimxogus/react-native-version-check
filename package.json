@@ -73,7 +73,7 @@
   "jest": {
     "testEnvironment": "node",
     "testPathIgnorePatterns": [
-      "[/\\\\](build|docs|node_modules|scripts|example)[/\\\\]"
+      "[/\\\\](build|docs|node_modules|scripts|examples)[/\\\\]"
     ],
     "automock": false,
     "setupFiles": [
