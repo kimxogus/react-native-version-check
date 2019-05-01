@@ -21,11 +21,17 @@ export default class example extends Component {
     currentVersion: null,
     latestVersion: null,
     isNeeded: false,
+    storeUrl: '',
   };
   componentDidMount() {
     VersionCheck.needUpdate({
       latestVersion: '1.0.0',
     }).then(res => this.setState(res));
+
+    VersionCheck.getStoreUrl().then(res => {
+      //App Store ID for iBooks.
+      this.setState({ storeUrl: res });
+    });
   }
   render() {
     return (
@@ -39,6 +45,15 @@ export default class example extends Component {
         <Text style={styles.text}>
           Is update needed?: {String(this.state.isNeeded)}
         </Text>
+        <View>
+          <Text style={styles.text}>Store Url:</Text>
+          <Text
+            style={[styles.text, styles.linkText]}
+            onPress={() => Linking.openURL(this.state.storeUrl)}
+          >
+            {String(this.state.storeUrl)}
+          </Text>
+        </View>
       </View>
     );
   }
