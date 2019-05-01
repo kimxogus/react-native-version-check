@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "react-native-expo-example",
+    "name": "rnvc-expo-example",
     "slug": "expo",
     "privacy": "public",
     "sdkVersion": "32.0.0",
