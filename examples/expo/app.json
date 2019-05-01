@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "rnvc-expo-example",
+    "slug": "expo",
+    "privacy": "public",
+    "sdkVersion": "32.0.0",
+    "platforms": ["ios", "android"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.rnvc.example"
+    },
+    "android": {
+      "package": "com.rnvc.example"
+    }
+  }
+}
