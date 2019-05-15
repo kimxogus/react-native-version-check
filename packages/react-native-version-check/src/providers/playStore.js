@@ -3,11 +3,6 @@ import { getVersionInfo } from '../versionInfo';
 
 import { type IProvider } from './types';
 
-const MARKETVERSION_STARTTOKEN = 'softwareVersion">';
-const MARKETVERSION_ENDTOKEN = '</span>';
-const MARKETVERSION_STARTTOKEN_NEW =
-  'Current Version</div><span class="htlgb"><div class="IQ1z0d"><span class="htlgb">';
-
 export type PlayStoreGetVersionOption = {
   packageName?: string,
   fetchOptions?: any,
@@ -41,28 +36,14 @@ class PlayStoreProvider implements IProvider {
       )
         .then(res => res.text())
         .then(text => {
-          let indexStart = text.indexOf(MARKETVERSION_STARTTOKEN);
-          let startTokenLength = MARKETVERSION_STARTTOKEN.length;
-          let latestVersion = null;
-          if (indexStart === -1) {
-            indexStart = text.indexOf(MARKETVERSION_STARTTOKEN_NEW);
-            startTokenLength = MARKETVERSION_STARTTOKEN_NEW.length;
-            if (indexStart === -1) {
-              return Promise.reject(error(text));
-            }
+          match = text.match(/Current Version.+>([\d.]+)<\/span>/);
+          if(match){
+            latestVersion = match[1].trim();
+            return Promise.resolve(latestVersion);
           }
-
-          text = text.substr(indexStart + startTokenLength);
-
-          const indexEnd = text.indexOf(MARKETVERSION_ENDTOKEN);
-          if (indexEnd === -1) {
+          else{
             return Promise.reject(error(text));
           }
-
-          text = text.substr(0, indexEnd);
-
-          latestVersion = text.trim();
-          return Promise.resolve(latestVersion);
         });
     } catch (e) {
       if (option.ignoreErrors) {
