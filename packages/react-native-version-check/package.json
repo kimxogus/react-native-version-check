@@ -27,16 +27,6 @@
   "bugs": {
     "url": "https://github.com/kimxogus/react-native-version-check/issues"
   },
-  "files": [
-    "android",
-    "ios",
-    "src",
-    "builder.js",
-    "index.js",
-    "LICENSE",
-    "react-native-version-check.podspec",
-    "README.md"
-  ],
   "dependencies": {
     "lodash.isfunction": "^3.0.9",
     "lodash.isnil": "^4.0.0",
