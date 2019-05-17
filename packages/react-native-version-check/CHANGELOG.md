@@ -7,6 +7,10 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package react-native-version-check
 
+## [3.2.1](https://github.com/kimxogus/react-native-version-check/compare/v3.2.0...v3.2.1) (2019-05-17)
+
+**Note:** Version bump only for package react-native-version-check
+
 <a name="3.1.0"></a>
 
 # [3.1.0](https://github.com/kimxogus/react-native-version-check/compare/react-native-version-check@3.0.4...react-native-version-check@3.1.0) (2019-04-29)
