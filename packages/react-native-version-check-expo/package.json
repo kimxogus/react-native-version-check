@@ -20,12 +20,6 @@
     "Taehyun Kim <kgyoo8232@gmail.com>",
     "Thomas Schoffelen <thomas@includable.com>"
   ],
-  "files": [
-    "src",
-    "index.js",
-    "LICENSE",
-    "README.md"
-  ],
   "peerDependencies": {
     "expo": ">=20"
   },
