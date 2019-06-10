@@ -1,3 +1,7 @@
+import { Platform } from 'react-native';
+import Constants from 'expo-constants';
+import * as Localization from 'expo-localization';
+
 let RNVersionCheck;
 if (process.env.RNVC_ENV === 'test') {
   RNVersionCheck = {
@@ -7,13 +11,6 @@ if (process.env.RNVC_ENV === 'test') {
     currentVersion: '0.0.1',
   };
 } else {
-  const { Platform } = require('react-native');
-  const {
-    Constants,
-    DangerZone: { Localization },
-    Util,
-  } = require('expo');
-
   const { manifest = {} } = Constants;
   const {
     version = null,
@@ -21,9 +18,7 @@ if (process.env.RNVC_ENV === 'test') {
     ios: { bundleIdentifier = null, buildNumber = null } = {},
   } = manifest;
   let country;
-  if (Constants.expoVersion < 26) {
-    country = Util.getCurrentDeviceCountryAsync();
-  } else if (Constants.expoVersion < 31) {
+  if (Constants.expoVersion < 31) {
     country = Localization.getCurrentDeviceCountryAsync();
   } else {
     country = Localization.country;
