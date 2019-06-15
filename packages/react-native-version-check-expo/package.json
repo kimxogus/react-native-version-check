@@ -21,13 +21,15 @@
     "Thomas Schoffelen <thomas@includable.com>"
   ],
   "peerDependencies": {
-    "expo": ">=20"
+    "expo": ">=26"
   },
   "dependencies": {
+    "expo-constants": "5.0.1",
+    "expo-localization": "5.0.1",
     "react-native-version-check": "^3.2.1"
   },
   "devDependencies": {
-    "expo": "^32.0.6",
-    "react-native": "^0.59.8"
+    "expo": "^33.0.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz"
   }
 }
