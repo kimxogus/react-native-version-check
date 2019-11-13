@@ -23,30 +23,28 @@ function error(text: string) {
 
 class PlayStoreProvider implements IProvider {
   getVersion(option: PlayStoreGetVersionOption): Promise<string> {
+    const opt = option;
     try {
-      if (!option.packageName) {
-        option.packageName = getVersionInfo().getPackageName();
+      if (!opt.packageName) {
+        opt.packageName = getVersionInfo().getPackageName();
       }
 
       return fetch(
-        `https://play.google.com/store/apps/details?id=${
-          option.packageName
-        }&hl=en`,
-        option.fetchOptions
+        `https://play.google.com/store/apps/details?id=${opt.packageName}&hl=en`,
+        opt.fetchOptions
       )
         .then(res => res.text())
         .then(text => {
-          match = text.match(/Current Version.+>([\d.]+)<\/span>/);
-          if(match){
-            latestVersion = match[1].trim();
+          const match = text.match(/Current Version.+>([\d.]+)<\/span>/);
+          if (match) {
+            const latestVersion = match[1].trim();
             return Promise.resolve(latestVersion);
           }
-          else{
-            return Promise.reject(error(text));
-          }
+
+          return Promise.reject(error(text));
         });
     } catch (e) {
-      if (option.ignoreErrors) {
+      if (opt.ignoreErrors) {
         console.warn(e); // eslint-disable-line no-console
       } else {
         throw e;

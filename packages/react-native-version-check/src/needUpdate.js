@@ -10,7 +10,7 @@ import {
 
 const DELIMITER = '.';
 
-function getVersionWithDepth(version: string, depth: number): string[] {
+function getVersionWithDepth(version: string, depth: number): string {
   let versionArray = null;
   if (version.indexOf(DELIMITER) === -1) {
     versionArray = [version];
@@ -40,31 +40,28 @@ export type NeedUpdateResult = {
 export default async function needUpdate(
   option: ?NeedUpdateOption = {}
 ): Promise<NeedUpdateResult> {
+  let opt = option || {};
   try {
-    option = {
+    opt = {
       currentVersion: null,
       latestVersion: null,
       depth: Infinity,
       ignoreErrors: true,
       ...defaultOptionForLatestVersion,
-      ...option,
+      ...opt,
     };
 
-    if (isNil(option.currentVersion)) {
-      option.currentVersion = getVersionInfo().getCurrentVersion();
+    if (isNil(opt.currentVersion)) {
+      opt.currentVersion = getVersionInfo().getCurrentVersion();
     }
 
-    if (isNil(option.latestVersion)) {
-      option.latestVersion = await getLatestVersion(option);
+    if (isNil(opt.latestVersion)) {
+      opt.latestVersion = await getLatestVersion(opt);
     }
 
-    return checkIfUpdateNeeded(
-      option.currentVersion,
-      option.latestVersion,
-      option
-    );
+    return checkIfUpdateNeeded(opt.currentVersion, opt.latestVersion, opt);
   } catch (e) {
-    if (option.ignoreErrors) {
+    if (opt.ignoreErrors) {
       console.warn(e); // eslint-disable-line no-console
     } else {
       throw e;
