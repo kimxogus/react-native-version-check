@@ -17,30 +17,29 @@ RCT_EXPORT_MODULE()
 
 - (NSString*) country
 {
-    NSString *country = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
-    return country;
+    return [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode] ?: @"";
 }
 
 - (NSString*) packageName
 {
-    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"];
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleIdentifier"] ?: @"";
 }
 
 - (NSString*) currentVersion
 {
-    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] ?: @"0";
 }
 
 - (NSString*) currentBuildNumber
 {
-    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+    return [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"] ?: @"0";
 }
 
 
 - (NSDictionary *)constantsToExport
 {
     return @{
-             @"country": (self.country) ? self.country : @"",
+             @"country": self.country,
              @"packageName": self.packageName,
              @"currentVersion": self.currentVersion,
              @"currentBuildNumber": self.currentBuildNumber,
