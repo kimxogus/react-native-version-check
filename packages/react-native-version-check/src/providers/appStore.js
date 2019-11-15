@@ -16,20 +16,21 @@ export interface IAppStoreProvider extends IProvider {
 
 class AppStoreProvider implements IProvider {
   async getVersion(option: AppStoreGetVersionOption): Promise<string> {
+    const opt = option;
     try {
-      if (!option.country) {
-        option.country = await getVersionInfo().getCountry();
+      if (!opt.country) {
+        opt.country = await getVersionInfo().getCountry();
       }
-      if (!option.packageName) {
-        option.packageName = getVersionInfo().getPackageName();
+      if (!opt.packageName) {
+        opt.packageName = getVersionInfo().getPackageName();
       }
-      const countryCode = option.country ? `${option.country}/` : '';
+      const countryCode = opt.country ? `${opt.country}/` : '';
 
       return fetch(
         `https://itunes.apple.com/${countryCode}lookup?bundleId=${
-          option.packageName
+          opt.packageName
         }`,
-        option.fetchOptions
+        opt.fetchOptions
       )
         .then(res => res.json())
         .then(json => {
@@ -39,7 +40,7 @@ class AppStoreProvider implements IProvider {
           return Promise.reject('No info about this app.');
         });
     } catch (e) {
-      if (option.ignoreErrors) {
+      if (opt.ignoreErrors) {
         console.warn(e); // eslint-disable-line no-console
       } else {
         throw e;

@@ -19,20 +19,21 @@ export type GetStoreUrlOption = GetAppStoreUrlOption & GetPlayStoreUrlOption;
 export const getAppStoreUrl = async (
   option: GetAppStoreUrlOption
 ): Promise<string> => {
+  const opt = option || {};
   try {
-    if (isNil(option.appID)) {
+    if (isNil(opt.appID)) {
       throw new Error('appID is empty.');
     }
 
-    if (!option.country) {
-      option.country = await getVersionInfo().getCountry();
+    if (!opt.country) {
+      opt.country = await getVersionInfo().getCountry();
     }
 
-    const countryCode = option.country ? `${option.country}/` : '';
+    const countryCode = opt.country ? `${opt.country}/` : '';
 
-    return `https://itunes.apple.com/${countryCode}app/id${option.appID}`;
+    return `https://itunes.apple.com/${countryCode}app/id${opt.appID}`;
   } catch (e) {
-    if (option.ignoreErrors) {
+    if (opt.ignoreErrors) {
       console.warn(e); // eslint-disable-line no-console
     } else {
       throw e;
@@ -43,15 +44,14 @@ export const getAppStoreUrl = async (
 export const getPlayStoreUrl = async (
   option: ?GetPlayStoreUrlOption = {}
 ): Promise<string> => {
+  const opt = option || {};
   try {
-    if (!option.packageName) {
-      option.packageName = await getVersionInfo().getPackageName();
+    if (!opt.packageName) {
+      opt.packageName = await getVersionInfo().getPackageName();
     }
-    return `https://play.google.com/store/apps/details?id=${
-      option.packageName
-    }`;
+    return `https://play.google.com/store/apps/details?id=${opt.packageName}`;
   } catch (e) {
-    if (option.ignoreErrors) {
+    if (opt.ignoreErrors) {
       console.warn(e); // eslint-disable-line no-console
     } else {
       throw e;
