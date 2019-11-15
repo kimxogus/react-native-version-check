@@ -19,7 +19,7 @@ export type GetStoreUrlOption = GetAppStoreUrlOption & GetPlayStoreUrlOption;
 export const getAppStoreUrl = async (
   option: GetAppStoreUrlOption
 ): Promise<string> => {
-  const opt = option;
+  const opt = option || {};
   try {
     if (isNil(opt.appID)) {
       throw new Error('appID is empty.');
