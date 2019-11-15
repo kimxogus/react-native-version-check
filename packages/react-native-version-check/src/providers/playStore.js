@@ -23,7 +23,7 @@ function error(text: string) {
 
 class PlayStoreProvider implements IProvider {
   getVersion(option: PlayStoreGetVersionOption): Promise<string> {
-    const opt = option;
+    const opt = option || {};
     try {
       if (!opt.packageName) {
         opt.packageName = getVersionInfo().getPackageName();
