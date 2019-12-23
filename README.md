@@ -14,7 +14,7 @@ Parsing code is referenced from [here](http://itmir.tistory.com/524)
 I have almost zero experience in ios development, and I am no longer working on mobile app development(doing backend and devops works mainly and some web frontend). It makes me hard to maintain this library actively. Hope to have someone to help maintaining react-native-version-check!
 
 ### expo
-react-native-version-check supports [expo](https://expo.io)! with [react-native-version-check-expo](https://npmjs.org/packages/react-native-version-check-expo)
+react-native-version-check supports [expo](https://expo.io)! with [react-native-version-check-expo](https://www.npmjs.com/package/react-native-version-check-expo)
 - usage
 ```js
 // import
