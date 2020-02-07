@@ -4,6 +4,9 @@ const options = {
   packageName: 'com.myapp',
 };
 
+const storeUrl =
+  'https://play.google.com/store/apps/details?id=com.myapp&hl=en';
+
 const mockSuccesfulResponse = returnBody => {
   global.fetch = jest.fn().mockImplementationOnce(
     () =>
@@ -33,7 +36,7 @@ describe('PlayStoreProvider get version from older Play Store layouts', () => {
     );
 
     await PlayStoreProvider.getVersion(options).then(r =>
-      expect(r).toBe('0.10.0')
+      expect(r).toEqual({ version: '0.10.0', storeUrl })
     );
   });
 
@@ -54,7 +57,7 @@ describe('PlayStoreProvider get version from older Play Store layouts', () => {
     );
 
     await PlayStoreProvider.getVersion(options).then(r =>
-      expect(r).toBe('0.10.0')
+      expect(r).toEqual({ version: '0.10.0', storeUrl })
     );
   });
 });
@@ -79,7 +82,7 @@ describe('PlayStoreProvider get version current (since ~Dec, 2018) Play Store', 
     );
 
     await PlayStoreProvider.getVersion(options).then(r =>
-      expect(r).toBe('0.10.0')
+      expect(r).toEqual({ version: '0.10.0', storeUrl })
     );
   });
 
@@ -102,7 +105,7 @@ describe('PlayStoreProvider get version current (since ~Dec, 2018) Play Store', 
     );
 
     await PlayStoreProvider.getVersion(options).then(r =>
-      expect(r).toBe('234')
+      expect(r).toEqual({ version: '234', storeUrl })
     );
   });
 });

@@ -31,7 +31,8 @@ export const getAppStoreUrl = async (
 
     const countryCode = opt.country ? `${opt.country}/` : '';
 
-    return `https://itunes.apple.com/${countryCode}app/id${opt.appID}`;
+    // Opens directly App Store
+    return `itms-apps://apps.apple.com/${countryCode}app/id${opt.appID}`;
   } catch (e) {
     if (opt.ignoreErrors) {
       console.warn(e); // eslint-disable-line no-console

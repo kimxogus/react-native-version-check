@@ -3,6 +3,8 @@ import semver from 'semver';
 import isNil from 'lodash.isnil';
 
 import { getVersionInfo } from './versionInfo';
+import * as providers from './providers';
+import { IVersionAndStoreUrl } from './providers/types';
 import {
   getLatestVersion,
   defaultOption as defaultOptionForLatestVersion,
@@ -33,35 +35,60 @@ export type NeedUpdateOption = {
 
 export type NeedUpdateResult = {
   isNeeded: boolean,
+  storeUrl: string,
   currentVersion: string,
   latestVersion: string,
 };
 
 export default async function needUpdate(
-  option: ?NeedUpdateOption = {}
+  needUpdateOption: ?NeedUpdateOption = {}
 ): Promise<NeedUpdateResult> {
-  let opt = option || {};
+  const option = {
+    currentVersion: null,
+    latestVersion: null,
+    depth: Infinity,
+    ignoreErrors: true,
+    ...defaultOptionForLatestVersion,
+    ...needUpdateOption,
+  };
+
   try {
-    opt = {
-      currentVersion: null,
-      latestVersion: null,
-      depth: Infinity,
-      ignoreErrors: true,
-      ...defaultOptionForLatestVersion,
-      ...opt,
-    };
-
-    if (isNil(opt.currentVersion)) {
-      opt.currentVersion = getVersionInfo().getCurrentVersion();
+    if (isNil(option.currentVersion)) {
+      option.currentVersion = getVersionInfo().getCurrentVersion();
     }
 
-    if (isNil(opt.latestVersion)) {
-      opt.latestVersion = await getLatestVersion(opt);
+    let latestVersion;
+    let providerStoreUrl = '';
+
+    if (option.provider.getVersion) {
+      const {
+        version,
+        storeUrl,
+      }: IVersionAndStoreUrl = await option.provider.getVersion(option);
+      latestVersion = version;
+      providerStoreUrl = storeUrl;
     }
 
-    return checkIfUpdateNeeded(opt.currentVersion, opt.latestVersion, opt);
+    if (providers[option.provider]) {
+      const { version, storeUrl }: IVersionAndStoreUrl = await providers[
+        option.provider
+      ].getVersion(option);
+      latestVersion = version;
+      providerStoreUrl = storeUrl;
+    }
+
+    if (isNil(option.latestVersion)) {
+      option.latestVersion = latestVersion || (await getLatestVersion(option));
+    }
+
+    return checkIfUpdateNeeded(
+      option.currentVersion,
+      option.latestVersion,
+      option,
+      providerStoreUrl
+    );
   } catch (e) {
-    if (opt.ignoreErrors) {
+    if (option.ignoreErrors) {
       console.warn(e); // eslint-disable-line no-console
     } else {
       throw e;
@@ -69,7 +96,12 @@ export default async function needUpdate(
   }
 }
 
-function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
+function checkIfUpdateNeeded(
+  currentVersion,
+  latestVersion,
+  option,
+  providerStoreUrl
+) {
   const currentVersionWithDepth = getVersionWithDepth(
     currentVersion,
     option.depth
@@ -79,20 +111,12 @@ function checkIfUpdateNeeded(currentVersion, latestVersion, option) {
     option.depth
   );
 
-  const needed = {
-    isNeeded: true,
-    currentVersion,
-    latestVersion,
-  };
-  const notNeeded = {
-    isNeeded: false,
+  const response = {
+    isNeeded: semver.gt(latestVersionWithDepth, currentVersionWithDepth),
+    storeUrl: providerStoreUrl,
     currentVersion,
     latestVersion,
   };
 
-  return Promise.resolve(
-    semver.gt(latestVersionWithDepth, currentVersionWithDepth)
-      ? needed
-      : notNeeded
-  );
+  return Promise.resolve(response);
 }
