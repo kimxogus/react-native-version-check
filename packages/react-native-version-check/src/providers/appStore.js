@@ -27,9 +27,7 @@ class AppStoreProvider implements IProvider {
       const countryCode = opt.country ? `${opt.country}/` : '';
 
       return fetch(
-        `https://itunes.apple.com/${countryCode}lookup?bundleId=${
-          opt.packageName
-        }`,
+        `https://itunes.apple.com/${countryCode}lookup?bundleId=${opt.packageName}`,
         opt.fetchOptions
       )
         .then(res => res.json())
