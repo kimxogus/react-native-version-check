@@ -4,7 +4,7 @@ import isNil from 'lodash.isnil';
 import isFunction from 'lodash.isfunction';
 
 import * as providers from './providers';
-import { IProvider } from './providers/types';
+import { IProvider, IVersionAndStoreUrl } from './providers/types';
 
 const latestVersion = null;
 
@@ -35,11 +35,17 @@ export async function getLatestVersion(
     }
 
     if (option.provider.getVersion) {
-      return Promise.resolve(option.provider.getVersion(option));
+      const { version }: IVersionAndStoreUrl = await option.provider.getVersion(
+        option
+      );
+      return Promise.resolve(version);
     }
 
     if (providers[option.provider]) {
-      return Promise.resolve(providers[option.provider].getVersion(option));
+      const { version }: IVersionAndStoreUrl = await providers[
+        option.provider
+      ].getVersion(option);
+      return Promise.resolve(version);
     }
 
     if (isFunction(option.provider)) {

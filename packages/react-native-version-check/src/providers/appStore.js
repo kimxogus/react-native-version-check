@@ -1,7 +1,7 @@
 // @flow
 import { getVersionInfo } from '../versionInfo';
 
-import { type IProvider } from './types';
+import { IProvider, IVersionAndStoreUrl } from './types';
 
 export type AppStoreGetVersionOption = {
   country?: string,
@@ -11,11 +11,13 @@ export type AppStoreGetVersionOption = {
 };
 
 export interface IAppStoreProvider extends IProvider {
-  getVersion: AppStoreGetVersionOption => Promise<string>;
+  getVersion: AppStoreGetVersionOption => Promise<IVersionAndStoreUrl>;
 }
 
 class AppStoreProvider implements IProvider {
-  async getVersion(option: AppStoreGetVersionOption): Promise<string> {
+  async getVersion(
+    option: AppStoreGetVersionOption
+  ): Promise<IVersionAndStoreUrl> {
     const opt = option;
     try {
       if (!opt.country) {
@@ -27,15 +29,19 @@ class AppStoreProvider implements IProvider {
       const countryCode = opt.country ? `${opt.country}/` : '';
 
       return fetch(
-        `https://itunes.apple.com/${countryCode}lookup?bundleId=${
-          opt.packageName
-        }`,
+        `https://itunes.apple.com/${countryCode}lookup?bundleId=${opt.packageName}`,
         opt.fetchOptions
       )
         .then(res => res.json())
         .then(json => {
           if (json.resultCount) {
-            return Promise.resolve(json.results[0].version);
+            const version = json.results[0].version;
+            const appId = json.results[0].trackId;
+            const storeUrl = `itms-apps://apps.apple.com/${countryCode}app/id${appId}`;
+            return Promise.resolve({
+              version,
+              storeUrl,
+            });
           }
           return Promise.reject('No info about this app.');
         });

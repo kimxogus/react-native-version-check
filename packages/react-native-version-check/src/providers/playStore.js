@@ -1,7 +1,7 @@
 // @flow
 import { getVersionInfo } from '../versionInfo';
 
-import { type IProvider } from './types';
+import { IProvider, IVersionAndStoreUrl } from './types';
 
 export type PlayStoreGetVersionOption = {
   packageName?: string,
@@ -10,7 +10,7 @@ export type PlayStoreGetVersionOption = {
 };
 
 export interface IPlayStoreProvider extends IProvider {
-  getVersion: PlayStoreGetVersionOption => Promise<string>;
+  getVersion: PlayStoreGetVersionOption => Promise<IVersionAndStoreUrl>;
 }
 
 function error(text: string) {
@@ -22,25 +22,23 @@ function error(text: string) {
 }
 
 class PlayStoreProvider implements IProvider {
-  getVersion(option: PlayStoreGetVersionOption): Promise<string> {
+  getVersion(option: PlayStoreGetVersionOption): Promise<IVersionAndStoreUrl> {
     const opt = option || {};
     try {
       if (!opt.packageName) {
         opt.packageName = getVersionInfo().getPackageName();
       }
 
-      return fetch(
-        `https://play.google.com/store/apps/details?id=${
-          opt.packageName
-        }&hl=en`,
-        opt.fetchOptions
-      )
+      const storeUrl = `https://play.google.com/store/apps/details?id=${opt.packageName}&hl=en`;
+
+      return fetch(storeUrl, opt.fetchOptions)
         .then(res => res.text())
         .then(text => {
           const match = text.match(/Current Version.+>([\d.]+)<\/span>/);
           if (match) {
             const latestVersion = match[1].trim();
-            return Promise.resolve(latestVersion);
+
+            return Promise.resolve({ version: latestVersion, storeUrl });
           }
 
           return Promise.reject(error(text));

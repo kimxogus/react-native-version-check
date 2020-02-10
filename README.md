@@ -141,7 +141,7 @@ VersionCheck.needUpdate()
   .then(async res => {
     console.log(res.isNeeded);    // true
     if (res.isNeeded) {
-      Linking.openURL(await VersionCheck.getStoreUrl());  // open store if update is needed.
+      Linking.openURL(res.storeUrl);  // open store if update is needed.
     }
   });
 
@@ -160,6 +160,7 @@ VersionCheck.needUpdate({
 });
 
 VersionCheck.needUpdate({
+  depth: 1,
   currentVersion: "2.1",
   latestVersion: "2.0",
 }).then(res => {
@@ -218,6 +219,7 @@ VersionCheck.needUpdate({
     Field | Type
     --- | ---
     isNeeded | _boolean_
+    storeUrl | _string_
     currentVersion | _string_
     latestVersion | _string_
 
@@ -237,4 +239,3 @@ MIT
 [dev-dependencies-url]: https://david-dm.org/kimxogus/react-native-version-check?type=dev
 [vulnerabilities-image]: https://snyk.io/test/github/kimxogus/react-native-version-check/badge.svg
 [vulnerabilities-url]: https://snyk.io/test/github/kimxogus/react-native-version-check
-
