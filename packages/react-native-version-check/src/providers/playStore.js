@@ -34,7 +34,7 @@ class PlayStoreProvider implements IProvider {
       return fetch(storeUrl, opt.fetchOptions)
         .then(res => res.text())
         .then(text => {
-          const match = text.match(/Current Version.+>([\d.]+)<\/span>/);
+          const match = text.match(/Current Version.+?>([\d.]+)<\/span>/);
           if (match) {
             const latestVersion = match[1].trim();
 
