@@ -23,6 +23,7 @@ export default (VersionInfoObject: IVersionInfo): ReactNativeVersionCheck => {
     getPackageName: VersionInfoObject.getPackageName,
     getCurrentBuildNumber: VersionInfoObject.getCurrentBuildNumber,
     getCurrentVersion: VersionInfoObject.getCurrentVersion,
+    getAppSignatures: VersionInfoObject.getAppSignatures,
 
     getStoreUrl,
     getAppStoreUrl,
