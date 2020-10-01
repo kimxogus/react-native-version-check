@@ -1,0 +1,39 @@
+name: Coveralls
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node ${{ matrix.node-version }} in ${{ runner.OS }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-${{ matrix.node-version }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-${{ matrix.node-version }}-node-
+            ${{ runner.OS }}-${{ matrix.node-version }}-
+            ${{ runner.OS }}-
+      - name: Install node modules
+        run: |
+          npm install
+          npm run lerna-bootstrap
+      - run: npm run test:coverage
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: "./test-results/coverage/lcov.info"
