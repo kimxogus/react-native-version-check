@@ -60,24 +60,24 @@ export default async function needUpdate(
     let latestVersion;
     let providerStoreUrl = '';
 
-    if (option.provider.getVersion) {
-      const {
-        version,
-        storeUrl,
-      }: IVersionAndStoreUrl = await option.provider.getVersion(option);
-      latestVersion = version;
-      providerStoreUrl = storeUrl;
-    }
-
-    if (providers[option.provider]) {
-      const { version, storeUrl }: IVersionAndStoreUrl = await providers[
-        option.provider
-      ].getVersion(option);
-      latestVersion = version;
-      providerStoreUrl = storeUrl;
-    }
-
     if (isNil(option.latestVersion)) {
+      if (option.provider.getVersion) {
+        const {
+          version,
+          storeUrl,
+        }: IVersionAndStoreUrl = await option.provider.getVersion(option);
+        latestVersion = version;
+        providerStoreUrl = storeUrl;
+      }
+
+      if (providers[option.provider]) {
+        const { version, storeUrl }: IVersionAndStoreUrl = await providers[
+          option.provider
+        ].getVersion(option);
+        latestVersion = version;
+        providerStoreUrl = storeUrl;
+      }
+
       option.latestVersion = latestVersion || (await getLatestVersion(option));
     }
 
