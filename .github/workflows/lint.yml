@@ -23,5 +23,8 @@ jobs:
             ${{ runner.OS }}-${{ matrix.node-version }}-node-
             ${{ runner.OS }}-${{ matrix.node-version }}-
             ${{ runner.OS }}-
-      - run: npm run lerna-bootstrap
+      - name: Install node modules
+        run: |
+          npm install
+          npm run lerna-bootstrap
       - run: npm run lint
