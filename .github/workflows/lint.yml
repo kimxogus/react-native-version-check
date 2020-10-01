@@ -1,0 +1,27 @@
+name: ESLint check
+on:
+  push:
+jobs:
+  lint:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node ${{ matrix.node-version }} in ${{ runner.OS }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.OS }}-${{ matrix.node-version }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-${{ matrix.node-version }}-node-
+            ${{ runner.OS }}-${{ matrix.node-version }}-
+            ${{ runner.OS }}-
+      - run: npm install
+      - run: npm run lint
