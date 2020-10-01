@@ -32,6 +32,7 @@ jobs:
           npm install
           npm run lerna-bootstrap
       - run: npm run test:coverage
+      - run: cat ./test-results/coverage/lcov.info
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
