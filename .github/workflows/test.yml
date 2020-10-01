@@ -27,6 +27,6 @@ jobs:
             ${{ runner.OS }}-${{ matrix.node-version }}-node-
             ${{ runner.OS }}-${{ matrix.node-version }}-
             ${{ runner.OS }}-
-      - run: npm install
+      - run: npm run lerna-bootstrap
       - run: npm run test:ci
       - run: npm run test:coverage
