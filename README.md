@@ -2,6 +2,7 @@
 
 [![npm version][npm-image]][npm-url]
 [![npm downloads][downloads-image]][downloads-url]
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b445b1d867ee4c00b82f59e651d8f6f2)](https://www.codacy.com/manual/kimxogus/react-native-version-check/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kimxogus/react-native-version-check&amp;utm_campaign=Badge_Grade)
 [![Build Status][ci-image]][ci-url]
 [![DevDependencies Status][dev-dependencies-image]][dev-dependencies-url]
 [![Known Vulnerabilities][vulnerabilities-image]][vulnerabilities-url]
