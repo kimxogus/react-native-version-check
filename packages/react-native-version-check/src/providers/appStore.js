@@ -15,9 +15,9 @@ export interface IAppStoreProvider extends IProvider {
 }
 
 class AppStoreProvider implements IProvider {
-  async getVersion(
+  getVersion = async (
     option: AppStoreGetVersionOption
-  ): Promise<IVersionAndStoreUrl> {
+  ): Promise<IVersionAndStoreUrl> => {
     const opt = option;
     try {
       if (!opt.country) {
@@ -53,7 +53,7 @@ class AppStoreProvider implements IProvider {
         throw e;
       }
     }
-  }
+  };
 }
 
 export default new AppStoreProvider();

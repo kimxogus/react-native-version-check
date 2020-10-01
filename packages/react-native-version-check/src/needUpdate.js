@@ -3,6 +3,7 @@ import semver from 'semver';
 import isNil from 'lodash.isnil';
 
 import { getVersionInfo } from './versionInfo';
+/* eslint-disable-next-line import/no-namespace */
 import * as providers from './providers';
 import { IVersionAndStoreUrl } from './providers/types';
 import {

@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 import isNil from 'lodash.isnil';
 import isFunction from 'lodash.isfunction';
 
+/* eslint-disable-next-line import/no-namespace */
 import * as providers from './providers';
 import { IProvider, IVersionAndStoreUrl } from './providers/types';
 

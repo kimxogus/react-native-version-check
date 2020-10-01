@@ -1,4 +1,5 @@
-import jest from 'jest';
+/* eslint-disable-next-line import/no-namespace */
+import * as jest from 'jest';
 
 process.env.RNVC_ENV = 'test';
 

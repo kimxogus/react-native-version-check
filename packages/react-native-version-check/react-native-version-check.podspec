@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
 
   s.preserve_paths= "package.json", "LICENSE"
 
-  s.dependency 'React'
+  s.dependency 'React-Core'
 end

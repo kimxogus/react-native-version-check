@@ -22,7 +22,9 @@ function error(text: string) {
 }
 
 class PlayStoreProvider implements IProvider {
-  getVersion(option: PlayStoreGetVersionOption): Promise<IVersionAndStoreUrl> {
+  getVersion = async (
+    option: PlayStoreGetVersionOption
+  ): Promise<IVersionAndStoreUrl> => {
     const opt = option || {};
     try {
       if (!opt.packageName) {
@@ -50,7 +52,7 @@ class PlayStoreProvider implements IProvider {
         throw e;
       }
     }
-  }
+  };
 }
 
 export default new PlayStoreProvider();
