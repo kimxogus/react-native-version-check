@@ -12,7 +12,7 @@ describe('needUpdate', () => {
     await needUpdate({
       currentVersion: '2.0',
       latestVersion: '10.0',
-    }).then((res) => {
+    }).then(res => {
       expect(res.isNeeded).toBe(true);
     });
   });
@@ -20,7 +20,7 @@ describe('needUpdate', () => {
     await needUpdate({
       currentVersion: '10.0',
       latestVersion: '10.0',
-    }).then((res) => {
+    }).then(res => {
       expect(res.isNeeded).toBe(false);
     });
   });
@@ -28,7 +28,7 @@ describe('needUpdate', () => {
     await needUpdate({
       currentVersion: '1.0',
       latestVersion: '1.0.0',
-    }).then((res) => {
+    }).then(res => {
       expect(res.isNeeded).toBe(false);
     });
   });
@@ -36,7 +36,7 @@ describe('needUpdate', () => {
     await needUpdate({
       currentVersion: '1.0.0',
       latestVersion: '1.0',
-    }).then((res) => {
+    }).then(res => {
       expect(res.isNeeded).toBe(false);
     });
   });
@@ -44,7 +44,7 @@ describe('needUpdate', () => {
     await needUpdate({
       currentVersion: '1.0',
       latestVersion: '1.0.1',
-    }).then((res) => {
+    }).then(res => {
       expect(res.isNeeded).toBe(true);
     });
   });
@@ -52,7 +52,7 @@ describe('needUpdate', () => {
     await needUpdate({
       currentVersion: '3.0.2',
       latestVersion: '2.6.1',
-    }).then((res) => {
+    }).then(res => {
       expect(res.isNeeded).toBe(false);
     });
   });

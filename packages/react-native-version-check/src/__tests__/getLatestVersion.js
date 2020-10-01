@@ -10,9 +10,9 @@ import { getLatestVersion } from '../getLatestVersion';
 describe('getLatestVersion', () => {
   it('get latest version properly', async () => {
     if (process.env.RNVC_DEVICE === 'android') {
-      await getLatestVersion().catch((err) => expect(err).toBeDefined());
+      await getLatestVersion().catch(err => expect(err).toBeDefined());
     } else {
-      await getLatestVersion().then((r) =>
+      await getLatestVersion().then(r =>
         expect(typeof +r === 'number').toBeTruthy()
       );
     }
@@ -25,6 +25,6 @@ describe('getLatestVersion', () => {
       .then(() => {
         throw new Error();
       })
-      .catch((e) => expect(e).not.toBeNull());
+      .catch(e => expect(e).not.toBeNull());
   });
 });

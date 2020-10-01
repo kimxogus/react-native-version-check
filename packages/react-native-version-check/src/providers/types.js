@@ -1,6 +1,6 @@
 // @flow
 export interface IProvider {
-  getVersion: (any) => Promise<string>;
+  getVersion: any => Promise<string>;
 }
 
 export interface IVersionAndStoreUrl {

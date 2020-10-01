@@ -10,7 +10,7 @@ export type PlayStoreGetVersionOption = {
 };
 
 export interface IPlayStoreProvider extends IProvider {
-  getVersion: (PlayStoreGetVersionOption) => Promise<IVersionAndStoreUrl>;
+  getVersion: PlayStoreGetVersionOption => Promise<IVersionAndStoreUrl>;
 }
 
 function error(text: string) {
@@ -34,8 +34,8 @@ class PlayStoreProvider implements IProvider {
       const storeUrl = `https://play.google.com/store/apps/details?id=${opt.packageName}&hl=en`;
 
       return fetch(storeUrl, opt.fetchOptions)
-        .then((res) => res.text())
-        .then((text) => {
+        .then(res => res.text())
+        .then(text => {
           const match = text.match(/Current Version.+?>([\d.]+)<\/span>/);
           if (match) {
             const latestVersion = match[1].trim();
