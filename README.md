@@ -13,6 +13,10 @@ Parsing code is referenced from [here](http://itmir.tistory.com/524)
 ### Looking for maintainers!
 I have almost zero experience in ios development, and I am no longer working on mobile app development(doing backend and devops works mainly and some web frontend). It makes me hard to maintain this library actively. Hope to have someone to help maintaining react-native-version-check!
 
+### Requirements
+- [`react-native >= 0.60.2`](https://github.com/kimxogus/react-native-version-check/issues/120) for native users
+- [`expo >= 26`](https://github.com/kimxogus/react-native-version-check/blob/master/packages/react-native-version-check-expo/package.json#L24) for expo users
+
 ### expo
 react-native-version-check supports [expo](https://expo.io)! with [react-native-version-check-expo](https://www.npmjs.com/package/react-native-version-check-expo)
 - usage
@@ -233,8 +237,8 @@ MIT
 [npm-url]: https://npmjs.org/package/react-native-version-check
 [downloads-image]: https://img.shields.io/npm/dm/react-native-version-check.svg
 [downloads-url]: https://npmjs.org/package/react-native-version-check
-[ci-image]: https://circleci.com/gh/kimxogus/react-native-version-check.svg?style=svg
-[ci-url]: https://circleci.com/gh/kimxogus/react-native-version-check
+[ci-image]: https://github.com/kimxogus/react-native-version-check/workflows/Test/badge.svg
+[ci-url]: https://github.com/kimxogus/react-native-version-check/actions?query=workflow%3ATest
 [dev-dependencies-image]: https://david-dm.org/kimxogus/react-native-version-check/dev-status.svg
 [dev-dependencies-url]: https://david-dm.org/kimxogus/react-native-version-check?type=dev
 [vulnerabilities-image]: https://snyk.io/test/github/kimxogus/react-native-version-check/badge.svg
