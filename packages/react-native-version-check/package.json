@@ -31,12 +31,12 @@
     "lodash.isfunction": "^3.0.9",
     "lodash.isnil": "^4.0.0",
     "lodash.pick": "^4.4.0",
-    "semver": "^6.1.1"
+    "semver": "^7.3.2"
   },
   "devDependencies": {
-    "react-native": "^0.59.9"
+    "react-native": "^0.60.2"
   },
   "peerDependencies": {
-    "react-native": ">=0.48.0"
+    "react-native": ">=0.60.2"
   }
 }

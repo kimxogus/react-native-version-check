@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import Constants from 'expo-constants';
+/* eslint-disable-next-line import/no-namespace */
 import * as Localization from 'expo-localization';
 
 let RNVersionCheck;

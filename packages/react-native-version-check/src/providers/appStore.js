@@ -11,13 +11,13 @@ export type AppStoreGetVersionOption = {
 };
 
 export interface IAppStoreProvider extends IProvider {
-  getVersion: AppStoreGetVersionOption => Promise<IVersionAndStoreUrl>;
+  getVersion: (AppStoreGetVersionOption) => Promise<IVersionAndStoreUrl>;
 }
 
 class AppStoreProvider implements IProvider {
-  async getVersion(
+  getVersion = async (
     option: AppStoreGetVersionOption
-  ): Promise<IVersionAndStoreUrl> {
+  ): Promise<IVersionAndStoreUrl> => {
     const opt = option;
     try {
       if (!opt.country) {
@@ -33,8 +33,8 @@ class AppStoreProvider implements IProvider {
         `https://itunes.apple.com/${countryCode}lookup?bundleId=${opt.packageName}&date=${dateNow}`,
         opt.fetchOptions
       )
-        .then(res => res.json())
-        .then(json => {
+        .then((res) => res.json())
+        .then((json) => {
           if (json.resultCount) {
             const version = json.results[0].version;
             const appId = json.results[0].trackId;
@@ -53,7 +53,7 @@ class AppStoreProvider implements IProvider {
         throw e;
       }
     }
-  }
+  };
 }
 
 export default new AppStoreProvider();
