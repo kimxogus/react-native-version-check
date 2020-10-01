@@ -1,5 +1,7 @@
 # react-native-version-check
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0e73f42160e44fbc9b22d6503ec854c6)](https://app.codacy.com/manual/kimxogus/react-native-version-check?utm_source=github.com&utm_medium=referral&utm_content=kimxogus/react-native-version-check&utm_campaign=Badge_Grade_Settings)
+
 [![npm version][npm-image]][npm-url]
 [![npm downloads][downloads-image]][downloads-url]
 [![Build Status][ci-image]][ci-url]
