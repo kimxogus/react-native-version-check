@@ -10,14 +10,16 @@ import { getLatestVersion } from '../getLatestVersion';
 describe('getLatestVersion', () => {
   it('get latest version properly', async () => {
     if (process.env.RNVC_DEVICE === 'android') {
-      getLatestVersion().catch(err => expect(err).toBeDefined());
+      await getLatestVersion().catch(err => expect(err).toBeDefined());
     } else {
-      getLatestVersion().then(r => expect(typeof +r === 'number').toBeTruthy());
+      await getLatestVersion().then(r =>
+        expect(typeof +r === 'number').toBeTruthy()
+      );
     }
   });
 
-  it('reject with invalid response', () => {
-    getLatestVersion({
+  it('reject with invalid response', async () => {
+    await getLatestVersion({
       provider: () => fetch('http://invalid.url/'),
     })
       .then(() => {
