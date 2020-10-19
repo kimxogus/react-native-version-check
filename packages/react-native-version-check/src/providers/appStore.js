@@ -48,7 +48,7 @@ class AppStoreProvider implements IProvider {
         });
     } catch (e) {
       if (opt.ignoreErrors) {
-        console.warn(e); // eslint-disable-line no-console
+        console.log(e); // eslint-disable-line no-console
       } else {
         throw e;
       }

@@ -89,7 +89,7 @@ export default async function needUpdate(
     );
   } catch (e) {
     if (option.ignoreErrors) {
-      console.warn(e); // eslint-disable-line no-console
+      console.log(e); // eslint-disable-line no-console
     } else {
       throw e;
     }
