@@ -41,6 +41,13 @@ class PlayStoreProvider implements IProvider {
             return Promise.resolve({ version: latestVersion, storeUrl });
           }
 
+          const matchNewLayout = text.match(/\[\[\["([\d.]+?)"\]\]/);
+          if (matchNewLayout) {
+            const latestVersion = matchNewLayout[1].trim();
+
+            return Promise.resolve({ version: latestVersion, storeUrl });
+          }
+
           return Promise.reject(error(text));
         });
     } catch (e) {
