@@ -5,7 +5,7 @@ const options = {
 };
 
 const storeUrl =
-  'https://play.google.com/store/apps/details?id=com.myapp&hl=en';
+  'https://play.google.com/store/apps/details?id=com.myapp&hl=en&gl=US';
 
 const mockSuccesfulResponse = returnBody => {
   global.fetch = jest.fn().mockImplementationOnce(
