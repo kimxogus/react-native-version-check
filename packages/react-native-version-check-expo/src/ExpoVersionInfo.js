@@ -21,8 +21,8 @@ if (process.env.RNVC_ENV === 'test') {
   if (Constants.expoVersion < 31) {
     country = Localization.getCurrentDeviceCountryAsync();
   } else {
-    // can't return country so I used region instead
-    country = Localization.region;
+    // if can't return country use region instead
+    country = Localization.country ? Localization.country : Localization.region;
   }
 
   RNVersionCheck = {
