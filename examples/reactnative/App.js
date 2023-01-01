@@ -1,63 +1,130 @@
-import React, { Component } from 'react';
-import { Linking, StyleSheet, Text, View } from 'react-native';
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+
+import React, {useState, useEffect} from 'react';
+import type {Node} from 'react';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+} from 'react-native';
 import VersionCheck from 'react-native-version-check';
 
+import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+
+/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
+ * LTI update could not be added via codemod */
+const Section = ({children, title}): Node => {
+  const isDarkMode = useColorScheme() === 'dark';
+  return (
+    <View style={styles.sectionContainer}>
+      <Text
+        style={[
+          styles.sectionTitle,
+          {
+            color: isDarkMode ? Colors.white : Colors.black,
+          },
+        ]}
+      >
+        {title}
+      </Text>
+      <Text
+        style={[
+          styles.sectionDescription,
+          {
+            color: isDarkMode ? Colors.light : Colors.dark,
+          },
+        ]}
+      >
+        {children}
+      </Text>
+    </View>
+  );
+};
+
+const App: () => Node = () => {
+  const [currentVersion, setCurrentVersion] = useState(null);
+  const [latestVersion, setLatestVersion] = useState(null);
+  const [isNeeded, setIsNeeded] = useState(false);
+  const [storeUrl, setStoreUrl] = useState('');
+
+  useEffect(() => {
+    VersionCheck.needUpdate({
+      latestVersion: '1.0.0',
+    }).then(res => {
+      console.log(res);
+      const {currentVersion, latestVersion, isNeeded} = res;
+      setCurrentVersion(currentVersion);
+      setLatestVersion(latestVersion);
+      setIsNeeded(isNeeded);
+    });
+
+    VersionCheck.getStoreUrl({appID: '364709193', country: 'KR'}).then(
+      storeUrl => {
+        console.log(storeUrl);
+        setStoreUrl(storeUrl);
+      },
+    );
+  }, []);
+
+  const isDarkMode = useColorScheme() === 'dark';
+
+  const backgroundStyle = {
+    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  };
+
+  return (
+    <SafeAreaView style={backgroundStyle}>
+      <StatusBar
+        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+        backgroundColor={backgroundStyle.backgroundColor}
+      />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}
+      >
+        <Header />
+        <View
+          style={{
+            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+          }}
+        >
+          <Section title="Current Version">{currentVersion}</Section>
+          <Section title="Latest Version">{latestVersion}</Section>
+          <Section title="Is update needed?">{String(isNeeded)}</Section>
+          <Section title="Store Url">{String(storeUrl)}</Section>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
   },
-  text: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
   },
-  linkText: {
-    color: 'blue',
+  sectionDescription: {
+    marginTop: 8,
+    fontSize: 18,
+    fontWeight: '400',
+  },
+  highlight: {
+    fontWeight: '700',
   },
 });
 
-export default class example extends Component {
-  state = {
-    currentVersion: null,
-    latestVersion: null,
-    isNeeded: false,
-    storeUrl: '',
-  };
-  componentDidMount() {
-    VersionCheck.needUpdate({
-      latestVersion: '1.0.0',
-    }).then(res => this.setState(res));
-
-    VersionCheck.getStoreUrl({ appID: '364709193' }).then(res => {
-      //App Store ID for iBooks.
-      this.setState({ storeUrl: res });
-    });
-  }
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.text}>
-          Current Version: {this.state.currentVersion}
-        </Text>
-        <Text style={styles.text}>
-          Latest Version: {this.state.latestVersion}
-        </Text>
-        <Text style={styles.text}>
-          Is update needed?: {String(this.state.isNeeded)}
-        </Text>
-        <View>
-          <Text style={styles.text}>Store Url:</Text>
-          <Text
-            style={[styles.text, styles.linkText]}
-            onPress={() => Linking.openURL(this.state.storeUrl)}
-          >
-            {String(this.state.storeUrl)}
-          </Text>
-        </View>
-      </View>
-    );
-  }
-}
+export default App;
