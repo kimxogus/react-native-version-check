@@ -11,7 +11,7 @@ if (process.env.RNVC_ENV === 'test') {
     currentVersion: '0.0.1',
   };
 } else {
-  const { manifest = {} } = Constants;
+  const manifest = Constants.manifest ? Constants.manifest : Constants.manifest2.extra.expoClient;
   const {
     version = null,
     android: { versionCode = null, package: androidPackageName = null } = {},
