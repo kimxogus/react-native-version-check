@@ -34,7 +34,8 @@
   },
   "author": "Taehyun Kim <kgyoo8232@gmail.com> (https://github.com/kimxogus)",
   "contributors": [
-    "Thomas Schoffelen <thomas@includable.com>"
+    "Thomas Schoffelen <thomas@includable.com>",
+    "Mohamad Arif Raja <rfraja2943@gmail.com>"
   ],
   "homepage": "https://github.com/kimxogus/react-native-version-check",
   "repository": {

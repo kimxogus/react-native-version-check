@@ -11,7 +11,9 @@ if (process.env.RNVC_ENV === 'test') {
     currentVersion: '0.0.1',
   };
 } else {
-  const { manifest = {} } = Constants;
+  const manifest = Constants.manifest
+    ? Constants.manifest
+    : Constants.manifest2.extra.expoClient;
   const {
     version = null,
     android: { versionCode = null, package: androidPackageName = null } = {},
@@ -21,7 +23,8 @@ if (process.env.RNVC_ENV === 'test') {
   if (Constants.expoVersion < 31) {
     country = Localization.getCurrentDeviceCountryAsync();
   } else {
-    country = Localization.country;
+    // if can't return country use region instead
+    country = Localization.country ? Localization.country : Localization.region;
   }
 
   RNVersionCheck = {
