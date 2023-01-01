@@ -13,7 +13,7 @@ jobs:
         os: [ubuntu-latest]
         node-version: [14.x, 16.x, 18.x]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup node ${{ matrix.node-version }} in ${{ runner.OS }}
         uses: actions/setup-node@v1
         with:
