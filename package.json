@@ -59,7 +59,7 @@
     "eslint-config-react-native": "^4.0.0",
     "eslint-plugin-react-native": "^3.8.1",
     "flow-bin": "^0.112.0",
-    "flow-typed": "^2.6.2",
+    "flow-typed": "^3.8.0",
     "husky": "^3.0.9",
     "isomorphic-fetch": "^2.2.1",
     "jest": "^24.9.0",
