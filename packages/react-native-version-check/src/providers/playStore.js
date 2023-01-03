@@ -31,14 +31,26 @@ class PlayStoreProvider implements IProvider {
         opt.packageName = getVersionInfo().getPackageName();
       }
 
-      const storeUrl = `https://play.google.com/store/apps/details?id=${opt.packageName}&hl=en`;
+      opt.fetchOptions = {
+        headers: { 'sec-fetch-site': 'same-origin' },
+        ...opt.fetchOptions,
+      };
+
+      const storeUrl = `https://play.google.com/store/apps/details?id=${opt.packageName}&hl=en&gl=US`;
 
       return fetch(storeUrl, opt.fetchOptions)
         .then(res => res.text())
         .then(text => {
-          const match = text.match(/Current Version.+?>([\d.]+)<\/span>/);
+          const match = text.match(/Current Version.+?>([\d.-]+)<\/span>/);
           if (match) {
             const latestVersion = match[1].trim();
+
+            return Promise.resolve({ version: latestVersion, storeUrl });
+          }
+
+          const matchNewLayout = text.match(/\[\[\["([\d.]+?)"\]\]/);
+          if (matchNewLayout) {
+            const latestVersion = matchNewLayout[1].trim();
 
             return Promise.resolve({ version: latestVersion, storeUrl });
           }
@@ -47,7 +59,7 @@ class PlayStoreProvider implements IProvider {
         });
     } catch (e) {
       if (opt.ignoreErrors) {
-        console.warn(e); // eslint-disable-line no-console
+        console.warn(e);
       } else {
         throw e;
       }

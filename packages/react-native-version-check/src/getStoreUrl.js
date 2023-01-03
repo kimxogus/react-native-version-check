@@ -35,7 +35,7 @@ export const getAppStoreUrl = async (
     return `itms-apps://apps.apple.com/${countryCode}app/id${opt.appID}`;
   } catch (e) {
     if (opt.ignoreErrors) {
-      console.warn(e); // eslint-disable-line no-console
+      console.warn(e);
     } else {
       throw e;
     }
@@ -53,7 +53,7 @@ export const getPlayStoreUrl = async (
     return `https://play.google.com/store/apps/details?id=${opt.packageName}`;
   } catch (e) {
     if (opt.ignoreErrors) {
-      console.warn(e); // eslint-disable-line no-console
+      console.warn(e);
     } else {
       throw e;
     }
