@@ -1,6 +1,6 @@
 {
   "name": "react-native-version-check-expo",
-  "version": "3.4.6",
+  "version": "3.4.7",
   "description": "A version checker for react-native expo applications",
   "main": "index.js",
   "keywords": [
@@ -27,7 +27,7 @@
   "dependencies": {
     "expo-constants": "^14.0.2",
     "expo-localization": "^14.0.0",
-    "react-native-version-check": "^3.4.6"
+    "react-native-version-check": "^3.4.7"
   },
   "devDependencies": {
     "expo": "^33.0.0",
