@@ -5,5 +5,6 @@ export interface IProvider {
 
 export interface IVersionAndStoreUrl {
   version: string;
+  updatedTime: Date | undefined;
   storeUrl: string;
 }

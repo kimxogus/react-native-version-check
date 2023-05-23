@@ -36,7 +36,7 @@ describe('PlayStoreProvider get version from older Play Store layouts', () => {
     );
 
     await PlayStoreProvider.getVersion(options).then(r =>
-      expect(r).toEqual({ version: '0.10.0', storeUrl })
+      expect(r).toEqual({ version: '0.10.0', updatedTime: undefined, storeUrl })
     );
   });
 
@@ -57,7 +57,7 @@ describe('PlayStoreProvider get version from older Play Store layouts', () => {
     );
 
     await PlayStoreProvider.getVersion(options).then(r =>
-      expect(r).toEqual({ version: '0.10.0', storeUrl })
+      expect(r).toEqual({ version: '0.10.0', updatedTime: undefined, storeUrl })
     );
   });
 });
@@ -82,7 +82,7 @@ describe('PlayStoreProvider get version current (since ~Dec, 2018) Play Store', 
     );
 
     await PlayStoreProvider.getVersion(options).then(r =>
-      expect(r).toEqual({ version: '0.10.0', storeUrl })
+      expect(r).toEqual({ version: '0.10.0', updatedTime: undefined, storeUrl })
     );
   });
 
@@ -105,7 +105,7 @@ describe('PlayStoreProvider get version current (since ~Dec, 2018) Play Store', 
     );
 
     await PlayStoreProvider.getVersion(options).then(r =>
-      expect(r).toEqual({ version: '234', storeUrl })
+      expect(r).toEqual({ version: '234', updatedTime: undefined, storeUrl })
     );
   });
 });
@@ -113,21 +113,29 @@ describe('PlayStoreProvider get version current (since ~Dec, 2018) Play Store', 
 describe('PlayStoreProvider get version current (since ~May, 2022) Play Store', () => {
   it('with format x.x.x', async () => {
     mockSuccesfulResponse(
-      'null,null,[[null,1]],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[2],null,[[["0.10.0"]],[[[30,"11"]],[[[16,"4.1"]]]],[["May 31, 2022"]]]'
+      'null,null,[[null,1]],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[2],null,[[["0.10.0"]],[[[30,"11"]],[[[16,"4.1"]]]],[["May 31, 2022",[1684168484,717000000]]]]'
     );
 
     await PlayStoreProvider.getVersion(options).then(r =>
-      expect(r).toEqual({ version: '0.10.0', storeUrl })
+      expect(r).toEqual({
+        version: '0.10.0',
+        updatedTime: new Date('May 31, 2022'),
+        storeUrl,
+      })
     );
   });
 
   it('with format xxx', async () => {
     mockSuccesfulResponse(
-      'null,null,[[null,1]],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[2],null,[[["234"]],[[[30,"11"]],[[[16,"4.1"]]]],[["May 31, 2022"]]]'
+      'null,null,[[null,1]],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[2],null,[[["234"]],[[[30,"11"]],[[[16,"4.1"]]]],[["May 31, 2022",[1684372379,891000000]]]]'
     );
 
     await PlayStoreProvider.getVersion(options).then(r =>
-      expect(r).toEqual({ version: '234', storeUrl })
+      expect(r).toEqual({
+        version: '234',
+        updatedTime: new Date('May 31, 2022'),
+        storeUrl,
+      })
     );
   });
 });

@@ -1,4 +1,6 @@
 // @flow
+import { DateTime } from 'luxon';
+
 import { getVersionInfo } from '../versionInfo';
 
 import { IProvider, IVersionAndStoreUrl } from './types';
@@ -39,18 +41,37 @@ class PlayStoreProvider implements IProvider {
       return fetch(storeUrl, opt.fetchOptions)
         .then(res => res.text())
         .then(text => {
-          const match = text.match(/Current Version.+?>([\d.-]+)<\/span>/);
-          if (match) {
-            const latestVersion = match[1].trim();
+          const version = (() => {
+            const match = text.match(/Current Version.+?>([\d.-]+)<\/span>/);
+            if (match) {
+              return match[1].trim();
+            }
 
-            return Promise.resolve({ version: latestVersion, storeUrl });
-          }
+            const matchNewLayout = text.match(/\[\[\["([\d.]+?)"\]\]/);
+            if (matchNewLayout) {
+              return matchNewLayout[1].trim();
+            }
 
-          const matchNewLayout = text.match(/\[\[\["([\d.]+?)"\]\]/);
-          if (matchNewLayout) {
-            const latestVersion = matchNewLayout[1].trim();
+            return undefined;
+          })();
+          const updatedTime = (() => {
+            const match = text.match(
+              /\]\],\[\["([a-zA-Z,0-9\s]+?)",\[\d+,\d+\]\]\]/
+            );
+            if (match) {
+              const datetime = DateTime.fromFormat(
+                match[1].trim(),
+                'MMM d, yyyy'
+              );
 
-            return Promise.resolve({ version: latestVersion, storeUrl });
+              return datetime.toJSDate();
+            }
+
+            return undefined;
+          })();
+
+          if (version) {
+            return Promise.resolve({ version, updatedTime, storeUrl });
           }
 
           return Promise.reject(error(text));
