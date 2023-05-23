@@ -1,4 +1,6 @@
 // @flow
+import { DateTime } from 'luxon';
+
 import { getVersionInfo } from '../versionInfo';
 
 import { IProvider, IVersionAndStoreUrl } from './types';
@@ -57,9 +59,12 @@ class PlayStoreProvider implements IProvider {
               /\]\],\[\["([a-zA-Z,0-9\s]+?)",\[\d+,\d+\]\]\]/
             );
             if (match) {
-              const time = Date.parse(match[1].trim());
+              const datetime = DateTime.fromFormat(
+                match[1].trim(),
+                'MMM d, yyyy'
+              );
 
-              return time ? new Date(time) : undefined;
+              return datetime.toJSDate();
             }
 
             return undefined;
