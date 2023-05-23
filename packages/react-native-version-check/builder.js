@@ -1,5 +1,6 @@
 // @flow
 import { getLatestVersion } from './src/getLatestVersion';
+import { getLatestUpdatedTime } from './src/getLatestUpdatedTime';
 import needUpdate from './src/needUpdate';
 import { setVersionInfo, type IVersionInfo } from './src/versionInfo';
 import getStoreUrl, {
@@ -12,6 +13,7 @@ export interface ReactNativeVersionCheck extends IVersionInfo {
   getAppStoreUrl: typeof getAppStoreUrl;
   getPlayStoreUrl: typeof getPlayStoreUrl;
   getLatestVersion: typeof getLatestVersion;
+  getLatestUpdatedTime: typeof getLatestUpdatedTime;
   needUpdate: typeof needUpdate;
 }
 
@@ -28,6 +30,7 @@ export default (VersionInfoObject: IVersionInfo): ReactNativeVersionCheck => {
     getAppStoreUrl,
     getPlayStoreUrl,
     getLatestVersion,
+    getLatestUpdatedTime,
 
     needUpdate,
   };
