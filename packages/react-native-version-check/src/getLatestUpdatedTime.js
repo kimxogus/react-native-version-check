@@ -36,10 +36,10 @@ export async function getLatestUpdatedTime(
       }: IVersionAndStoreUrl = await option.provider.getVersion(option);
 
       if (updatedTime instanceof Date) {
-        return Promise.reject(error);
+        return Promise.resolve(updatedTime);
       }
 
-      return Promise.resolve(updatedTime);
+      return Promise.reject(error);
     }
 
     if (providers[option.provider]) {
@@ -48,10 +48,10 @@ export async function getLatestUpdatedTime(
       ].getVersion(option);
 
       if (updatedTime instanceof Date) {
-        return Promise.reject(error);
+        return Promise.resolve(updatedTime);
       }
 
-      return Promise.resolve(updatedTime);
+      return Promise.reject(error);
     }
 
     if (isFunction(option.provider)) {
