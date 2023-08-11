@@ -30,7 +30,7 @@ class AppStoreProvider implements IProvider {
       const dateNow = new Date().getTime();
 
       return fetch(
-        `https://itunes.apple.com/${countryCode}lookup?bundleId=${opt.packageName}&date=${dateNow}`,
+        `https://itunes.apple.com/${countryCode}/lookup?bundleId=${opt.packageName}&date=${dateNow}`,
         opt.fetchOptions
       )
         .then(res => res.json())
