@@ -1,6 +1,6 @@
 // @flow
 import semver from 'semver';
-import isNil from 'lodash/isnil';
+import isNil from 'lodash/isNil';
 
 import { getVersionInfo } from './versionInfo';
 import * as providers from './providers';
