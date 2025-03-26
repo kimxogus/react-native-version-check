@@ -22,15 +22,15 @@
     "Mohamad Arif Raja <rfraja2943@gmail.com>"
   ],
   "peerDependencies": {
-    "expo": ">=26"
+    "expo": ">=50"
   },
   "dependencies": {
-    "expo-constants": "^14.0.2",
-    "expo-localization": "^14.0.0",
+    "expo-constants": "^16.0.1",
+    "expo-localization": "^15.0.3",
     "react-native-version-check": "^3.4.7"
   },
   "devDependencies": {
-    "expo": "^33.0.0",
+    "expo": "^51.0.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz"
   }
 }
