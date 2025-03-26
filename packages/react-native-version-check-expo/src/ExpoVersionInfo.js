@@ -11,8 +11,8 @@ if (process.env.RNVC_ENV === 'test') {
     currentVersion: '0.0.1',
   };
 } else {
-  const manifest = Constants.manifest
-    ? Constants.manifest
+  const manifest = Constants.expoConfig
+    ? Constants.expoConfig
     : Constants.manifest2.extra.expoClient;
   const {
     version = null,
