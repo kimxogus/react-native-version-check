@@ -6,4 +6,5 @@ export default {
   getPackageName: (): string => RNVersionCheck.packageName,
   getCurrentBuildNumber: (): number => RNVersionCheck.currentBuildNumber,
   getCurrentVersion: (): string => RNVersionCheck.currentVersion,
+  getAppSignatures: (): string[] => RNVersionCheck.signatures,
 };

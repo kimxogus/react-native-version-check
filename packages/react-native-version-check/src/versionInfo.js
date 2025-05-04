@@ -4,6 +4,7 @@ export interface IVersionInfo {
   getPackageName: () => string;
   getCurrentBuildNumber: () => number;
   getCurrentVersion: () => string;
+  getAppSignatures: () => string[];
 }
 
 let VersionInfo: ?IVersionInfo = null;
