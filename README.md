@@ -201,7 +201,7 @@ VersionCheck.needUpdate({
     fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
     ignoreErrors | _boolean_ | true
 
-- <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate([option: Object])`** _(Promise<result: Object>)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
+- <a name="needUpdate" href="#needUpdate">#</a>**`needUpdate([option: NeedUpdateOption])`** _(Promise<result: NeedUpdateResult>)_ - Returns an object contains with boolean value whether update needed, current version and latest version. Current and the latest app versions are first split by delimiter, and check each split numbers into depth.
   - Option
 
     Field | Type | Default
@@ -209,9 +209,6 @@ VersionCheck.needUpdate({
     currentVersion | _string_ | app's current version from [getCurrentVersion()](#getCurrentVersion)
     latestVersion | _string_ | app's latest version from [getLatestVersion()](#getLatestVersion)
     depth | _number_ | ```Infinity```
-    forceUpdate | _boolean_ | ```false```
-    provider | _string_ or _function_ | provider name or function that returns promise or value of the latest version
-    fetchOptions | _object_ | isomorphic-fetch options (https://github.github.io/fetch/)
     ignoreErrors | _boolean_ | true
 
   - Result
