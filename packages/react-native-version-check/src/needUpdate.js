@@ -90,6 +90,13 @@ export default async function needUpdate(
   } catch (e) {
     if (option.ignoreErrors) {
       console.warn(e); // eslint-disable-line no-console
+
+      return Promise.resolve({
+        isNeeded: false,
+        storeUrl: providerStoreUrl,
+        currentVersion: option.currentVersion,
+        latestVersion: '',
+      });
     } else {
       throw e;
     }
