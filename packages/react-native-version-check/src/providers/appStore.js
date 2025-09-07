@@ -8,6 +8,7 @@ export type AppStoreGetVersionOption = {
   packageName?: string,
   fetchOptions?: any,
   ignoreErrors?: boolean,
+  releaseNote?: boolean,
 };
 
 export interface IAppStoreProvider extends IProvider {
@@ -38,10 +39,12 @@ class AppStoreProvider implements IProvider {
           if (json.resultCount) {
             const version = json.results[0].version;
             const appId = json.results[0].trackId;
+            const releaseNote = json.results[0].releaseNotes;
             const storeUrl = `itms-apps://apps.apple.com/${countryCode}app/id${appId}`;
             return Promise.resolve({
               version,
               storeUrl,
+              releaseNote,
             });
           }
           return Promise.reject('No info about this app.');

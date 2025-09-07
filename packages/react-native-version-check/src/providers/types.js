@@ -6,4 +6,5 @@ export interface IProvider {
 export interface IVersionAndStoreUrl {
   version: string;
   storeUrl: string;
+  releaseNote?: string;
 }

@@ -38,6 +38,7 @@ export type NeedUpdateResult = {
   storeUrl: string,
   currentVersion: string,
   latestVersion: string,
+  releaseNote?: string,
 };
 
 export default async function needUpdate(
@@ -59,23 +60,31 @@ export default async function needUpdate(
 
     let latestVersion;
     let providerStoreUrl = '';
+    let storeReleaseNote;
 
     if (isNil(option.latestVersion)) {
       if (option.provider.getVersion) {
         const {
           version,
           storeUrl,
+          releaseNote,
         }: IVersionAndStoreUrl = await option.provider.getVersion(option);
         latestVersion = version;
         providerStoreUrl = storeUrl;
+        storeReleaseNote = releaseNote;
       }
 
       if (providers[option.provider]) {
-        const { version, storeUrl }: IVersionAndStoreUrl = await providers[
-          option.provider
-        ].getVersion(option);
+        const {
+          version,
+          storeUrl,
+          releaseNote,
+        }: IVersionAndStoreUrl = await providers[option.provider].getVersion(
+          option
+        );
         latestVersion = version;
         providerStoreUrl = storeUrl;
+        storeReleaseNote = releaseNote;
       }
 
       option.latestVersion = latestVersion || (await getLatestVersion(option));
@@ -85,7 +94,8 @@ export default async function needUpdate(
       option.currentVersion,
       option.latestVersion,
       option,
-      providerStoreUrl
+      providerStoreUrl,
+      storeReleaseNote,
     );
   } catch (e) {
     if (option.ignoreErrors) {
@@ -100,7 +110,8 @@ function checkIfUpdateNeeded(
   currentVersion,
   latestVersion,
   option,
-  providerStoreUrl
+  providerStoreUrl,
+  releaseNote
 ) {
   const currentVersionWithDepth = getVersionWithDepth(
     currentVersion,
@@ -116,6 +127,7 @@ function checkIfUpdateNeeded(
     storeUrl: providerStoreUrl,
     currentVersion,
     latestVersion,
+    releaseNote,
   };
 
   return Promise.resolve(response);

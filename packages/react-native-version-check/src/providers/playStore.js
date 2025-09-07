@@ -34,7 +34,7 @@ class PlayStoreProvider implements IProvider {
         ...opt.fetchOptions,
       };
 
-      const storeUrl = `https://play.google.com/store/apps/details?id=${opt.packageName}&hl=en&gl=US`;
+      const storeUrl = `https://play.google.com/store/apps/details?id=${opt.packageName}&hl=${opt.language || 'en'}`;
 
       return fetch(storeUrl, opt.fetchOptions)
         .then(res => res.text())
@@ -49,8 +49,12 @@ class PlayStoreProvider implements IProvider {
           const matchNewLayout = text.match(/\[\[\["([\d-.]+?)"\]\]/);
           if (matchNewLayout) {
             const latestVersion = matchNewLayout[1].trim();
-
-            return Promise.resolve({ version: latestVersion, storeUrl });
+            const releaseNoteMatch = text.match(/<div itemprop="description">([\s\S]*?)<\/div>/);
+            return Promise.resolve({
+              version: latestVersion,
+              storeUrl,
+              releaseNote: releaseNoteMatch?.[1]?.replace(/<br>/g, '\n'),
+            });
           }
 
           return Promise.reject(error(text));
