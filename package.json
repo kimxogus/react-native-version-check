@@ -1,7 +1,11 @@
 {
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint packages --ext .js,.jsx --ignore-pattern 'node_modules/**'",
+    "lint:fix": "eslint packages --ext .js,.jsx --ignore-pattern 'node_modules/**' --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "format:check": "prettier --check \"**/*.{js,jsx,json,md}\"",
     "flow": "flow",
@@ -12,20 +16,13 @@
     "test:android": "cross-env RNVC_DEVICE=android babel-node scripts/test",
     "test:ios": "cross-env RNVC_DEVICE=ios babel-node scripts/test",
     "test:watch": "babel-node scripts/test --watch",
-    "prepublishOnly": "npm run test"
+    "prepublishOnly": "npm run test",
+    "prepare": "husky install"
   },
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
+  "prepare": "husky install",
   "lint-staged": {
-    "*.{js}": [
-      "eslint --fix .",
+    "*.{js,jsx}": [
+      "eslint --fix",
       "git add"
     ],
     "*.{json,css,md}": [
@@ -52,28 +49,28 @@
   "devDependencies": {
     "@babel/cli": "^7.7.0",
     "@babel/core": "^7.7.2",
-    "@babel/node": "^7.7.0",
-  "@types/semver": "^7.7.1",
-    "babel-core": "7.0.0-bridge.0",
     "@babel/eslint-parser": "^7.28.4",
-  "babel-jest": "^30.2.0",
-    "cross-env": "^6.0.3",
+    "@babel/node": "^7.7.0",
+    "@react-native/babel-preset": "^0.73.16",
+    "@types/semver": "^7.7.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^30.2.0",
+    "cross-env": "^10.1.0",
     "eslint": "^9.37.0",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-native": "^5.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-native": "^5.0.0",
     "flow-bin": "^0.112.0",
     "flow-typed": "^2.6.2",
-    "husky": "^3.0.9",
+    "husky": "^9.1.7",
     "isomorphic-fetch": "^3.0.0",
-  "jest": "^30.2.0",
-  "jest-cli": "^30.2.0",
-    "jest-junit": "^9.0.0",
+    "jest": "^30.2.0",
+    "jest-cli": "^30.2.0",
+    "jest-junit": "^16.0.0",
     "lerna": "^9.0.0",
-    "lint-staged": "^9.4.2",
-  "@react-native/babel-preset": "^0.73.16",
+    "lint-staged": "^16.2.3",
     "pre-commit": "^1.0.10",
     "prettier": "^2.8.8",
     "promise": "^8.0.3"
