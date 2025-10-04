@@ -9,6 +9,7 @@
 > A version checker for react-native applications
 
 ### Looking for maintainers!
+
 I have almost zero experience in ios development, and I am no longer working on mobile app development(doing backend and devops works mainly and some web frontend). It makes me hard to maintain this library actively. Hope to have someone to help maintaining react-native-version-check!
 
 [Github](https://github.com/kimxogus/react-native-version-check)
@@ -23,4 +24,3 @@ I have almost zero experience in ios development, and I am no longer working on 
 [dev-dependencies-url]: https://david-dm.org/kimxogus/react-native-version-check?type=dev
 [vulnerabilities-image]: https://snyk.io/test/github/kimxogus/react-native-version-check/badge.svg
 [vulnerabilities-url]: https://snyk.io/test/github/kimxogus/react-native-version-check
-

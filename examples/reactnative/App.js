@@ -33,8 +33,7 @@ const Section = ({children, title}): Node => {
           {
             color: isDarkMode ? Colors.white : Colors.black,
           },
-        ]}
-      >
+        ]}>
         {title}
       </Text>
       <Text
@@ -43,8 +42,7 @@ const Section = ({children, title}): Node => {
           {
             color: isDarkMode ? Colors.light : Colors.dark,
           },
-        ]}
-      >
+        ]}>
         {children}
       </Text>
     </View>
@@ -90,14 +88,12 @@ const App: () => Node = () => {
       />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}
-      >
+        style={backgroundStyle}>
         <Header />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}
-        >
+          }}>
           <Section title="Current Version">{currentVersion}</Section>
           <Section title="Latest Version">{latestVersion}</Section>
           <Section title="Is update needed?">{String(isNeeded)}</Section>
