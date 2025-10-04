@@ -11,5 +11,5 @@
     "strict": false
   },
   "include": ["src/**/*"],
-  "exclude": ["src/**/__tests__/**", "src/**/*.test.*"]
+  "exclude": ["**/__tests__/**", "**/*.test.*", "**/*.spec.*"]
 }
