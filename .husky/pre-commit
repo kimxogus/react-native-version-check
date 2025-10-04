@@ -1,4 +1,9 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+#!/usr/bin/env sh
+# Minimal pre-commit hook for husky. Keep this small and forward-compatible.
+# Run lint-staged to process staged files. Using npx here keeps the hook lightweight.
+command -v npx >/dev/null 2>&1 || {
+	echo "npx is required for husky pre-commit hook" >&2
+	exit 1
+}
 
 npx --no -- lint-staged

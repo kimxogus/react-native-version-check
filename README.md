@@ -243,6 +243,26 @@ VersionCheck.needUpdate({
     | currentVersion | _string_  |
     | latestVersion  | _string_  |
 
+## Developer hooks (husky + lint-staged)
+
+This repository uses Husky and lint-staged to run linters/formatters on staged files before commits.
+
+- Install hooks (run once after cloning or when dependencies change):
+
+```bash
+npm run prepare
+```
+
+- Make sure the pre-commit hook is executable on Unix/macOS:
+
+```bash
+chmod +x .husky/pre-commit
+```
+
+- lint-staged will automatically run `eslint --fix` for staged JS/JSX files and `prettier --write` for JSON/CSS/MD.
+
+If you update lint-staged tasks, avoid calling `git add` in the task list (modern lint-staged automatically stages modifications).
+
 ## License
 
 MIT
