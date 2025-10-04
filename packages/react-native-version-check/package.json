@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "semver": "^6.1.1"
+    "semver": "^7.7.2"
   },
   "devDependencies": {
     "react-native": "^0.59.9"

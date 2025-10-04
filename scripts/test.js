@@ -1,4 +1,4 @@
-import { run } from 'jest-cli';
+const jest = require('jest');
 
 process.env.RNVC_ENV = 'test';
 
@@ -8,4 +8,4 @@ if (process.env.CI) {
   argv.push('--runInBand');
 }
 
-run(argv);
+jest.run(argv);
