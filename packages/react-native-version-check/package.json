@@ -33,7 +33,7 @@
     "semver": "^7.7.2"
   },
   "devDependencies": {
-    "react-native": "^0.59.9"
+    "react-native": "^0.81.4"
   },
   "peerDependencies": {
     "react-native": ">=0.48.0"
