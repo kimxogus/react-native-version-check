@@ -1,0 +1,7 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/react-native-version-check/tsconfig.build.json" },
+    { "path": "./packages/react-native-version-check-expo/tsconfig.build.json" }
+  ]
+}

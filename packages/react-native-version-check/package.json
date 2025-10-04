@@ -2,7 +2,9 @@
   "name": "react-native-version-check",
   "version": "3.5.0",
   "description": "A version checker for react-native applications",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": ["lib"],
   "keywords": [
     "react-native",
     "android",
