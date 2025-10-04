@@ -62,10 +62,8 @@ export default async function needUpdate(
 
     if (isNil(option.latestVersion)) {
       if (option.provider.getVersion) {
-        const {
-          version,
-          storeUrl,
-        }: IVersionAndStoreUrl = await option.provider.getVersion(option);
+        const { version, storeUrl }: IVersionAndStoreUrl =
+          await option.provider.getVersion(option);
         latestVersion = version;
         providerStoreUrl = storeUrl;
       }
@@ -89,7 +87,7 @@ export default async function needUpdate(
     );
   } catch (e) {
     if (option.ignoreErrors) {
-      console.warn(e); // eslint-disable-line no-console
+      console.warn(e);
     } else {
       throw e;
     }

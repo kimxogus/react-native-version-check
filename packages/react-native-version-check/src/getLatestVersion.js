@@ -55,7 +55,7 @@ export async function getLatestVersion(
     return Promise.reject(`Invalid provider: ${option.provider}`);
   } catch (e) {
     if (option.ignoreErrors) {
-      console.warn(e); // eslint-disable-line no-console
+      console.warn(e);
     } else {
       throw e;
     }

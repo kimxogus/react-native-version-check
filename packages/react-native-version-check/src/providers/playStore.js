@@ -57,7 +57,7 @@ class PlayStoreProvider implements IProvider {
         });
     } catch (e) {
       if (opt.ignoreErrors) {
-        console.warn(e); // eslint-disable-line no-console
+        console.warn(e);
       } else {
         throw e;
       }

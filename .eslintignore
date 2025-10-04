@@ -1,6 +1,0 @@
-**/build/
-**/node_modules/
-/flow-typed/
-/test-results/
-/examples/
-babel.config.js
