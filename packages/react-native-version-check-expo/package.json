@@ -27,7 +27,7 @@
   "dependencies": {
     "expo-constants": "^14.0.2",
     "expo-localization": "^14.0.0",
-    "react-native-version-check": "^3.5.0"
+    "react-native-version-check": "file:../react-native-version-check"
   },
   "devDependencies": {
     "expo": "^33.0.0",
