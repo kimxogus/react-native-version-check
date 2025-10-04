@@ -1,24 +1,21 @@
-// @flow
 import { getVersionInfo } from '../versionInfo';
 
 import { IProvider, IVersionAndStoreUrl } from './types';
 
 export type AppStoreGetVersionOption = {
-  country?: string,
-  packageName?: string,
-  fetchOptions?: any,
-  ignoreErrors?: boolean,
+  country?: string;
+  packageName?: string;
+  fetchOptions?: any;
+  ignoreErrors?: boolean;
 };
 
 export interface IAppStoreProvider extends IProvider {
-  getVersion: AppStoreGetVersionOption => Promise<IVersionAndStoreUrl>;
+  getVersion(option?: AppStoreGetVersionOption): Promise<IVersionAndStoreUrl | undefined>;
 }
 
 class AppStoreProvider implements IProvider {
-  async getVersion(
-    option: AppStoreGetVersionOption
-  ): Promise<IVersionAndStoreUrl> {
-    const opt = option;
+  async getVersion(option?: AppStoreGetVersionOption): Promise<IVersionAndStoreUrl | undefined> {
+    const opt = option || {};
     try {
       if (!opt.country) {
         opt.country = await getVersionInfo().getCountry();

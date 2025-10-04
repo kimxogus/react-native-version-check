@@ -1,4 +1,4 @@
-// @flow
+// @ts-nocheck
 export interface IVersionInfo {
   getCountry: () => Promise<string>;
   getPackageName: () => string;

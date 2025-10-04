@@ -1,4 +1,4 @@
-// @flow
+// @ts-nocheck
 import semver from 'semver';
 import isNil from 'lodash/isNil';
 

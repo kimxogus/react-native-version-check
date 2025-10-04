@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "CommonJS",
+    "lib": ["ES2019", "DOM"],
+    "declaration": true,
+    "outDir": "build",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": true,
+    "checkJs": false,
+    "jsx": "react",
+    "resolveJsonModule": true
+  },
+  "include": ["packages/**/*", "src/**/*"],
+  "exclude": ["node_modules", "build"]
+}

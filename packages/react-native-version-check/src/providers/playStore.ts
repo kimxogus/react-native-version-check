@@ -1,16 +1,15 @@
-// @flow
 import { getVersionInfo } from '../versionInfo';
 
 import { IProvider, IVersionAndStoreUrl } from './types';
 
 export type PlayStoreGetVersionOption = {
-  packageName?: string,
-  fetchOptions?: any,
-  ignoreErrors?: boolean,
+  packageName?: string;
+  fetchOptions?: any;
+  ignoreErrors?: boolean;
 };
 
 export interface IPlayStoreProvider extends IProvider {
-  getVersion: PlayStoreGetVersionOption => Promise<IVersionAndStoreUrl>;
+  getVersion(option?: PlayStoreGetVersionOption): Promise<IVersionAndStoreUrl | undefined>;
 }
 
 function error(text: string) {
@@ -22,7 +21,7 @@ function error(text: string) {
 }
 
 class PlayStoreProvider implements IProvider {
-  getVersion(option: PlayStoreGetVersionOption): Promise<IVersionAndStoreUrl> {
+  getVersion(option?: PlayStoreGetVersionOption): Promise<IVersionAndStoreUrl | undefined> {
     const opt = option || {};
     try {
       if (!opt.packageName) {
@@ -58,6 +57,7 @@ class PlayStoreProvider implements IProvider {
     } catch (e) {
       if (opt.ignoreErrors) {
         console.warn(e);
+        return Promise.resolve(undefined);
       } else {
         throw e;
       }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Platform } from 'react-native';
 import Constants from 'expo-constants';
 import * as Localization from 'expo-localization';

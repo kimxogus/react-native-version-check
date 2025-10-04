@@ -1,4 +1,5 @@
-// @flow
+// @ts-nocheck
+
 import { getLatestVersion } from './src/getLatestVersion';
 import needUpdate from './src/needUpdate';
 import { setVersionInfo, type IVersionInfo } from './src/versionInfo';

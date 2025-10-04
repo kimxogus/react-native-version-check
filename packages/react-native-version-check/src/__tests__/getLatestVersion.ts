@@ -1,3 +1,4 @@
+// @ts-nocheck
 jest.mock('react-native');
 
 import { setVersionInfo } from '../versionInfo';

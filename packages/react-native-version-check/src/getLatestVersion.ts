@@ -1,4 +1,4 @@
-// @flow
+// @ts-nocheck
 import { Platform } from 'react-native';
 import isNil from 'lodash/isNil';
 import isFunction from 'lodash/isFunction';

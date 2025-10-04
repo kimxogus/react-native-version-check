@@ -1,4 +1,5 @@
-// @flow
+// @ts-nocheck
+
 import VersionInfo from './src/RNVersionInfo';
 import builder, { type ReactNativeVersionCheck } from './builder';
 

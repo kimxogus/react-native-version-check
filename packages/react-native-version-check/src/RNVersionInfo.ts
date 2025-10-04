@@ -1,4 +1,5 @@
-// @flow
+// @ts-nocheck
+
 const RNVersionCheck = require('react-native').NativeModules.RNVersionCheck;
 
 export default {

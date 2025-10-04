@@ -1,4 +1,5 @@
-// @flow
+// @ts-nocheck
+
 export { default as playStore } from './playStore';
 export * from './playStore';
 export { default as appStore } from './appStore';
