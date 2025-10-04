@@ -22,3 +22,8 @@ android/local.properties
 example/
 **/__tests__
 package-lock.json
+
+# Do not publish source or TS build metadata
+src/
+*.tsbuildinfo
+tsconfig.build.json
